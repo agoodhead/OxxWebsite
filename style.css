@@ -705,6 +705,8 @@ body {
     display: flex;
     flex-direction: column;
     z-index: 45;
+    transition: transform 0.12s linear;
+    will-change: transform;
   }
 
   .chat-docked .chat-widget__body {
