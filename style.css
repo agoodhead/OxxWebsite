@@ -171,7 +171,7 @@ body {
 
 .hero-copy h1 {
   margin: 0;
-  font-size: clamp(2.15rem, 4.1vw, 4rem);
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
   line-height: 1.06;
   letter-spacing: -0.02em;
   max-width: none;
