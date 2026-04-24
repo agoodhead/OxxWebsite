@@ -1,11 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import OpenAI from "openai";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const docsDir = path.resolve(__dirname, "..", "..", "product_docs");
+const docsDir = path.resolve(process.cwd(), "product_docs");
 const model = process.env.OPENAI_MODEL || "gpt-4.1-mini";
 
 const corsHeaders = {
