@@ -1,0 +1,16 @@
+{
+  "name": "oxx-ai-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test tests/*.test.mjs",
+    "smoke": "node scripts/smoke-chat.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "openai": "^4.104.0"
+  }
+}
