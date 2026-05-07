@@ -38,3 +38,4 @@ Static HTML/CSS/JS website with Netlify-ready serverless chat.
 
 - The chat assistant is intentionally product-only and grounded in `/product_docs/*.md`.
 - For unrelated questions, the assistant politely declines and redirects to Oxx-AI topics.
+- PostHog tracking is wired in `/script.js`; set `POSTHOG_PROJECT_API_KEY` there with your project key (`phc_...`).
