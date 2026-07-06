@@ -1,34 +1,43 @@
-# Oxx-AI Product Overview
+# Oxx Report Product Overview
 
-Oxx-AI is a South African, Cape Town-built AI product focused on professional consulting workflows where trust, reviewability, and consistency matter.
+Oxx Report is a professional reporting workflow tool for inspection, consultation, assessment, and technical reporting work.
 
-## Founders
-Oxx-AI was founded by engineering brothers James Goodhead and Andrew Goodhead.
+## Core Message
 
-## Slogan
-An agent you can train and trust.
+Inspect. Report. Review.
+
+Oxx Report handles the repetitive reporting work between site inspection and professional review.
 
 ## Primary Outcome
-Turn inspection and consultation inputs into structured, reviewable draft outputs faster.
 
-## What The Tool Is About
-Oxx-AI helps professionals:
-- capture real-world inputs from consultations and inspections
-- train agent behavior using discipline-specific skills and references
-- generate editable draft reports with professional oversight
-- maintain trust with review, validation, and traceability
+Oxx Report saves time and improves reporting consistency by preparing structured draft material from inspection evidence, notes, photos, documents, templates, and references.
 
-## What Oxx-AI Is
-- Web app
-- Microsoft Word plugin
-- Android mobile app
-- iOS mobile app
+Professional review remains required. Oxx Report prepares the workflow; the professional checks, edits, approves, and takes responsibility for the final report.
 
-## Who It Serves
-- Veterinarians
-- Civil and structural engineers
-- Electrical engineers
-- Safety and inspection professionals
+## Workflow
 
-## Core Position
-Oxx-AI supports professionals with capture, structure, and draft generation workflows. Final professional review remains essential.
+1. Inspect / Capture: capture site evidence, photos, voice notes, typed notes, observations, briefs, historic files, and reference documents.
+2. Organise: keep photos, notes, observations, and documents linked to case context.
+3. Ground the Reasoning: connect evidence to defects, components, standards, clauses, and report findings.
+4. Generate Report: create a structured professional draft using templates, audience, tone, length, and reporting style.
+5. Review and Refine: check, edit, restructure, shorten, expand, approve, and issue under professional responsibility.
+
+## ROI Baseline
+
+Assumed professional rate: R1,500/hour.
+
+- Standard workflow: about 3.75 hours per report.
+- Oxx Report workflow: about 1.25 hours per report.
+- Saving: about 2.5 hours per report.
+- Approximate cost saving: about R4,000 per report.
+- Workflow improvement: about 70% faster.
+
+## Platform
+
+- Web app access is the current primary entry point.
+- Microsoft Word integration supports final report refinement.
+- Native Android and iOS apps are planned for download.
+
+## Positioning Boundary
+
+Oxx Report does not replace the engineer, consultant, inspector, or professional reviewer. It reduces repetitive reporting work before professional review.

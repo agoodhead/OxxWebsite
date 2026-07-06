@@ -14,5 +14,5 @@ test("chat function returns focused redirect for unrelated queries", async () =>
   });
   assert.equal(out.statusCode, 200);
   const body = JSON.parse(out.body);
-  assert.match(body.reply, /Oxx-AI/i);
+  assert.match(body.reply, /Oxx Report/i);
 });

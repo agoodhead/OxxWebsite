@@ -1,24 +1,41 @@
-# Oxx-AI Workflows
+# Oxx Report Workflow Documentation
 
-## Workflow Steps
-1. Capture input from text, voice, and files.
-2. Organize data into structured fields and timelines.
-3. Apply trained logic for domain-specific guidance.
-4. Generate draft reports for professional review.
+## Inspect / Capture
 
-## Use Cases
-### Veterinary
-- Capture consult findings and observations.
-- Generate structured draft clinical reports.
+Capture real work information before it gets lost.
 
-### Civil / Structural Engineering
-- Capture site observations and defects.
-- Produce draft inspection narratives and recommendations.
+Inputs include photos, voice notes, typed notes, site observations, client briefs, historic reports, templates, emails, and reference documents.
 
-### Electrical Engineering
-- Record compliance findings and equipment details.
-- Build draft technical documentation.
+## Organise
 
-### Safety Inspection
-- Capture incidents and risk conditions.
-- Generate audit-ready draft safety reports.
+Keep photos, notes, observations, and documents linked to the correct case context.
+
+This reduces manual transfer, folder sorting, re-reading handwritten notes, and the risk of lost or mislabelled information.
+
+## Ground the Reasoning
+
+Connect evidence to meaning before drafting.
+
+The workflow supports linking photos to observations, observations to defects, defects to components, and findings to standards, clauses, and references.
+
+## Generate Report
+
+Create a structured professional draft from inspection data, templates, selected audience, report length, tone, and reporting style.
+
+The workflow can help select evidence, place photos, write findings, apply structure, and adapt the report for the intended audience.
+
+## Review and Refine
+
+Professional review remains central.
+
+The professional checks facts, edits findings, verifies reasoning, adjusts tone and structure, confirms references, and approves final output.
+
+## Time and Cost Comparison
+
+Assumed rate: R1,500/hour.
+
+| Metric | Standard Workflow | Oxx Report | Saving |
+| --- | --- | --- | --- |
+| Total time per report | 3.75 hrs | 1.25 hrs | 2.5 hrs |
+| Approx. cost per report | R5,625 | R1,875 | About R4,000 |
+| Workflow improvement | Manual, repetitive admin | Workflow-assisted reporting | About 70% faster |

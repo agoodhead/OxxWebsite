@@ -1,31 +1,37 @@
-# Oxx-AI FAQ Knowledge
+# Oxx Report FAQ Knowledge
 
-## What is Oxx-AI?
-Oxx-AI is a product assistant and workflow platform for professional consulting and reporting workflows.
+## What is Oxx Report?
 
-## Can Oxx-AI fully automate final reports?
-Oxx-AI generates structured drafts. Professionals review and finalize.
+Oxx Report is a professional reporting workflow tool for inspection, consultation, assessment, and technical reporting work.
 
-## Does Oxx-AI support mobile?
-Yes. Android and iOS support are part of the platform offering.
+## What is the core workflow?
+
+The workflow is Inspect / Capture, Organise, Ground the Reasoning, Generate Report, and Review / Refine.
+
+## Does Oxx Report replace professional judgment?
+
+No. Oxx Report prepares structured draft material and reduces repetitive reporting work. Professional review, approval, and responsibility remain with the engineer, consultant, inspector, or reviewer.
+
+## What time saving is used in the baseline example?
+
+The baseline comparison shows a standard workflow taking about 3.75 hours per report and an Oxx Report workflow taking about 1.25 hours per report. This is about 2.5 hours saved, about R4,000 saved at R1,500/hour, and about 70% faster.
+
+## Is there mobile support?
+
+Native Android and iOS apps are planned for download. Web app access is the current primary entry point.
 
 ## Is there Word integration?
-Yes. Oxx-AI includes Microsoft Word plugin integration for refinement.
 
-## How do I get started?
-Use the download page and request a guided demo for onboarding.
+Yes. Microsoft Word integration supports report refinement and final professional editing.
 
-## How should I book a demo?
-Use the contact page and click Book a Demo, or email andrew@oxx.co.za with your team details and preferred time.
+## How does the workflow handle photos and notes?
 
-## Is the assistant live?
-Yes. The chat assistant is active on the Home and FAQ pages and is focused on Oxx-AI product topics.
+Photos, notes, observations, documents, and client context are kept linked to the case so report preparation does not depend on manual sorting and reconstruction later.
 
-## Who are the founders?
-The founders are James Goodhead and Andrew Goodhead.
+## How should access be started?
 
-## What is the tool about?
-Oxx-AI is about helping professionals capture input, train skills, and generate trust-ready draft reports with human review.
+Use the website login link to test the app, or use the contact page to request a demo.
 
-## How do I contact the team?
-Andrew Goodhead and James Goodhead can be reached at andrew@oxx.co.za and WhatsApp +27 62 036 1649.
+## How can Oxx be contacted?
+
+Use the contact page, email andrew@oxx.co.za, or WhatsApp +27 62 036 1649.

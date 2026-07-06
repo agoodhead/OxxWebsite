@@ -126,10 +126,108 @@
 
   document.querySelectorAll('a[href="https://agentm.oxx-ai.com/"]').forEach((link) => {
     link.addEventListener("click", () => {
-      captureEvent("download_app_clicked", {
+      captureEvent("app_login_clicked", {
         page: window.location.pathname,
-        label: link.textContent?.trim() || "Download App"
+        label: link.textContent?.trim() || "Login and Test the App Now"
       });
+    });
+  });
+
+  document.querySelectorAll("[data-workflow-showcase]").forEach((showcase) => {
+    const video = showcase.querySelector("[data-workflow-video]");
+    const webmSource = showcase.querySelector("[data-video-webm-source]");
+    const mp4Source = showcase.querySelector("[data-video-mp4-source]");
+    const audioToggle = showcase.querySelector("[data-audio-toggle]");
+    const tiles = showcase.querySelectorAll(".workflow-tile");
+    if (!video || !webmSource || !mp4Source || !tiles.length) return;
+    let audioEnabled = false;
+
+    const syncAudioUi = () => {
+      if (!audioToggle) return;
+      audioToggle.classList.toggle("is-on", audioEnabled);
+      audioToggle.setAttribute("aria-pressed", String(audioEnabled));
+      audioToggle.textContent = audioEnabled ? "Audio on" : "Turn on audio";
+    };
+
+    const activateTile = (tile) => {
+      const webm = tile.dataset.videoWebm;
+      const mp4 = tile.dataset.videoMp4;
+      if (!webm || !mp4) return;
+
+      tiles.forEach((item) => item.classList.toggle("is-active", item === tile));
+      if (webmSource.getAttribute("src") === webm) {
+        video.currentTime = 0;
+        video.muted = !audioEnabled;
+        video.play().catch(() => {});
+        return;
+      }
+
+      webmSource.setAttribute("src", webm);
+      mp4Source.setAttribute("src", mp4);
+      video.muted = !audioEnabled;
+      video.load();
+      video.play().catch(() => {});
+      captureEvent("workflow_tile_video_selected", {
+        page: window.location.pathname,
+        tile: tile.querySelector("strong")?.textContent?.trim() || "unknown"
+      });
+    };
+
+    tiles.forEach((tile) => {
+      tile.addEventListener("mouseenter", () => activateTile(tile));
+      tile.addEventListener("focus", () => activateTile(tile));
+      tile.addEventListener("click", () => activateTile(tile));
+    });
+
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+
+    if (audioToggle) {
+      syncAudioUi();
+      audioToggle.addEventListener("click", async () => {
+        audioEnabled = !audioEnabled;
+        video.muted = !audioEnabled;
+        syncAudioUi();
+        if (audioEnabled) {
+          try {
+            await video.play();
+          } catch (_) {
+            audioEnabled = false;
+            video.muted = true;
+            syncAudioUi();
+          }
+        }
+        captureEvent("workflow_audio_toggled", {
+          page: window.location.pathname,
+          audio_enabled: audioEnabled
+        });
+      });
+    }
+  });
+
+  document.querySelectorAll("[data-hover-video]").forEach((video) => {
+    video.muted = false;
+
+    const playVideo = () => {
+      video.play().catch(() => {
+        video.muted = true;
+        video.play().catch(() => {});
+      });
+    };
+
+    video.addEventListener("mouseenter", playVideo);
+    video.addEventListener("focus", playVideo);
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        playVideo();
+      } else {
+        video.pause();
+      }
     });
   });
 
@@ -151,7 +249,7 @@
       return row;
     };
 
-    append("assistant", "Ask me about Oxx-AI features, use cases, platforms, downloads, or booking a demo.");
+    append("assistant", "Documentation covers Oxx Report workflow stages, review requirements, platform access, ROI, and demo booking.");
 
     const endpoint =
       window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
