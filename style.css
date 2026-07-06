@@ -1199,8 +1199,8 @@ body {
 
 .stage-roi {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 0.72rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.68rem;
   margin: 0.9rem;
   padding: 0.9rem;
   border: 1px solid rgba(31, 84, 25, 0.2);
@@ -1208,29 +1208,45 @@ body {
   background: linear-gradient(135deg, #FFFFFF, #F1F8E8);
 }
 
-.stage-roi .roi-icon {
+.roi-metric {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.16rem 0.48rem;
+  align-content: start;
+  min-height: 100%;
+  border: 1px solid rgba(31, 84, 25, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.72rem;
+}
+
+.roi-symbol {
   grid-row: span 2;
   display: inline-grid;
-  min-width: 4.2rem;
-  min-height: 4.2rem;
+  width: 2.15rem;
+  height: 2.15rem;
   place-items: center;
-  border-radius: 18px;
-  background: var(--accent);
-  color: #FFFFFF;
-  font-size: 0.8rem;
-  font-weight: 900;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 1.05rem;
+}
+
+.roi-metric strong {
+  align-self: end;
+  color: var(--ink);
+  font-size: 0.88rem;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
-.stage-roi strong {
-  align-self: end;
-  color: var(--ink);
-  font-size: 1.06rem;
-}
-
-.stage-roi p {
+.roi-metric p {
+  grid-column: 2;
   margin: 0;
   color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
 }
 
 .v2-sketch-roi {
@@ -1243,8 +1259,8 @@ body {
 }
 
 .v2-sketch-arrow {
-  width: 4rem;
-  height: 4.8rem;
+  width: 2.8rem;
+  height: 4rem;
   position: relative;
   display: inline-block;
 }
@@ -1254,10 +1270,10 @@ body {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 1.45rem;
-  height: 3.25rem;
-  background: var(--accent);
-  border: 2px solid var(--accent-strong);
+  width: 3px;
+  height: 3rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(31, 84, 25, 0.18), var(--accent));
   transform: translateX(-50%);
 }
 
@@ -1265,14 +1281,12 @@ body {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 1.45rem solid transparent;
-  border-right: 1.45rem solid transparent;
-  border-top: 1.65rem solid var(--accent);
-  filter: drop-shadow(0 2px 0 var(--accent-strong));
-  transform: translateX(-50%);
+  bottom: 0.55rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-right: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .v2-sketch-video {
@@ -1427,6 +1441,10 @@ body {
   .pricing-grid,
   .v2-sketch-row,
   .infographic-step {
+    grid-template-columns: 1fr;
+  }
+
+  .stage-roi {
     grid-template-columns: 1fr;
   }
 
