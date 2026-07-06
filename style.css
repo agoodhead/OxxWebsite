@@ -1150,6 +1150,9 @@ body {
 .v2-sketch-table strong {
   text-align: center;
   color: var(--accent-strong);
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .v2-sketch-table span:nth-child(3n + 1) {
@@ -1158,11 +1161,11 @@ body {
 }
 
 .v2-sketch-table span:nth-child(3n + 2) {
-  background: #F2F8E8;
+  color: var(--muted);
 }
 
-.v2-sketch-table span:nth-child(3n + 3) {
-  color: var(--muted);
+.v2-sketch-table span:nth-child(3n) {
+  background: #F2F8E8;
 }
 
 .compact-compare .yes,
@@ -1199,7 +1202,7 @@ body {
 
 .stage-roi {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.68rem;
   margin: 0.9rem;
   padding: 0.9rem;
