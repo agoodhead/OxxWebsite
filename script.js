@@ -124,7 +124,7 @@
     });
   });
 
-  document.querySelectorAll('a[href="https://agentm.oxx-ai.com/"]').forEach((link) => {
+  document.querySelectorAll('a[href="https://report.oxx-ai.com/"]').forEach((link) => {
     link.addEventListener("click", () => {
       captureEvent("app_login_clicked", {
         page: window.location.pathname,
