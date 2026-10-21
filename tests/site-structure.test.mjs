@@ -29,15 +29,15 @@ test("required static pages exist", async () => {
 
 test("required assets and product docs exist", async () => {
   const required = [
-    "assets/oxx-logo-transparent.png",
+    "assets/oxx-logo-transparent.webp",
     "assets/favicon.png",
-    "assets/andrew-goodhead.png",
-    "assets/james-goodhead.png",
-    "assets/workflow-inspect-capture.png",
-    "assets/workflow-organise.png",
-    "assets/workflow-ground-reasoning.png",
-    "assets/workflow-generate-report.png",
-    "assets/workflow-review-refine.png",
+    "assets/andrew-goodhead.webp",
+    "assets/james-goodhead.webp",
+    "assets/workflow-inspect-capture.webp",
+    "assets/workflow-organise.webp",
+    "assets/workflow-ground-reasoning.webp",
+    "assets/workflow-generate-report.webp",
+    "assets/workflow-review-refine.webp",
     "assets/inspect-hover-video.mp4",
     "assets/organise-hover-video.mp4",
     "assets/ground-reasoning-hover-video.mp4",

@@ -1,7 +1,7 @@
 import { handler } from "../netlify/functions/chat.js";
 
-if (!process.env.OPENAI_API_KEY) {
-  console.error("OPENAI_API_KEY is required for smoke chat test.");
+if (!process.env.OPENROUTER_API_KEY) {
+  console.error("OPENROUTER_API_KEY is required for smoke chat test.");
   process.exit(1);
 }
 

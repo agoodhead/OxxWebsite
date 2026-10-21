@@ -1331,6 +1331,7 @@ body {
 
 .infographic-step img {
   width: 100%;
+  height: auto;
   border-radius: 14px;
   border: 1px solid rgba(199, 202, 188, 0.8);
 }

@@ -3,7 +3,7 @@ import path from "node:path";
 import OpenAI from "openai";
 
 const docsDir = path.resolve(process.cwd(), "product_docs");
-const model = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+const model = process.env.OPENROUTER_MODEL || "deepseek/deepseek-v4.1-flash";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -152,12 +152,12 @@ export async function handler(event) {
     };
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
     return {
       statusCode: 400,
       headers: corsHeaders,
-      body: JSON.stringify({ error: "OPENAI_API_KEY is not configured." })
+      body: JSON.stringify({ error: "OPENROUTER_API_KEY is not configured." })
     };
   }
 
@@ -169,11 +169,20 @@ export async function handler(event) {
       .join("\n\n");
 
     const system = strictSystemPrompt(retrieved || "No knowledge files were loaded.");
-    const client = new OpenAI({ apiKey });
+    const client = new OpenAI({
+      apiKey,
+      baseURL: "https://openrouter.ai/api/v1",
+      defaultHeaders: {
+        "HTTP-Referer": "https://oxx-ai.com",
+        "X-OpenRouter-Title": "Oxx Report website"
+      }
+    });
 
     const completion = await client.chat.completions.create({
       model,
       temperature: 0.2,
+      // DeepSeek V4.1 Flash reasons by default; short documentation answers don't need it.
+      reasoning: { effort: "none" },
       messages: [
         { role: "system", content: system },
         ...history.slice(-8),
