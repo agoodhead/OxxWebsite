@@ -30,7 +30,9 @@ test("required static pages exist", async () => {
 test("required assets and product docs exist", async () => {
   const required = [
     "assets/oxx-logo-transparent.webp",
-    "assets/favicon.png",
+    "assets/oxx-favicon-32.png",
+    "assets/oxx-favicon.ico",
+    "assets/oxx-apple-touch-icon.png",
     "assets/andrew-goodhead.webp",
     "assets/james-goodhead.webp",
     "assets/workflow-inspect-capture.webp",
