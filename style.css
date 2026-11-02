@@ -92,7 +92,7 @@ textarea {
   grid-template-columns: auto 1fr auto auto;
   gap: 1rem;
   align-items: center;
-  min-height: 88px;
+  min-height: 64px;
 }
 
 .brand {
@@ -108,7 +108,7 @@ textarea {
 
 .brand img {
   width: auto;
-  height: 54px;
+  height: 48px;
   max-width: 220px;
   object-fit: contain;
   display: block;
@@ -134,7 +134,17 @@ textarea {
 
 .nav-cta {
   display: inline-flex;
-  gap: 0.65rem;
+  gap: 0.5rem;
+}
+
+.nav-cta .btn {
+  font-size: 0.86rem;
+  padding: 0.46rem 0.8rem;
+  border-radius: 9px;
+}
+
+.nav-cta .btn-primary {
+  box-shadow: 0 2px 6px rgba(74, 93, 58, 0.16);
 }
 
 .btn {
@@ -193,7 +203,7 @@ textarea {
 
 .hero-copy h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 7vw, 5.4rem);
+  font-size: clamp(2.2rem, 5vw, 3.9rem);
   line-height: 1.06;
   letter-spacing: 0;
   max-width: none;
@@ -244,7 +254,7 @@ textarea {
 
 .left-chat {
   position: sticky;
-  top: 96px;
+  top: 72px;
 }
 
 .chat-widget__head {
@@ -319,6 +329,27 @@ textarea {
 
 .section {
   padding: 2rem 0 0;
+}
+
+/* Full-width background bands that alternate white and light green. */
+.band {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.band-tint {
+  background: var(--panel-soft);
+}
+
+main > .band:last-child {
+  padding-bottom: 0.5rem;
+}
+
+.band > .section {
+  padding-top: 0;
+}
+
+.band-tint .pricing-trial {
+  background: #FFFFFF;
 }
 
 .section-title h1,
@@ -445,7 +476,7 @@ textarea {
 }
 
 .cta-band {
-  margin: 2.1rem auto 2.8rem;
+  margin: 0 auto;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: linear-gradient(135deg, var(--panel-soft), #FFFFFF);
@@ -513,8 +544,8 @@ textarea {
 
 .faq-chat {
   position: sticky;
-  top: 102px;
-  max-height: calc(100vh - 122px);
+  top: 78px;
+  max-height: calc(100vh - 98px);
 }
 
 .faq-content {
@@ -1045,10 +1076,6 @@ textarea {
   padding-bottom: 1.4rem;
 }
 
-.v2-sketch-section {
-  padding-top: 2rem;
-}
-
 .v2-sketch-title {
   text-align: center;
   max-width: 920px;
@@ -1057,7 +1084,7 @@ textarea {
 
 .v2-sketch-title h2 {
   margin: 0;
-  font-size: clamp(2.7rem, 5vw, 5rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   line-height: 0.96;
   letter-spacing: -0.055em;
 }
@@ -1067,11 +1094,6 @@ textarea {
   margin: 1rem auto 0;
   color: var(--muted);
   font-size: 1.08rem;
-}
-
-.v2-sketch-stack {
-  display: grid;
-  gap: 2.4rem;
 }
 
 .v2-sketch-step h3 {
@@ -1536,9 +1558,9 @@ textarea {
   .chat-docked {
     position: fixed;
     right: 14px;
-    top: 104px;
+    top: 80px;
     width: 490px;
-    height: calc(100vh - 128px);
+    height: calc(100vh - 104px);
     display: flex;
     flex-direction: column;
     z-index: 45;
@@ -1558,9 +1580,9 @@ textarea {
   .faq-page .chat-docked {
     position: sticky;
     right: auto;
-    top: 102px;
+    top: 78px;
     width: auto;
-    height: calc(100vh - 122px);
+    height: calc(100vh - 98px);
     display: flex;
     z-index: auto;
     transition: none;
@@ -1570,11 +1592,11 @@ textarea {
 
 @media (max-width: 760px) {
   .nav-wrap {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr auto;
     grid-template-areas:
-      "brand toggle"
-      "nav nav"
-      "cta cta";
+      "brand cta toggle"
+      "nav nav nav";
+    gap: 0.5rem;
     align-items: center;
   }
 
@@ -1592,7 +1614,7 @@ textarea {
     display: none;
     grid-area: nav;
     flex-direction: column;
-    padding-top: 0.2rem;
+    padding: 0.2rem 0 0.8rem;
     gap: 0.7rem;
   }
 
@@ -1602,9 +1624,14 @@ textarea {
 
   .nav-cta {
     grid-area: cta;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding-bottom: 0.8rem;
+    justify-content: flex-end;
+    gap: 0.4rem;
+  }
+
+  .nav-cta .btn {
+    padding: 0.42rem 0.62rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
   }
 
   .card-grid.two,
