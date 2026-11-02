@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("/assets/fonts/DejaVuSans-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("/assets/fonts/DejaVuSans-Bold-latin.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #FFFFFF;
   --bg-soft: #F6FAF1;
@@ -32,11 +48,18 @@ body {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "DejaVu Sans", Verdana, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
   font-size: 17px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 .site-bg {
@@ -170,7 +193,6 @@ body {
 
 .hero-copy h1 {
   margin: 0;
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   font-size: clamp(2.5rem, 7vw, 5.4rem);
   line-height: 1.06;
   letter-spacing: 0;
@@ -305,13 +327,11 @@ body {
 }
 
 .section-title h1 {
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   letter-spacing: 0;
   font-size: clamp(2rem, 3.5vw, 3.1rem);
 }
 
 .section-title h2 {
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   letter-spacing: 0;
   font-size: clamp(1.62rem, 2.7vw, 2.2rem);
   max-width: 760px;
@@ -688,6 +708,7 @@ body {
   max-width: 980px;
   margin-inline: auto;
   font-size: clamp(2.2rem, 4vw, 3.4rem);
+  text-wrap: balance;
 }
 
 .workflow-showcase {
@@ -887,7 +908,6 @@ body {
 }
 
 .roi-stat strong {
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   font-size: 4rem;
   line-height: 0.9;
 }
@@ -963,7 +983,6 @@ body {
 
 .pricing-card h3 {
   margin: 0.45rem 0 0;
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1;
 }
@@ -1013,8 +1032,8 @@ body {
 
 .pricing-trial-title {
   margin: 0;
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   font-size: 1.7rem;
+  font-weight: 700;
 }
 
 .pricing-trial p:last-child {
@@ -1038,7 +1057,6 @@ body {
 
 .v2-sketch-title h2 {
   margin: 0;
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   font-size: clamp(2.7rem, 5vw, 5rem);
   line-height: 0.96;
   letter-spacing: -0.055em;
@@ -1059,7 +1077,6 @@ body {
 .v2-sketch-step h3 {
   margin: 0 0 1rem;
   text-align: center;
-  font-family: "Inter", sans-serif;
   font-size: clamp(1.6rem, 2.5vw, 2.45rem);
   line-height: 1.12;
   letter-spacing: -0.035em;
@@ -1301,7 +1318,6 @@ body {
 
 .v2-summary-band h2 {
   margin: 0;
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   font-size: clamp(2rem, 3.2vw, 3rem);
 }
 
@@ -1350,7 +1366,6 @@ body {
 
 .infographic-copy h2 {
   margin: 0.8rem 0 0;
-  font-family: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
   letter-spacing: 0;
   font-size: 2rem;
 }
