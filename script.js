@@ -93,6 +93,9 @@
     });
   }
 
+  // Reveal once a section's top edge is a tenth of the way up the screen.
+  // A ratio threshold never fires on phones for sections taller than the
+  // screen divided by that ratio, which left the workflow section blank.
   const revealNodes = document.querySelectorAll(".reveal");
   if (revealNodes.length) {
     const observer = new IntersectionObserver(
@@ -104,7 +107,7 @@
           }
         });
       },
-      { threshold: 0.14 }
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
     revealNodes.forEach((node) => observer.observe(node));
   }
