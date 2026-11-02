@@ -1400,6 +1400,81 @@ textarea {
   transform: none;
 }
 
+.install-prompt {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 40;
+  width: min(400px, calc(100% - 2rem));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #FFFFFF, #F6FAF1);
+  box-shadow: var(--shadow-elevated);
+  padding: 1.1rem 1.2rem 1.2rem;
+  animation: install-prompt-in 0.32s ease;
+}
+
+.install-prompt[hidden] {
+  display: none;
+}
+
+.install-prompt-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.install-prompt-head img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.install-prompt h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.install-prompt p {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.install-prompt .install-prompt-hint {
+  margin-top: 0.45rem;
+  color: var(--subtle);
+  font-size: 0.88rem;
+}
+
+.install-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.install-prompt-actions .btn {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@keyframes install-prompt-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .install-prompt {
+    animation: none;
+  }
+}
+
 @media (max-width: 1020px) {
   .hero-grid,
   .faq-layout {
@@ -1574,5 +1649,16 @@ textarea {
 
   .roi-stat strong {
     font-size: 3rem;
+  }
+
+  .install-prompt {
+    left: 1rem;
+    right: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    width: auto;
+  }
+
+  .install-prompt-actions .btn {
+    flex: 1;
   }
 }
