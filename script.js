@@ -133,6 +133,111 @@
     });
   });
 
+  // Install prompt: once a visitor has been reading for a while and reaches
+  // Pricing, offer the web app. The app is a PWA on report.oxx-ai.com, and a
+  // browser only opens its install dialog on the app's own origin, so the
+  // button hands over to the app with ?install=1.
+  const INSTALL_PROMPT_MIN_READ_MS = 20000;
+  const INSTALL_PROMPT_SNOOZE_MS = 14 * 24 * 60 * 60 * 1000;
+  const INSTALL_PROMPT_KEY = "oxx-install-prompt";
+  const VISIT_START_KEY = "oxx-visit-start";
+
+  const readStorage = (storage, key) => {
+    try {
+      return window[storage].getItem(key);
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const writeStorage = (storage, key, value) => {
+    try {
+      window[storage].setItem(key, value);
+    } catch (_) {}
+  };
+
+  // Reading time counts from the first page of the visit, not just this one.
+  const visitStart = (() => {
+    const now = Date.now();
+    const saved = Number(readStorage("sessionStorage", VISIT_START_KEY));
+    if (saved > 0 && saved <= now) return saved;
+    writeStorage("sessionStorage", VISIT_START_KEY, String(now));
+    return now;
+  })();
+
+  const installPromptSnoozed = () => {
+    const saved = readStorage("localStorage", INSTALL_PROMPT_KEY);
+    if (saved === "accepted") return true;
+    const dismissedAt = Number(saved);
+    return dismissedAt > 0 && Date.now() - dismissedAt < INSTALL_PROMPT_SNOOZE_MS;
+  };
+
+  const installTrigger = document.querySelector("[data-install-trigger]");
+  const installPrompt = document.querySelector("[data-install-prompt]");
+
+  if (installTrigger && installPrompt && !installPromptSnoozed()) {
+    const isIos =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.userAgent.includes("Macintosh") && navigator.maxTouchPoints > 1);
+    const platform = isIos ? "ios" : "other";
+    const hint = installPrompt.querySelector("[data-install-hint]");
+    if (hint && isIos) {
+      hint.textContent = "Opens the web app. Then tap Share and choose Add to Home Screen.";
+    }
+
+    let reachedPricing = false;
+    let readLongEnough = false;
+    let shown = false;
+
+    const hideInstallPrompt = () => {
+      installPrompt.hidden = true;
+      document.removeEventListener("keydown", onInstallPromptKeydown);
+    };
+
+    const dismissInstallPrompt = () => {
+      writeStorage("localStorage", INSTALL_PROMPT_KEY, String(Date.now()));
+      hideInstallPrompt();
+      captureEvent("install_prompt_dismissed", { page: window.location.pathname, platform });
+    };
+
+    function onInstallPromptKeydown(event) {
+      if (event.key === "Escape") dismissInstallPrompt();
+    }
+
+    const maybeShowInstallPrompt = () => {
+      if (shown || !reachedPricing || !readLongEnough) return;
+      shown = true;
+      installPrompt.hidden = false;
+      document.addEventListener("keydown", onInstallPromptKeydown);
+      captureEvent("install_prompt_shown", { page: window.location.pathname, platform });
+    };
+
+    window.setTimeout(() => {
+      readLongEnough = true;
+      maybeShowInstallPrompt();
+    }, Math.max(0, INSTALL_PROMPT_MIN_READ_MS - (Date.now() - visitStart)));
+
+    // Fires once the top of Pricing has scrolled a third of the way up the screen.
+    const pricingObserver = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        reachedPricing = true;
+        pricingObserver.disconnect();
+        maybeShowInstallPrompt();
+      },
+      { rootMargin: "0px 0px -35% 0px" }
+    );
+    pricingObserver.observe(installTrigger);
+
+    installPrompt.querySelector("[data-install-accept]")?.addEventListener("click", () => {
+      writeStorage("localStorage", INSTALL_PROMPT_KEY, "accepted");
+      hideInstallPrompt();
+      captureEvent("install_prompt_accepted", { page: window.location.pathname, platform });
+    });
+
+    installPrompt.querySelector("[data-install-dismiss]")?.addEventListener("click", dismissInstallPrompt);
+  }
+
   document.querySelectorAll("[data-workflow-showcase]").forEach((showcase) => {
     const video = showcase.querySelector("[data-workflow-video]");
     const webmSource = showcase.querySelector("[data-video-webm-source]");

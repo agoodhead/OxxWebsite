@@ -387,7 +387,7 @@
       </div>
     </section>
 
-    <section class="section container reveal">
+    <section id="pricing" class="section container reveal" data-install-trigger>
       <div class="section-title section-title-wide">
         <p class="eyebrow">Pricing</p>
         <h2>Choose the commercial model that fits the way you get paid.</h2>
@@ -463,6 +463,19 @@
     </div>
     <p class="copyright">&copy; 2026 Oxx-AI. All rights reserved.</p>
   </footer>
+
+  <aside class="install-prompt" role="dialog" aria-labelledby="install-prompt-title" aria-describedby="install-prompt-text" hidden data-install-prompt>
+    <div class="install-prompt-head">
+      <img src="/assets/oxx-apple-touch-icon.png" alt="" width="48" height="48">
+      <h2 id="install-prompt-title">Install Oxx Report</h2>
+    </div>
+    <p id="install-prompt-text">Keep the app on your phone or desktop and start reports from site in one tap. Three free reports, no card required.</p>
+    <p class="install-prompt-hint" data-install-hint>Opens the web app. Then choose Install app from your browser menu.</p>
+    <div class="install-prompt-actions">
+      <a class="btn btn-primary" href="https://report.oxx-ai.com/?install=1" target="_blank" rel="noopener" data-install-accept>Get the app</a>
+      <button class="btn btn-ghost" type="button" data-install-dismiss>Not now</button>
+    </div>
+  </aside>
 
   <script src="/script.js"></script>
 </body>
