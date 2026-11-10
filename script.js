@@ -339,6 +339,66 @@
     });
   });
 
+  // Muted looping videos play while on screen, unless the visitor prefers
+  // reduced motion. A video the visitor paused stays paused.
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("[data-autoplay-video]").forEach((video) => {
+    video.muted = true;
+    if (reduceMotion) return;
+    let started = false;
+    let pausedOffScreen = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!started || pausedOffScreen) video.play().catch(() => {});
+          started = true;
+          pausedOffScreen = false;
+        } else if (!video.paused) {
+          pausedOffScreen = true;
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(video);
+  });
+
+  // Review map on the homepage: React and React Flow load only when it is
+  // about to scroll into view. review-graph.js holds the map itself.
+  const reviewSlot = document.querySelector("[data-review-graph]");
+  if (reviewSlot) {
+    const VENDOR = "/assets/vendor/";
+    const loadFile = (tag, attrs) =>
+      new Promise((resolve, reject) => {
+        const el = Object.assign(document.createElement(tag), attrs, { onload: resolve, onerror: reject });
+        document.head.appendChild(el);
+      });
+    const loadScript = (src) => loadFile("script", { src });
+    const loadStyle = (href) => loadFile("link", { rel: "stylesheet", href });
+
+    const mountReviewGraph = () =>
+      Promise.all([loadStyle(`${VENDOR}xyflow-react-12.12.0.css`), loadStyle("/review-graph.css")])
+        .then(() => loadScript(`${VENDOR}react-18.3.1.production.min.js`))
+        .then(() => loadScript(`${VENDOR}react-dom-18.3.1.production.min.js`))
+        .then(() => loadScript("/review-graph.js"))
+        .then(() => {
+          window.ReactDOM.createRoot(reviewSlot).render(
+            window.React.createElement(window.OxxFlow.ReviewGraph, { xyflowSrc: `${VENDOR}xyflow-react-12.12.0.umd.js` })
+          );
+        })
+        .catch(() => {});
+
+    const reviewObserver = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        reviewObserver.disconnect();
+        mountReviewGraph();
+      },
+      { rootMargin: "600px 0px" }
+    );
+    reviewObserver.observe(reviewSlot);
+  }
+
   const chatWidgets = document.querySelectorAll("[data-chat-widget]");
   chatWidgets.forEach((widget) => {
     const messagesRoot = widget.querySelector("[data-chat-messages]");

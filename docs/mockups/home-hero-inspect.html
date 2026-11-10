@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Mockup: hero and Inspect tile | Oxx Report</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/oxx-favicon-32.png">
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+    /* Mockup-only styles. Not linked from the live site. */
+    /* Relative font paths so the file also works when opened directly. */
+    @font-face { font-family: "DejaVu Sans"; src: url("../../assets/fonts/DejaVuSans-latin.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "DejaVu Sans"; src: url("../../assets/fonts/DejaVuSans-Bold-latin.woff2") format("woff2"); font-weight: 700; }
+
+    .mock-tag {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      z-index: 50;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--warning);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    /* Top bar: thinner, full width, logo far left, buttons far right. */
+    .site-header .nav-wrap {
+      width: calc(100% - 3rem);
+      min-height: 50px;
+    }
+
+    /* Wide logo, bull head filling the bar's height. */
+    .site-header .brand img {
+      height: 48px;
+      max-width: none;
+    }
+
+    .site-header .nav-cta .btn {
+      padding-block: 0.34rem;
+    }
+
+    /* Hero: less space above, smaller title, no trust line. */
+    .hero-report.mock-hero {
+      padding: 2.2rem 0 1.8rem;
+    }
+
+    .mock-hero .hero-copy h1 {
+      font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+      letter-spacing: -0.01em;
+    }
+
+    .mock-hero .lead {
+      margin-top: 0.8rem;
+      font-size: 1.15rem;
+    }
+
+    /* First tile: light green, "Inspect" left, rounded video tile right. */
+    .inspect-tile {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: center;
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+      padding: clamp(1.25rem, 3vw, 2.5rem);
+      border-radius: 28px;
+      background: var(--panel-soft);
+    }
+
+    .inspect-tile h2 {
+      align-self: start;
+      margin: -12px 0 0;
+      padding-left: clamp(0rem, 0.6vw, 0.5rem);
+      color: var(--accent-strong);
+      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      line-height: 1;
+    }
+
+    .inspect-video {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--accent-strong);
+      box-shadow: var(--shadow-elevated);
+      color: #FFFFFF;
+      text-align: center;
+    }
+
+    .inspect-video video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .inspect-video-placeholder {
+      display: grid;
+      justify-items: center;
+      gap: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .inspect-video-placeholder span {
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .inspect-video-placeholder span::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 54%;
+      transform: translate(-50%, -50%);
+      border-style: solid;
+      border-width: 13px 0 13px 22px;
+      border-color: transparent transparent transparent #FFFFFF;
+    }
+
+    .inspect-video-placeholder p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      .inspect-tile {
+        grid-template-columns: 1fr;
+      }
+
+      .inspect-tile h2 {
+        padding-left: 0;
+      }
+
+      /* Phones: no room for the words, so show just the bull head. */
+      .site-header .brand img {
+        width: 56px;
+        object-fit: cover;
+        object-position: left center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mock-tag">Mockup</div>
+  <div class="site-bg"></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <img src="oxx-report-logo-wide.webp" alt="Oxx Report" width="1840" height="421">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav">
+        <a href="/">Home</a>
+        <a href="/examples/">How it works</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/downloads/">Downloads</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="/contact/">Book a Demo</a>
+        <a class="btn btn-ghost" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-report mock-hero container">
+      <div class="hero-copy">
+        <h1>Inspect. Report. Review.</h1>
+        <p class="lead">Oxx Report handles the repetitive reporting work between site inspection and professional review.</p>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Inspect">
+      <div class="inspect-tile">
+        <h2>Inspect</h2>
+        <div class="inspect-video">
+          <video src="part1-site-visit-square.mp4" autoplay muted loop playsinline controls aria-label="Part 1: site visit"></video>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" aria-label="Oxx Report workflow comparison">
+      <div class="band band-tint">
+        <div class="container">
+          <div class="v2-sketch-title">
+            <p class="eyebrow">Workflow Comparison</p>
+            <h2>Why use OXX for Professional Reports?</h2>
+            <p>Each stage shows what changes in the reporting workflow: what Oxx Report handles, what the traditional process leaves to the engineer, and where the return comes from.</p>
+          </div>
+          <article class="v2-sketch-step">
+            <h3>Step 1 - Inspect and Capture</h3>
+            <div class="v2-sketch-row">
+              <div class="v2-sketch-left">
+                <div class="v2-sketch-panel">
+                  <h4>While on site</h4>
+                  <div class="v2-sketch-table compact-compare">
+                    <strong></strong>
+                    <strong>Traditional</strong>
+                    <strong>Oxx</strong>
+                    <span>Photo capture</span>
+                    <span class="no">Stored separately</span>
+                    <span class="yes">Into the report case</span>
+                    <span>Voice notes</span>
+                    <span class="no">Re-typed later</span>
+                    <span class="yes">Linked to observations</span>
+                    <span>Site context</span>
+                    <span class="no">Rebuilt from memory</span>
+                    <span class="yes">Captured with evidence</span>
+                    <span>Missing details</span>
+                    <span class="no">Found during drafting</span>
+                    <span class="yes">Reduced at capture</span>
+                  </div>
+                  <div class="stage-roi" aria-label="Step 1 return on investment">
+                    <div class="roi-metric">
+                      <span class="roi-symbol" aria-hidden="true">🕒</span>
+                      <strong>Time</strong>
+                      <p>Save 15 min.</p>
+                    </div>
+                    <div class="roi-metric">
+                      <span class="roi-symbol" aria-hidden="true">📝</span>
+                      <strong>Quality</strong>
+                      <p>Encourages easy capture of notes, photos, and observations. Covers more areas while still on site.</p>
+                    </div>
+                    <div class="roi-metric">
+                      <span class="roi-symbol" aria-hidden="true">🛡️</span>
+                      <strong>Risk</strong>
+                      <p>Never risk losing important site details before drafting starts.</p>
+                    </div>
+                  </div>
+                </div>
+                <span class="v2-sketch-arrow" aria-hidden="true"></span>
+              </div>
+              <div class="v2-sketch-video">
+                <span class="v2-audio-note">Audio on - hover to play</span>
+                <video data-hover-video playsinline controls preload="metadata" poster="../../assets/workflow-inspect-capture.webp">
+                  <source src="../../assets/inspect-hover-video.webm" type="video/webm">
+                  <source src="../../assets/inspect-hover-video.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  <script src="../../script.js" defer></script>
+</body>
+</html>

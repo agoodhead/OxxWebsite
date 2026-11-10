@@ -2,7 +2,11 @@
 
 ## What is Oxx Report?
 
-Oxx Report is a professional reporting workflow tool for inspection, consultation, assessment, and technical reporting work.
+Oxx Report is an AI-assisted reporting workflow tool for inspection, consultation, assessment, and technical reporting work. It turns site photos, voice notes, and observations into a structured draft report that the professional reviews and approves.
+
+## Who is Oxx Report for?
+
+Engineers, inspectors, consultants, and other professionals who write inspection, assessment, and technical reports and want a faster first draft without giving up final sign-off.
 
 ## What is the core workflow?
 
@@ -14,7 +18,19 @@ No. Oxx Report prepares structured draft material and reduces repetitive reporti
 
 ## What time saving is used in the baseline example?
 
-The baseline comparison shows a standard workflow taking about 3.75 hours per report and an Oxx Report workflow taking about 1.25 hours per report. This is about 2.5 hours saved, about R4,000 saved at R1,500/hour, and about 70% faster.
+The example uses a professional rate of R1,500/hour. A standard workflow takes about 4.25 hours per report; with Oxx Report it takes about 1.25 hours. That saves about 3 hours and about R4,500 per report, about 70% less time.
+
+## How much does Oxx Report cost?
+
+Prices are in South African rand. Pay as you use costs R1,000 per delivered report, with no subscription. The monthly subscription costs R500/month for unlimited reports, plus token usage of typically about R100 per report.
+
+## Is there a free trial?
+
+Yes. Three free reports to test the workflow. No card required, no lock-in, and data stays available.
+
+## Where is Oxx Report based?
+
+Oxx Report is built in Cape Town, South Africa, and priced in South African rand. It runs as a web app, so it works anywhere with a browser.
 
 ## Is there mobile support?
 
@@ -32,6 +48,6 @@ Photos, notes, observations, documents, and client context are kept linked to th
 
 Use the website login link to test the app, or use the contact page to request a demo.
 
-## How can Oxx be contacted?
+## How can Oxx Report be contacted?
 
 Use the contact page, email andrew@oxx.co.za, or WhatsApp +27 62 036 1649.

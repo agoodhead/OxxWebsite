@@ -1,0 +1,397 @@
+/* Review graph. Colours follow the Inspect video's information map. */
+.oxx-review {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid #D3DBE8;
+  border-radius: 18px;
+  background: #E6ECF5;
+  color: #1B1C18;
+  font-family: inherit;
+}
+
+.oxx-review-wait {
+  align-items: center;
+  justify-content: center;
+  color: #5B6577;
+  font-size: 14px;
+}
+
+.oxx-review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px 0;
+}
+
+.oxx-review-label,
+.oxx-review-foot {
+  color: #5B6577;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.oxx-review-foot {
+  padding: 6px 16px 12px;
+  color: #5E6B3E;
+  text-align: center;
+}
+
+.oxx-status {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: #34511F;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.oxx-status.is-paused {
+  color: #1A5FA6;
+}
+
+.oxx-review-flow {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.oxx-review .react-flow {
+  background: transparent;
+}
+
+/* The map never pans, so let a finger on it scroll the page. */
+.oxx-review .react-flow__pane {
+  touch-action: auto;
+  cursor: default;
+}
+
+.oxx-review .react-flow__node {
+  transition: opacity 0.6s ease;
+}
+
+.oxx-review .react-flow__node.oxx-exit,
+.oxx-review .react-flow__edge.oxx-exit {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.oxx-handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Nodes */
+.oxx-n {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1.5px solid #9AA6BB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  font-size: 11px;
+  line-height: 1.25;
+  animation: oxx-pop 0.45s ease both;
+}
+
+.oxx-kicker {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.oxx-root {
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: #7A7F57;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.oxx-area {
+  width: 150px;
+  padding: 4px 10px 6px;
+}
+
+.oxx-area .oxx-kicker {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.oxx-area-name {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  color: #1B1C18;
+}
+
+.oxx-area.tone-green { border-color: #7FB08A; background: #E2F1E4; color: #3E7A4D; }
+.oxx-area.tone-blue { border-color: #7A9BD0; background: #E2EBFA; color: #3B64A6; }
+.oxx-area.tone-yellow { border-color: #D7B443; background: #FBF1CC; color: #8A6A0C; }
+.oxx-area.tone-purple { border-color: #A989D2; background: #EFE6F9; color: #6C47A3; }
+
+.oxx-imp {
+  align-items: center;
+  width: 150px;
+  padding: 6px 8px;
+  gap: 1px;
+  text-align: center;
+}
+
+.oxx-imp-level { font-weight: 700; }
+.oxx-imp-defect { font-weight: 700; color: #1B1C18; }
+.oxx-imp-rel { font-size: 9px; font-weight: 700; color: #5B6577; }
+
+.oxx-imp.level-high { border-color: #DE8578; background: #FDF1EF; }
+.oxx-imp.level-high .oxx-imp-level { color: #C2473A; }
+.oxx-imp.level-low { border-color: #9DB59F; background: #EDF3EC; }
+.oxx-imp.level-low .oxx-imp-level { color: #4E7A55; }
+.oxx-imp.level-medium { border-color: #E2B653; background: #FDF6E3; }
+.oxx-imp.level-medium .oxx-imp-level { color: #A87711; }
+
+.oxx-ev {
+  align-items: center;
+  width: 70px;
+  padding: 3px 4px 4px;
+  gap: 2px;
+}
+
+.oxx-ev-kind {
+  align-self: flex-start;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.oxx-ev-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.oxx-ev-caption {
+  font-size: 8px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.oxx-pill {
+  padding: 0 5px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 7px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.prio-high { color: #C2473A; }
+.prio-low { color: #4E7A55; }
+.prio-med { color: #A87711; }
+
+.oxx-ev.kind-video { border-color: #A98AD8; background: #F5EFFC; color: #6C47A3; }
+.oxx-ev.kind-report { border-color: #3FA391; background: #E9F6F3; color: #217A69; }
+.oxx-ev.kind-image { border-color: #6F95D2; background: #EDF3FC; color: #3B64A6; }
+.oxx-ev.kind-audio { border-color: #D9A441; background: #FCF4E3; color: #9A6A0C; }
+
+.oxx-hyp,
+.oxx-act {
+  width: 150px;
+  padding: 6px 8px;
+  gap: 4px;
+}
+
+.oxx-con {
+  width: 330px;
+  padding: 8px 12px;
+  gap: 3px;
+  border: 0;
+  background: #7A7F57;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.oxx-con .oxx-card-text {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.oxx-con.is-final {
+  background: #34511F;
+}
+
+.oxx-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.oxx-card-text {
+  font-weight: 700;
+}
+
+.oxx-badge {
+  padding: 1px 6px;
+  border-radius: 999px;
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.oxx-hyp { border-color: #A98AD8; }
+.oxx-hyp .oxx-kicker { color: #6C47A3; }
+.oxx-act { border-color: #7A7F57; }
+.oxx-act .oxx-kicker { color: #5E6B3E; }
+
+.oxx-hyp.status-accepted,
+.oxx-act.status-selected {
+  border-color: #2F6B22;
+  background: #E3F3D6;
+}
+
+.oxx-hyp.status-accepted .oxx-badge,
+.oxx-act.status-selected .oxx-badge {
+  background: #2F6B22;
+}
+
+.oxx-hyp.status-rejected,
+.oxx-act.status-dropped {
+  border-color: #C9CDD6;
+  background: #F3F4F7;
+  color: #6B7280;
+}
+
+.oxx-hyp.status-rejected .oxx-card-text,
+.oxx-act.status-dropped .oxx-card-text {
+  text-decoration: line-through;
+}
+
+.oxx-hyp.status-rejected .oxx-badge,
+.oxx-act.status-dropped .oxx-badge {
+  background: #8A919E;
+}
+
+.oxx-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.oxx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid #C9CDD6;
+  border-radius: 6px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
+}
+
+.oxx-btn-yes { color: #2F6B22; }
+.oxx-btn-no { color: #B3261E; }
+.oxx-btn:hover { border-color: currentColor; }
+
+.oxx-btn:focus-visible {
+  outline: 2px solid #1A5FA6;
+  outline-offset: 1px;
+}
+
+.oxx-btn.is-on {
+  border-color: currentColor;
+  background: currentColor;
+}
+
+.oxx-btn.is-on svg {
+  color: #FFFFFF;
+}
+
+/* Held down by the Professional review pointer. */
+.oxx-btn.is-pressing {
+  border-color: currentColor;
+  transform: scale(0.86);
+  box-shadow: 0 0 0 3px rgba(26, 95, 166, 0.35);
+}
+
+/* Being tidied by the Auto review pointer */
+.oxx-n.is-editing {
+  box-shadow: 0 0 0 3px rgba(26, 95, 166, 0.35), 0 8px 18px rgba(14, 14, 14, 0.18);
+}
+
+.oxx-cursor {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 3px rgba(14, 14, 14, 0.3));
+  animation: oxx-fade 0.3s ease both;
+}
+
+.oxx-cursor svg {
+  transition: transform 0.12s ease;
+  transform-origin: 3px 2px;
+}
+
+.oxx-cursor.is-pressing svg {
+  transform: scale(0.82);
+}
+
+.oxx-cursor-tag {
+  margin-top: 16px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #1A5FA6;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Edges */
+.oxx-review .react-flow__edge-path {
+  animation: oxx-fade 0.5s ease both;
+}
+
+.oxx-e-tree .react-flow__edge-path { stroke: #9AA6BB; stroke-width: 1.4; }
+.oxx-e-think .react-flow__edge-path { stroke: #8A63D2; stroke-width: 1.6; }
+.oxx-e-support .react-flow__edge-path { stroke: #B597E3; stroke-width: 1.3; }
+.oxx-e-flow .react-flow__edge-path { stroke: #7A7F57; stroke-width: 1.6; }
+
+.oxx-review .react-flow__edge.oxx-dim {
+  opacity: 0.25;
+  transition: opacity 0.6s ease;
+}
+
+@keyframes oxx-pop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes oxx-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oxx-n,
+  .oxx-review .react-flow__edge-path {
+    animation: none;
+  }
+}

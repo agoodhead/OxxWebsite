@@ -17,9 +17,12 @@ test("required static pages exist", async () => {
     "contact/index.html",
     "privacy/index.html",
     "terms/index.html",
+    "refunds/index.html",
     "disclaimer/index.html",
     "style.css",
-    "script.js"
+    "script.js",
+    "review-graph.js",
+    "review-graph.css"
   ];
 
   for (const rel of required) {
@@ -30,6 +33,17 @@ test("required static pages exist", async () => {
 test("required assets and product docs exist", async () => {
   const required = [
     "assets/oxx-logo-transparent.webp",
+    "assets/oxx-report-logo-wide.webp",
+    "assets/inspect-site-visit-square.mp4",
+    "assets/capture-image.webp",
+    "assets/capture-video.webp",
+    "assets/capture-voice.webp",
+    "assets/capture-conversation.webp",
+    "assets/capture-documents.webp",
+    "assets/vendor/react-18.3.1.production.min.js",
+    "assets/vendor/react-dom-18.3.1.production.min.js",
+    "assets/vendor/xyflow-react-12.12.0.umd.js",
+    "assets/vendor/xyflow-react-12.12.0.css",
     "assets/oxx-favicon-32.png",
     "assets/oxx-favicon.ico",
     "assets/oxx-apple-touch-icon.png",

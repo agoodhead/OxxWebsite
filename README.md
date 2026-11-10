@@ -17,6 +17,10 @@ Static HTML/CSS/JS website with Netlify-ready serverless chat.
 - `/assets/*`
 - `/product_docs/*.md`
 - `/netlify/functions/chat.js`
+- `/robots.txt`, `/sitemap.xml`, `/llms.txt` (crawler and AI-assistant entry points)
+- `/docs/*` (internal notes, not published)
+
+`CLAUDE.md` lists every place each product fact appears, so edits stay consistent.
 
 ## Local run
 

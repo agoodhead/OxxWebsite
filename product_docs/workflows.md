@@ -36,6 +36,6 @@ Assumed rate: R1,500/hour.
 
 | Metric | Standard Workflow | Oxx Report | Saving |
 | --- | --- | --- | --- |
-| Total time per report | 3.75 hrs | 1.25 hrs | 2.5 hrs |
-| Approx. cost per report | R5,625 | R1,875 | About R4,000 |
-| Workflow improvement | Manual, repetitive admin | Workflow-assisted reporting | About 70% faster |
+| Total time per report | 4.25 hrs | 1.25 hrs | 3 hrs |
+| Approx. cost per report | R6,375 | R1,875 | About R4,500 |
+| Workflow improvement | Manual, repetitive admin | Workflow-assisted reporting | About 70% less time |

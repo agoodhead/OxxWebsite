@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Review graph test</title>
+  <link rel="stylesheet" href="/assets/vendor/xyflow-react-12.12.0.css">
+  <link rel="stylesheet" href="/review-graph.css">
+  <style>
+    body { margin: 0; padding: 24px; font-family: "DejaVu Sans", Verdana, sans-serif; background: #EFF7E5; }
+    #slot { width: 960px; max-width: 100%; height: 640px; }
+  </style>
+</head>
+<body>
+  <div id="slot"></div>
+  <!-- As on the canvas: React is on the page, and the component loads React Flow itself. -->
+  <script src="/assets/vendor/react-18.3.1.production.min.js"></script>
+  <script src="/assets/vendor/react-dom-18.3.1.production.min.js"></script>
+  <script src="/review-graph.js"></script>
+  <script>
+    ReactDOM.createRoot(document.getElementById("slot")).render(
+      React.createElement(OxxFlow.ReviewGraph, { xyflowSrc: "/assets/vendor/xyflow-react-12.12.0.umd.js" })
+    );
+  </script>
+</body>
+</html>

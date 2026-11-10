@@ -1,28 +1,109 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oxx Report | Inspect. Report. Review.</title>
-  <meta name="description" content="Oxx Report handles the repetitive reporting work between site inspection and professional review.">
-  <meta property="og:title" content="Oxx Report | Inspect. Report. Review.">
-  <meta property="og:description" content="A professional reporting workflow that saves time while keeping review with the engineer.">
+  <title>Oxx Report | AI-assisted inspection reports for engineers</title>
+  <meta name="description" content="Oxx Report turns site photos, voice notes and observations into an evidence-linked draft report for the engineer to review and approve. Three free reports.">
+  <link rel="canonical" href="https://oxx-ai.com/">
+  <meta property="og:site_name" content="Oxx Report">
+  <meta property="og:title" content="Oxx Report | AI-assisted inspection reports for engineers">
+  <meta property="og:description" content="Oxx Report turns site photos, voice notes and observations into an evidence-linked draft report for the engineer to review and approve. Three free reports.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://oxx-ai.com/">
+  <meta property="og:locale" content="en_ZA">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/oxx-favicon-32.png">
   <link rel="icon" type="image/x-icon" href="/assets/oxx-favicon.ico">
   <link rel="apple-touch-icon" href="/assets/oxx-apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/DejaVuSans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/DejaVuSans-Bold-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://oxx-ai.com/#organization",
+        "name": "Oxx Report",
+        "alternateName": "Oxx-AI",
+        "url": "https://oxx-ai.com/",
+        "logo": "https://oxx-ai.com/assets/oxx-logo-transparent.webp",
+        "email": "andrew@oxx.co.za",
+        "telephone": "+27 62 036 1649",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cape Town",
+          "addressCountry": "ZA"
+        },
+        "founder": [
+          { "@type": "Person", "@id": "https://oxx-ai.com/contact/#james-goodhead", "name": "James Goodhead" },
+          { "@type": "Person", "@id": "https://oxx-ai.com/contact/#andrew-goodhead", "name": "Andrew Goodhead" }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://oxx-ai.com/#website",
+        "name": "Oxx Report",
+        "url": "https://oxx-ai.com/",
+        "inLanguage": "en-ZA",
+        "publisher": { "@id": "https://oxx-ai.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://oxx-ai.com/#software",
+        "name": "Oxx Report",
+        "description": "AI-assisted reporting tool that turns site photos, voice notes and observations into an evidence-linked draft inspection report. The engineer reviews, edits and approves the final report.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web browser",
+        "url": "https://oxx-ai.com/",
+        "installUrl": "https://report.oxx-ai.com/",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Engineers, inspectors and consultants who write inspection, assessment and technical reports"
+        },
+        "featureList": [
+          "Site capture of photos, voice notes and typed notes",
+          "Evidence kept linked to the report case",
+          "Observations linked to defects, components and standards",
+          "Template-based draft report generation",
+          "Microsoft Word integration for final editing",
+          "Professional review and approval before issue"
+        ],
+        "publisher": { "@id": "https://oxx-ai.com/#organization" },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free trial",
+            "price": "0",
+            "priceCurrency": "ZAR",
+            "description": "Three free reports. No card required."
+          },
+          {
+            "@type": "Offer",
+            "name": "Monthly subscription",
+            "price": "500",
+            "priceCurrency": "ZAR",
+            "description": "R500 per month for unlimited reports. Token usage is billed separately, typically about R100 per report."
+          },
+          {
+            "@type": "Offer",
+            "name": "Pay as you use",
+            "price": "1000",
+            "priceCurrency": "ZAR",
+            "description": "R1,000 per delivered report. No subscription."
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="site-bg"></div>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="/">
-        <img src="/assets/oxx-logo-transparent.webp" alt="Oxx logo" width="216" height="216">
-      </a>
+      <a class="brand" href="/"><img src="/assets/oxx-report-logo-wide.webp" alt="Oxx Report" width="420" height="96"></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav">
         <a href="/">Home</a>
@@ -39,11 +120,51 @@
   </header>
 
   <main>
-    <section class="hero hero-report container">
+    <section class="hero hero-home container">
       <div class="hero-copy reveal">
-        <h1>Inspect. Report. Review.</h1>
+        <h1>Inspect. Review. Report.</h1>
         <p class="lead">Oxx Report handles the repetitive reporting work between site inspection and professional review.</p>
-        <p class="trust-line">Built for professionals who need faster draft reports without handing over final judgment.</p>
+      </div>
+    </section>
+
+    <section class="container home-tile-wrap" aria-labelledby="inspect-title">
+      <div class="home-tile">
+        <h2 id="inspect-title" class="home-tile-title">Inspect</h2>
+        <div class="home-tile-copy">
+          <p class="home-tile-lead">Site information organised, categorised and analysed</p>
+          <ul class="capture-list">
+            <li><img src="/assets/capture-image.webp" alt="" width="48" height="36"><span>Image</span></li>
+            <li><img src="/assets/capture-video.webp" alt="" width="48" height="36"><span>Video</span></li>
+            <li><img src="/assets/capture-voice.webp" alt="" width="48" height="36"><span>Voice</span></li>
+            <li><img src="/assets/capture-conversation.webp" alt="" width="48" height="36"><span>Conversation</span></li>
+            <li><img src="/assets/capture-documents.webp" alt="" width="48" height="36"><span>Documents</span></li>
+          </ul>
+          <p class="tile-callout tile-callout-green">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M8.2 12.2 L10.8 14.8 L15.8 9.6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Note capture made easy.</span>
+          </p>
+          <p class="tile-callout tile-callout-blue">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5 L19.5 5.5 V11 C19.5 15.6 16.4 19.4 12 21.5 C7.6 19.4 4.5 15.6 4.5 11 V5.5 Z" fill="currentColor"/><path d="M8.6 12 L11 14.4 L15.6 9.8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Nothing gets lost.</span>
+          </p>
+        </div>
+        <div class="home-tile-video">
+          <video src="/assets/inspect-site-visit-square.mp4" muted loop playsinline controls preload="metadata" aria-label="Part 1: site visit" data-autoplay-video></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="container home-tile-wrap" aria-labelledby="review-title">
+      <div class="home-tile">
+        <h2 id="review-title" class="home-tile-title">Review</h2>
+        <div class="home-tile-copy home-tile-copy-narrow">
+          <p class="home-tile-lead">Professional review and <span class="keep-together">sign-off</span></p>
+          <p class="home-tile-lead">Human-in-the-loop accountability</p>
+          <p class="home-tile-lead">Auditable decision making</p>
+        </div>
+        <div class="review-graph-slot" data-review-graph>
+          <p class="review-graph-fallback">Observation → Hypothesis → Conclusion → Action</p>
+        </div>
       </div>
     </section>
 
@@ -82,7 +203,7 @@
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">🕒</span>
                       <strong>Time</strong>
-                      <p>Save 30 min.</p>
+                      <p>Save 15 min.</p>
                     </div>
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">📝</span>
@@ -139,7 +260,7 @@
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">🕒</span>
                       <strong>Time</strong>
-                      <p>Save 30 min.</p>
+                      <p>Save 15 min.</p>
                     </div>
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">📝</span>
@@ -196,7 +317,7 @@
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">🕒</span>
                       <strong>Time</strong>
-                      <p>Save 45-60 min.</p>
+                      <p>Save 30 min.</p>
                     </div>
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">📝</span>
@@ -253,7 +374,7 @@
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">🕒</span>
                       <strong>Time</strong>
-                      <p>Save 3 hours.</p>
+                      <p>Save 90 min.</p>
                     </div>
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">📝</span>
@@ -310,7 +431,7 @@
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">🕒</span>
                       <strong>Time</strong>
-                      <p>Save 30-45 min.</p>
+                      <p>Save 30 min.</p>
                     </div>
                     <div class="roi-metric">
                       <span class="roi-symbol" aria-hidden="true">📝</span>
@@ -383,20 +504,20 @@
             <p class="eyebrow">Example Result</p>
             <div class="roi-stat">
               <strong>70%</strong>
-              <span>faster than the standard workflow</span>
+              <span>less time than the standard workflow</span>
             </div>
             <div class="roi-banner-stack" aria-label="ROI proof points">
               <div class="roi-banner-card">
-                <strong>Save +- 3.5 hours per report</strong>
+                <strong>Save about 3 hours per report</strong>
               </div>
               <div class="roi-banner-card">
-                <strong>Save R4,000 in professional fees</strong>
+                <strong>Save about R4,500 in professional fees</strong>
               </div>
               <div class="roi-banner-card roi-banner-card-large">
                 <strong>Oxx Report easily pays for itself</strong>
               </div>
             </div>
-            <p class="review-note">The time saved using Oxx Report pays for the workflow twice over, while professional review stays in place.</p>
+            <p class="review-note">Example at R1,500/hour: a standard report takes about 4.25 hours, and about 1.25 hours with Oxx Report. The 3 hours saved are worth about R4,500, against R1,000 for a pay-as-you-use report. Professional review stays in place.</p>
           </aside>
         </div>
       </section>
@@ -415,9 +536,8 @@
             <p class="pricing-tag">Monthly subscription</p>
             <h3>R500/month</h3>
             <p class="pricing-subtitle">Unlimited reports plus pay for token usage.</p>
-            <p class="pricing-note">Typical token usage placeholder: about R100 per report.</p>
+            <p class="pricing-note">Token usage is billed separately, typically about R100 per report.</p>
             <div class="pricing-list">
-              <p>Coming soon final packaging.</p>
               <p>Simple base subscription for regular users.</p>
               <p>Best fit for teams running reports every month.</p>
             </div>
@@ -447,8 +567,8 @@
       <section class="section container cta-band reveal">
         <h2>Run the reporting workflow before the next report starts from a blank page.</h2>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">Login and Test the App Now</a>
-          <a class="btn btn-ghost" href="/contact/">Book a Demo</a>
+          <a class="btn btn-primary" href="/contact/">Book a Demo</a>
+          <a class="btn btn-ghost" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">Login</a>
         </div>
       </section>
     </div>
@@ -458,7 +578,7 @@
     <div class="container footer-grid">
       <div>
         <h3>Oxx Report</h3>
-        <p>Inspect. Report. Review.</p>
+        <p>Inspect. Review. Report.</p>
       </div>
       <div>
         <h4>Navigation</h4>
@@ -471,13 +591,14 @@
         <h4>Legal</h4>
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
+        <a href="/refunds/">Refunds</a>
         <a href="/disclaimer/">Disclaimer</a>
       </div>
       <div>
         <h4>Contact</h4>
-        <p>Oxx Consulting Engineers</p>
         <a href="mailto:andrew@oxx.co.za">andrew@oxx.co.za</a>
         <a href="https://wa.me/27620361649" target="_blank" rel="noopener">WhatsApp: +27 62 036 1649</a>
+        <p>Cape Town, South Africa</p>
       </div>
     </div>
     <p class="copyright">&copy; 2026 Oxx-AI. All rights reserved.</p>

@@ -1,10 +1,12 @@
 # Oxx Report Product Overview
 
-Oxx Report is a professional reporting workflow tool for inspection, consultation, assessment, and technical reporting work.
+Oxx Report is an AI-assisted reporting workflow tool for inspection, consultation, assessment, and technical reporting work. It turns site photos, voice notes, and observations into a structured draft report that the professional reviews and approves.
+
+Oxx Report is built in Cape Town, South Africa, and priced in South African rand. It is for engineers, inspectors, consultants, and other professionals who write inspection, assessment, and technical reports.
 
 ## Core Message
 
-Inspect. Report. Review.
+Inspect. Review. Report.
 
 Oxx Report handles the repetitive reporting work between site inspection and professional review.
 
@@ -26,11 +28,21 @@ Professional review remains required. Oxx Report prepares the workflow; the prof
 
 Assumed professional rate: R1,500/hour.
 
-- Standard workflow: about 3.75 hours per report.
+- Standard workflow: about 4.25 hours per report.
 - Oxx Report workflow: about 1.25 hours per report.
-- Saving: about 2.5 hours per report.
-- Approximate cost saving: about R4,000 per report.
-- Workflow improvement: about 70% faster.
+- Saving: about 3 hours per report.
+- Approximate cost saving: about R4,500 per report.
+- Workflow improvement: about 70% less time.
+
+Saving per workflow stage: Inspect / Capture 15 min, Organise 15 min, Ground the Reasoning 30 min, Generate Report 90 min, Review and Refine 30 min.
+
+## Pricing
+
+Prices are in South African rand.
+
+- Pay as you use: R1,000 per delivered report. No subscription.
+- Monthly subscription: R500/month for unlimited reports, plus token usage of typically about R100 per report.
+- Free trial: three free reports. No card required, no lock-in, and data stays available.
 
 ## Platform
 

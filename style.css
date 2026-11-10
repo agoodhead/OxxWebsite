@@ -87,12 +87,16 @@ textarea {
   background: rgba(255, 255, 255, 0.9);
 }
 
+/* The header runs the full width: logo far left, buttons far right. */
 .nav-wrap {
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   gap: 1rem;
   align-items: center;
-  min-height: 64px;
+  width: auto;
+  min-height: 50px;
+  margin-inline: 0;
+  padding: 1px 1.5rem;
 }
 
 .brand {
@@ -109,7 +113,6 @@ textarea {
 .brand img {
   width: auto;
   height: 48px;
-  max-width: 220px;
   object-fit: contain;
   display: block;
   background: transparent;
@@ -610,8 +613,24 @@ main > .band:last-child {
   max-width: 880px;
 }
 
-.legal-copy p {
+.legal-copy p,
+.legal-copy li {
   font-size: 1rem;
+}
+
+.legal-copy h2 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.4rem;
+}
+
+.legal-copy ul {
+  margin: 0.4rem 0;
+  padding-left: 1.25rem;
+}
+
+.legal-copy .legal-updated {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .process-rows {
@@ -716,6 +735,176 @@ main > .band:last-child {
 
 .hero-report .lead {
   max-width: 740px;
+}
+
+/* Homepage hero and the Inspect and Review tiles under it. */
+.hero-home {
+  padding: 2.2rem 0 1.8rem;
+}
+
+.hero-home h1 {
+  font-size: clamp(1.875rem, 3.2vw, 2.7rem);
+}
+
+.hero-home .lead {
+  max-width: 740px;
+  margin-top: 0.8rem;
+  font-size: 1.125rem;
+}
+
+.home-tile-wrap {
+  margin-bottom: 1.5rem;
+}
+
+/* The last tile leaves more room before the workflow band. */
+.home-tile-wrap + .home-tile-wrap {
+  margin-bottom: 3.5rem;
+}
+
+.home-tile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem 3rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 28px;
+  background: var(--panel-soft);
+}
+
+.home-tile-title {
+  flex: 1 1 100%;
+  margin: -0.75rem 0;
+  padding-left: clamp(0px, 0.6vw, 8px);
+  color: var(--accent-strong);
+  font-size: clamp(2.625rem, 5.5vw, 4.625rem);
+  line-height: 1;
+}
+
+.home-tile-copy {
+  flex: 1 1 280px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: clamp(0px, 0.6vw, 8px);
+}
+
+.home-tile-copy-narrow {
+  flex: 0 1 300px;
+  align-self: auto;
+}
+
+.home-tile-lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.25rem;
+}
+
+/* Stops a hyphenated word like "sign-off" breaking across lines. */
+.keep-together {
+  white-space: nowrap;
+}
+
+.capture-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.capture-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 16px 4px 6px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.capture-list img {
+  display: block;
+  flex: none;
+  width: 48px;
+  height: auto;
+}
+
+.tile-callout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 420px;
+  margin: 0;
+  padding: 8px 16px 8px 12px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  font-size: 1.19rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.tile-callout svg {
+  flex: none;
+}
+
+/* Pushed to the bottom of the column, level with the bottom of the video. */
+.tile-callout-green {
+  margin-top: auto;
+  color: #2F6B22;
+  background: #E3F3D6;
+}
+
+.tile-callout-blue {
+  margin-top: -6px;
+  color: #1A5FA6;
+  background: #E3EEFA;
+}
+
+/* Centred when it wraps under the text. */
+.home-tile-video {
+  flex: 0 1 500px;
+  min-width: 0;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--accent-strong);
+  box-shadow: var(--shadow-elevated);
+}
+
+.home-tile-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* React Flow review map, mounted by script.js when it nears the screen. */
+.review-graph-slot {
+  flex: 1 1 640px;
+  min-width: 0;
+  height: 640px;
+  border-radius: 18px;
+  background: #E6ECF5;
+}
+
+.review-graph-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: 1rem;
+  color: #5B6577;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .section-title-wide {
@@ -1590,13 +1779,15 @@ main > .band:last-child {
   }
 }
 
-@media (max-width: 760px) {
+/* Below this the wide logo, links and buttons no longer fit on one line,
+   so the links move into the Menu. */
+@media (max-width: 980px) {
   .nav-wrap {
     grid-template-columns: auto 1fr auto;
     grid-template-areas:
       "brand cta toggle"
       "nav nav nav";
-    gap: 0.5rem;
+    gap: 0 0.5rem;
     align-items: center;
   }
 
@@ -1614,7 +1805,7 @@ main > .band:last-child {
     display: none;
     grid-area: nav;
     flex-direction: column;
-    padding: 0.2rem 0 0.8rem;
+    padding: 0.7rem 0 0.8rem;
     gap: 0.7rem;
   }
 
@@ -1626,6 +1817,25 @@ main > .band:last-child {
     grid-area: cta;
     justify-content: flex-end;
     gap: 0.4rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav-wrap {
+    padding-inline: 1rem;
+  }
+
+  .brand img {
+    height: 40px;
+  }
+
+  .home-tile {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .review-graph-slot {
+    height: min(640px, 110vw);
   }
 
   .nav-cta .btn {
@@ -1661,6 +1871,24 @@ main > .band:last-child {
     padding: 0.56rem 0.92rem;
   }
 
+  /* Each comparison row puts its label on its own line, with Traditional and
+     Oxx side by side underneath, so the Oxx column stays on screen. */
+  .v2-sketch-table {
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+    padding-inline: 0.6rem;
+  }
+
+  .v2-sketch-table strong:first-child {
+    display: none;
+  }
+
+  .v2-sketch-table span:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+    padding-bottom: 0.1rem;
+    border-bottom: 0;
+  }
+
   .roi-row {
     grid-template-columns: 1fr;
     gap: 0.35rem;
@@ -1687,5 +1915,14 @@ main > .band:last-child {
 
   .install-prompt-actions .btn {
     flex: 1;
+  }
+}
+
+/* Too narrow for the full logo next to the buttons: show only the Oxx head. */
+@media (max-width: 520px) {
+  .brand img {
+    width: 47px;
+    object-fit: cover;
+    object-position: left center;
   }
 }
