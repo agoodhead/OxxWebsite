@@ -1,0 +1,33 @@
+# Oxx Report
+
+> Oxx Report is an AI-assisted reporting tool for engineers, inspectors and consultants. It turns site photos, voice notes and observations into an evidence-linked draft inspection report that the professional reviews, edits and approves. Built in Cape Town, South Africa, and priced in South African rand.
+
+Key facts:
+
+- Workflow: Inspect / Capture, Organise, Ground the Reasoning, Generate Report, Review / Refine.
+- Professional review is always required. The engineer checks, approves and takes responsibility for the final report. Oxx Report does not replace professional judgment.
+- Pricing (South African rand): R1,000 per delivered report (pay as you use, no subscription), or R500/month for unlimited reports plus token usage of typically about R100 per report.
+- Free trial: three free reports, no card required.
+- Time saved (example at R1,500/hour): a standard report takes about 4.25 hours, and about 1.25 hours with Oxx Report. That saves about 3 hours and about R4,500 per report, about 70% less time.
+- Access: web app at https://report.oxx-ai.com/, installable on phone and desktop. Android app (Android 7.0 or later) to download from https://oxx-ai.com/downloads/. A native iOS app is planned.
+- Microsoft Word integration for final editing.
+- Founders: James Goodhead and Andrew Goodhead, co-founders.
+- Contact: andrew@oxx.co.za, WhatsApp +27 62 036 1649, Cape Town, South Africa.
+
+## Pages
+
+- [Home](https://oxx-ai.com/): the five-step workflow, time saved per report, and pricing
+- [How it works](https://oxx-ai.com/examples/): each workflow stage explained
+- [FAQ](https://oxx-ai.com/faq/): pricing, free trial, professional review, platform and contact
+- [Downloads](https://oxx-ai.com/downloads/): Android app download, web app access and iOS app status
+- [Contact](https://oxx-ai.com/contact/): the founders and how to book a demo
+- [Privacy policy](https://oxx-ai.com/privacy/): how personal information is handled under POPIA
+- [Terms of service](https://oxx-ai.com/terms/): the terms for using the website and app
+- [Refund policy](https://oxx-ai.com/refunds/): when a charge is refunded and how to ask
+
+## Product documentation
+
+- [Product overview](https://oxx-ai.com/product_docs/product_overview.md): what Oxx Report is, the workflow, time saved, pricing and platform
+- [Features](https://oxx-ai.com/product_docs/features.md): capture, organisation, grounding, report generation and trust guardrails
+- [Workflows](https://oxx-ai.com/product_docs/workflows.md): each stage in detail, with the time and cost comparison
+- [FAQ](https://oxx-ai.com/product_docs/faq.md): short answers to common questions

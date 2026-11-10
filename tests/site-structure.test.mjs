@@ -8,6 +8,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 
+test("the Android download link redirects to the version the downloads page describes", async () => {
+  const page = await fs.readFile(path.join(rootDir, "downloads/index.html"), "utf8");
+  const toml = await fs.readFile(path.join(rootDir, "netlify.toml"), "utf8");
+  const href = page.match(/href="(\/downloads\/[^"]+\.apk)"/)?.[1];
+  assert.ok(href, "downloads/index.html needs a link to the Android app");
+
+  const escaped = href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const target = toml.match(new RegExp(`from = "${escaped}"\\s+to = "([^"]+)"`))?.[1];
+  assert.ok(target, `netlify.toml needs a redirect from ${href} to the APK on a GitHub release`);
+
+  const version = target.match(/\/android-v([\d.]+)\/oxx-report-\1\.apk$/)?.[1];
+  assert.ok(version, `${target} should end in /android-vX.Y.Z/oxx-report-X.Y.Z.apk`);
+  assert.ok(page.includes(`Version ${version} `), `downloads/index.html should say "Version ${version}", the file netlify.toml points at`);
+  assert.ok(page.includes(`SHA-256 of oxx-report-${version}.apk`), `the SHA-256 line on downloads/index.html should name oxx-report-${version}.apk`);
+});
+
 test("required static pages exist", async () => {
   const required = [
     "index.html",
@@ -17,9 +33,12 @@ test("required static pages exist", async () => {
     "contact/index.html",
     "privacy/index.html",
     "terms/index.html",
+    "refunds/index.html",
     "disclaimer/index.html",
     "style.css",
-    "script.js"
+    "script.js",
+    "review-graph.js",
+    "review-graph.css"
   ];
 
   for (const rel of required) {
@@ -30,6 +49,17 @@ test("required static pages exist", async () => {
 test("required assets and product docs exist", async () => {
   const required = [
     "assets/oxx-logo-transparent.webp",
+    "assets/oxx-report-logo-wide.webp",
+    "assets/inspect-site-visit-square.mp4",
+    "assets/capture-image.webp",
+    "assets/capture-video.webp",
+    "assets/capture-voice.webp",
+    "assets/capture-conversation.webp",
+    "assets/capture-documents.webp",
+    "assets/vendor/react-18.3.1.production.min.js",
+    "assets/vendor/react-dom-18.3.1.production.min.js",
+    "assets/vendor/xyflow-react-12.12.0.umd.js",
+    "assets/vendor/xyflow-react-12.12.0.css",
     "assets/oxx-favicon-32.png",
     "assets/oxx-favicon.ico",
     "assets/oxx-apple-touch-icon.png",
