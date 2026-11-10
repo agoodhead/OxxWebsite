@@ -34,7 +34,11 @@ Oxx Report is built in Cape Town, South Africa, and priced in South African rand
 
 ## Is there mobile support?
 
-Native Android and iOS apps are planned for download. Web app access is the current primary entry point.
+Yes, for Android. Download the app from https://oxx-ai.com/downloads/ and install it on a phone or tablet running Android 7.0 or later. A native iOS app is planned. On iPhone and iPad, open https://report.oxx-ai.com/ to use the web app.
+
+## How is the Android app installed?
+
+Open https://oxx-ai.com/downloads/ on the phone or tablet and tap Download for Android. The file is 120 MB, so Wi-Fi is best. Open the downloaded file and tap Install. The app comes from the Oxx Report website rather than Google Play, so the first time Android asks you to allow your browser to install unknown apps, and Google Play Protect may ask you to confirm. To update, download the new version from the same page and install it over the old one.
 
 ## Is there Word integration?
 

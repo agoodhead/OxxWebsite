@@ -8,6 +8,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 
+test("the Android download link redirects to the version the downloads page describes", async () => {
+  const page = await fs.readFile(path.join(rootDir, "downloads/index.html"), "utf8");
+  const toml = await fs.readFile(path.join(rootDir, "netlify.toml"), "utf8");
+  const href = page.match(/href="(\/downloads\/[^"]+\.apk)"/)?.[1];
+  assert.ok(href, "downloads/index.html needs a link to the Android app");
+
+  const escaped = href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const target = toml.match(new RegExp(`from = "${escaped}"\\s+to = "([^"]+)"`))?.[1];
+  assert.ok(target, `netlify.toml needs a redirect from ${href} to the APK on a GitHub release`);
+
+  const version = target.match(/\/android-v([\d.]+)\/oxx-report-\1\.apk$/)?.[1];
+  assert.ok(version, `${target} should end in /android-vX.Y.Z/oxx-report-X.Y.Z.apk`);
+  assert.ok(page.includes(`Version ${version} `), `downloads/index.html should say "Version ${version}", the file netlify.toml points at`);
+  assert.ok(page.includes(`SHA-256 of oxx-report-${version}.apk`), `the SHA-256 line on downloads/index.html should name oxx-report-${version}.apk`);
+});
+
 test("required static pages exist", async () => {
   const required = [
     "index.html",

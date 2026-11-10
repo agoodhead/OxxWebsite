@@ -46,9 +46,10 @@ Prices are in South African rand.
 
 ## Platform
 
-- Web app access is the current primary entry point.
+- Web app at https://report.oxx-ai.com/ works in any browser and can be installed on phone and desktop.
+- Android app for phones and tablets running Android 7.0 or later, downloaded from https://oxx-ai.com/downloads/. It installs from the downloaded file rather than Google Play.
 - Microsoft Word integration supports final report refinement.
-- Native Android and iOS apps are planned for download.
+- A native iOS app is planned. On iPhone and iPad, use the web app.
 
 ## Positioning Boundary
 
