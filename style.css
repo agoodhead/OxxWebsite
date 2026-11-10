@@ -610,8 +610,24 @@ main > .band:last-child {
   max-width: 880px;
 }
 
-.legal-copy p {
+.legal-copy p,
+.legal-copy li {
   font-size: 1rem;
+}
+
+.legal-copy h2 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.4rem;
+}
+
+.legal-copy ul {
+  margin: 0.4rem 0;
+  padding-left: 1.25rem;
+}
+
+.legal-copy .legal-updated {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .process-rows {
