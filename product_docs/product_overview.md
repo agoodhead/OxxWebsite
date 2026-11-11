@@ -6,7 +6,7 @@ Oxx Report is built in Cape Town, South Africa, and priced in South African rand
 
 ## Core Message
 
-Inspect. Review. Report.
+Inspect. Report. Review.
 
 Oxx Report handles the repetitive reporting work between site inspection and professional review.
 
