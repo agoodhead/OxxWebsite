@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Oxx Report | AI-assisted inspection reports for engineers</title>
-  <meta name="description" content="Oxx Report turns site photos, voice notes and observations into an evidence-linked draft report for the engineer to review and approve. Three free reports.">
+  <meta name="description" content="Oxx Report turns site photos, voice notes and observations into an evidence-linked draft report for the engineer to review and approve. Free to start.">
   <link rel="canonical" href="https://oxx-ai.com/">
   <meta property="og:site_name" content="Oxx Report">
   <meta property="og:title" content="Oxx Report | AI-assisted inspection reports for engineers">
-  <meta property="og:description" content="Oxx Report turns site photos, voice notes and observations into an evidence-linked draft report for the engineer to review and approve. Three free reports.">
+  <meta property="og:description" content="Oxx Report turns site photos, voice notes and observations into an evidence-linked draft report for the engineer to review and approve. Free to start.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://oxx-ai.com/">
   <meta property="og:locale" content="en_ZA">
@@ -29,8 +29,7 @@
         "alternateName": "Oxx-AI",
         "url": "https://oxx-ai.com/",
         "logo": "https://oxx-ai.com/assets/oxx-logo-transparent.webp",
-        "email": "andrew@oxx.co.za",
-        "telephone": "+27 62 036 1649",
+        "email": "support@oxx-ai.com",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Cape Town",
@@ -76,24 +75,24 @@
         "offers": [
           {
             "@type": "Offer",
-            "name": "Free trial",
+            "name": "Free plan",
             "price": "0",
-            "priceCurrency": "ZAR",
-            "description": "Three free reports. No card required."
+            "priceCurrency": "USD",
+            "description": "Free to start. No card required."
           },
           {
             "@type": "Offer",
-            "name": "Monthly subscription",
-            "price": "500",
-            "priceCurrency": "ZAR",
-            "description": "R500 per month for unlimited reports. Token usage is billed separately, typically about R100 per report."
+            "name": "3 reports a month",
+            "price": "20",
+            "priceCurrency": "USD",
+            "description": "$20 per month for 3 reports a month. Token costs included."
           },
           {
             "@type": "Offer",
-            "name": "Pay as you use",
-            "price": "1000",
-            "priceCurrency": "ZAR",
-            "description": "R1,000 per delivered report. No subscription."
+            "name": "10 reports a month",
+            "price": "40",
+            "priceCurrency": "USD",
+            "description": "$40 per month for 10 reports a month. Token costs included."
           }
         ]
       }
@@ -109,9 +108,10 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav">
         <a href="/">Home</a>
-        <a href="/examples/">How it works</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#downloads">Downloads</a>
         <a href="/faq/">FAQ</a>
-        <a href="/downloads/">Downloads</a>
         <a href="/contact/">Contact</a>
       </nav>
       <div class="nav-cta">
@@ -122,445 +122,319 @@
   </header>
 
   <main>
-    <section class="hero hero-home container">
+    <div class="band band-tint top-band">
+    <section class="hero hero-home container ov-wrap">
       <div class="hero-copy reveal">
         <h1>Inspect. Review. Report.</h1>
-        <p class="lead">Oxx Report handles the repetitive reporting work between site inspection and professional review.</p>
+        <p class="lead">Oxx Report AI handles the mundane work between site inspection and professional review. You stay in control…</p>
       </div>
     </section>
 
-    <section class="container home-tile-wrap" aria-labelledby="inspect-title">
-      <div class="home-tile">
-        <h2 id="inspect-title" class="home-tile-title">Inspect</h2>
-        <div class="home-tile-copy">
-          <p class="home-tile-lead">Site information organised, categorised and analysed</p>
-          <ul class="capture-list">
-            <li><img src="/assets/capture-image.webp" alt="" width="48" height="36"><span>Image</span></li>
-            <li><img src="/assets/capture-video.webp" alt="" width="48" height="36"><span>Video</span></li>
-            <li><img src="/assets/capture-voice.webp" alt="" width="48" height="36"><span>Voice</span></li>
-            <li><img src="/assets/capture-conversation.webp" alt="" width="48" height="36"><span>Conversation</span></li>
-            <li><img src="/assets/capture-documents.webp" alt="" width="48" height="36"><span>Documents</span></li>
+    <section id="overview" class="container ov-wrap" aria-label="The whole workflow: inspect, review, report">
+      <div class="home-tile overview" data-overview>
+        <div class="ov-card ov-inspect">
+          <p class="ov-step"><span>1</span>Inspect</p>
+          <p class="ov-note">Note capture made easy.</p>
+          <ul class="capture-list ov-list">
+            <li data-ov-from="image"><img src="/assets/capture-image-icon.webp" alt="" width="64" height="48"><span>Image</span></li>
+            <li data-ov-from="video"><img src="/assets/capture-video-icon.webp" alt="" width="64" height="48"><span>Video</span></li>
+            <li data-ov-from="voice"><img src="/assets/capture-voice-icon.webp" alt="" width="64" height="48"><span>Voice</span></li>
+            <li data-ov-from="conversation"><img src="/assets/capture-conversation-speakers.webp" alt="" width="64" height="48"><span>Conversation</span></li>
+            <li data-ov-from="documents"><img src="/assets/capture-documents-icon.webp" alt="" width="64" height="48"><span>Documents</span></li>
+            <li data-ov-from="mapping"><img src="/assets/capture-mapping-icon.webp" alt="" width="64" height="48"><span>Site Mapping</span></li>
           </ul>
-          <p class="tile-callout tile-callout-green">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M8.2 12.2 L10.8 14.8 L15.8 9.6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Note capture made easy.</span>
+        </div>
+        <div class="ov-card ov-review">
+          <p class="ov-step"><span>2</span>Review</p>
+          <p class="ov-note">Human-in-the-loop professional review.</p>
+          <img class="ov-phone" src="/assets/overview-phone-graph.webp" alt="Oxx Report on a phone, thinking, above the site graph it has built: the site visit split into areas, each with its importance, defects and the evidence captured" width="1000" height="948" data-ov-phone>
+        </div>
+        <div class="ov-card ov-report">
+          <p class="ov-step"><span>3</span>Report</p>
+          <p class="ov-note">Draft report created for <span class="keep-together">sign-off</span>.</p>
+          <video class="ov-video" src="/assets/overview-report.mp4" poster="/assets/overview-report-poster.webp" width="696" height="660" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-label="The draft report building itself in Microsoft Word, each item taken from the site graph as its section is written" data-ov-video></video>        </div>
+        <svg class="ov-lines" aria-hidden="true" data-ov-lines></svg>
+        <div class="ov-fx" aria-hidden="true" data-ov-fx></div>
+      </div>
+    </section>
+    </div>
+
+    <section id="roi" class="container home-tile-wrap roi-wrap reveal" aria-labelledby="roi-title">
+      <div class="section-title section-title-wide">
+        <p class="eyebrow">Return on Investment</p>
+        <h2 id="roi-title">It's a no-brainer</h2>
+      </div>
+
+      <div class="home-tile roi-tile">
+        <div class="ov-card roi-compare">
+          <p class="roi-chip">Workflow comparison</p>
+          <div class="roi-table" role="table" aria-label="Workflow comparison">
+            <div class="roi-row roi-head" role="row">
+              <span role="columnheader"><span class="roi-head-hidden">Workflow item</span></span>
+              <span role="columnheader">Standard workflow</span>
+              <span role="columnheader" class="roi-head-brand"><img src="/assets/oxx-report-logo-wide.webp" alt="Oxx Report" width="420" height="96" loading="lazy" decoding="async"></span>
+            </div>
+            <div class="roi-row" role="row">
+              <span role="cell">Capture site notes</span>
+              <span role="cell" class="bad">Manual written notes</span>
+              <span role="cell" class="good">Voice notes and structured capture</span>
+            </div>
+            <div class="roi-row" role="row">
+              <span role="cell">Sort photos and context</span>
+              <span role="cell" class="bad">Manual folder sorting</span>
+              <span role="cell" class="good">Evidence stays linked to the case</span>
+            </div>
+            <div class="roi-row" role="row">
+              <span role="cell">Ground findings</span>
+              <span role="cell" class="bad">Manual linking and research</span>
+              <span role="cell" class="good">Evidence, defects, and references connected</span>
+            </div>
+            <div class="roi-row" role="row">
+              <span role="cell">Draft report</span>
+              <span role="cell" class="bad">Manual drafting and formatting</span>
+              <span role="cell" class="good">Draft sections, captions, and structure generated</span>
+            </div>
+            <div class="roi-row" role="row">
+              <span role="cell">Professional review</span>
+              <span role="cell" class="neutral">Required</span>
+              <span role="cell" class="neutral">Required</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="ov-card roi-summary" aria-label="Example result">
+          <p class="roi-chip">Example result</p>
+          <p class="roi-stat">
+            <strong>70%</strong>
+            <span class="roi-clock" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="28" fill="#FFFFFF" stroke="currentColor" stroke-width="4"/>
+              <g stroke="currentColor" stroke-linecap="round">
+                <path d="M32 9.5v6M54.5 32h-6M32 54.5v-6M9.5 32h6" stroke-width="3"/>
+                <path d="M43.25 12.51l-1.5 2.6M51.49 20.75l-2.6 1.5M51.49 43.25l-2.6-1.5M43.25 51.49l-1.5-2.6M20.75 51.49l1.5-2.6M12.51 43.25l2.6-1.5M12.51 20.75l2.6 1.5M20.75 12.51l1.5 2.6" stroke-width="2"/>
+              </g>
+              <g transform="rotate(120 32 32)"><path class="roi-clock-hand roi-clock-hour" d="M32 32V20" stroke-width="4.5" stroke-linecap="round"/></g>
+              <path class="roi-clock-hand roi-clock-minute" d="M32 32V12.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <circle class="roi-clock-pin" cx="32" cy="32" r="3.5"/>
+            </svg></span>
+            <span class="roi-stat-label">less time</span>
           </p>
-          <p class="tile-callout tile-callout-blue">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5 L19.5 5.5 V11 C19.5 15.6 16.4 19.4 12 21.5 C7.6 19.4 4.5 15.6 4.5 11 V5.5 Z" fill="currentColor"/><path d="M8.6 12 L11 14.4 L15.6 9.8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Nothing gets lost.</span>
-          </p>
+          <ul class="roi-points">
+            <li>
+              <span class="roi-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2.4"/><path d="M12 7.5 V12 L15 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Save about 3 hours per report</span>
+            </li>
+            <li>
+              <span class="roi-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="2.4"/><circle cx="12" cy="12" r="2.4" fill="currentColor"/></svg></span>
+              <span>Focus on the technical details, not formatting</span>
+            </li>
+            <li class="is-strong">
+              <span class="roi-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5.5 12.5 L10 17 L18.5 7.5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Oxx Report easily pays for itself</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <div id="how-it-works" class="band band-tint how-band">
+    <div class="container how-head">
+      <div class="section-title section-title-wide">
+        <p class="eyebrow">How it works</p>
+        <h2>Inspect, review and report, step by step.</h2>
+      </div>
+    </div>
+
+    <section class="container home-tile-wrap" aria-labelledby="inspect-title">
+      <div class="home-tile home-tile-inspect" data-inspect>
+        <h3 id="inspect-title" class="home-tile-title"><span class="title-num" aria-hidden="true">1</span>Inspect</h3>
+        <p class="home-tile-lead home-tile-intro">Site information organised, categorised and analysed…</p>
+        <div class="capture-panel">
+          <ul class="capture-list">
+            <li><img src="/assets/capture-image-icon.webp" alt="" width="64" height="48"><span>Image</span></li>
+            <li><img src="/assets/capture-video-icon.webp" alt="" width="64" height="48"><span>Video</span></li>
+            <li><img src="/assets/capture-voice-icon.webp" alt="" width="64" height="48"><span>Voice</span></li>
+            <li><img src="/assets/capture-conversation-speakers.webp" alt="" width="64" height="48"><span>Conversation</span></li>
+            <li><img src="/assets/capture-documents-icon.webp" alt="" width="64" height="48"><span>Documents</span></li>
+            <li><img src="/assets/capture-mapping-icon.webp" alt="" width="64" height="48"><span>Site Mapping</span></li>
+          </ul>
+          <div class="capture-outcomes">
+            <p class="tile-callout tile-callout-green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M8.2 12.2 L10.8 14.8 L15.8 9.6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Note capture made easy.</span>
+            </p>
+            <p class="tile-callout tile-callout-blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5 L19.5 5.5 V11 C19.5 15.6 16.4 19.4 12 21.5 C7.6 19.4 4.5 15.6 4.5 11 V5.5 Z" fill="currentColor"/><path d="M8.6 12 L11 14.4 L15.6 9.8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Nothing is forgotten.</span>
+            </p>
+            <p class="tile-callout tile-callout-amber">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M12 6.8 V12 L15.4 14.2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Saves time.</span>
+            </p>
+          </div>
         </div>
         <div class="home-tile-video">
-          <video src="/assets/inspect-site-visit-square.mp4" muted loop playsinline controls preload="metadata" aria-label="Part 1: site visit" data-autoplay-video></video>
+          <video src="/assets/inspect-site-visit-square.mp4" muted playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-label="Part 1: site visit" data-inspect-video></video>
+        </div>
+        <div class="home-tile-box capture-demo" data-capture-demo>
+        <div class="demo-card">
+          <div class="demo-face demo-scene is-open is-thinking is-f1 is-f2 is-done" data-demo-scene>
+            <div class="demo-stage">
+              <img class="demo-photo" src="/assets/demo-image-site.webp" alt="Building site with rebar sticking up from the concrete columns and timber handrails along the upper slab" width="1200" height="900" loading="lazy" decoding="async">
+              <span class="demo-focus demo-focus-1" aria-hidden="true"><span class="demo-num">1</span></span>
+              <span class="demo-focus demo-focus-2" aria-hidden="true"><span class="demo-num">2</span></span>
+              <p class="demo-label demo-label-1"><span class="demo-num" aria-hidden="true">1</span>Rebar exposed for further construction.</p>
+              <p class="demo-label demo-label-2"><span class="demo-num" aria-hidden="true">2</span>Handrail built: check for compliance.</p>
+            </div>
+            <p class="demo-chip"><img src="/assets/capture-image-icon.webp" alt="" width="48" height="36"><span>Image</span></p>
+            <p class="demo-thinking" role="img" aria-label="Analysing the image"><span></span><span></span><span></span></p>
+            <div class="demo-layer demo-map" data-demo-map>
+              <img class="map-aerial" src="/assets/demo-site-aerial.webp" alt="Aerial view of a building site under construction, with the site route marked in red" width="1000" height="1000" loading="lazy" decoding="async">
+              <svg class="map-svg" viewBox="0 0 400 400" aria-hidden="true"><path class="map-route" pathLength="1" d="M30 84L32.8 84L35.5 84.6L38.5 84L41.1 83.7L43.8 84.3L46.4 85.4L49.1 86.3L51.9 86.6L54.2 88.4L56.6 89.5L59.2 91.1L61.7 91.9L64.1 93.3L66.4 94.9L69.2 95.7L72.2 96.2L75 97.2L77.4 98.8L79.8 100.3L81.9 102L83.6 104.2L85.1 106.3L85.9 108.8L86.4 111.3L85.8 113.8L85.6 116.7L83.9 119L84 121.7L82.3 124.2L82.4 127.1L81.8 130L81.7 133.1L81.1 135.5L81.2 138.1L79.8 140.8L80.6 143.5L80 146.5L80 149.5L79.5 152.6L80.1 155.6L81.2 158.6L81.9 161.6L83.4 163.7L84.7 165.8L85.5 168.9L86.1 171.9L87.3 174.9L87.3 178.1L86.6 181.3L86.8 184.3L86.4 185.1L86.7 187.3L85.7 190.3L86.3 193.5L86.7 196.8L86.9 199.3L86.9 201.9L86.9 204.4L86.7 207L87.1 209.7L86.2 212.2L85.5 214.7L84.9 217.2L83.6 219.6L83.8 222.2L82.4 224.7L82.1 227.3L82 229.9L81.7 232.4L81.6 235L81.6 237.6L82.8 240.1L82.7 242.7L83.5 245.2L83.9 247.8L84.6 250.3L85.1 252.8L85.8 255.3L85.2 258L84.9 260.7L85.3 263.3L85.1 266L86 268.4L86 271L86.6 273.5L87.7 275.8L87.9 278.3L89.1 280.6L90.5 282.8L91.8 285.8L93.1 288.1L94.2 290.5L94.1 293L95 295.5L95.9 298L95.7 300.5L95.6 303.8L96 307.1L95.4 310.3L96.6 313.3L96.9 316.2L97.4 319.1L98.8 321.5L99.8 323.8L101.6 326.1L102.4 328.8L104.4 331L106.6 333.2L108.8 334.4L110.9 336.2L113.4 337.4L115.7 339.1L118.5 340.3L121.3 341.4L124.2 342.4L126.7 341.8L129.6 342.9L132.7 342.9L135.8 343.1L138.7 344L141.7 344.6L144.7 345.3L148.1 345.5L150.7 346L153.4 346L156 345.2L158.8 345.1L161.5 344.7L164.1 343.2L166.8 342.5L169.5 342.1L172.2 341.7L174.8 341.5L177.3 340.6L179.9 341.1L183.1 340.5L186 340.6L188.7 340.5L190 340L191.2 339.9L193.9 340.3L196.8 340.8L199.5 340.7L202.3 341L205 341.8L207.3 343L209.8 343.9L212 345.8L214.5 346.4L217.2 347.1L219.7 348L222.4 348.6L224.9 349.1L227.4 349.3L230 348.8L232.4 347.9L234.6 346.3L236.4 344.3L237.6 342.1L238.5 339.5L239.1 336.8L239.4 334.1L239.7 331.7L240 329L240.2 326.4L240.2 323.5L240.2 320.8L240.2 318L240 315.4L239.9 312.9L239.8 310.4L239.7 307.9L239.3 305L239.2 302.4L238.9 299.8L238.7 297.2L238.5 294.6L238.3 292.1L238 289.4L237.8 286.7L237.4 284.1L237 281.5L236.2 279L235.5 276.6L234.5 274.3L232.2 273.2L230.6 275.3L229.7 277.6L229.1 280.2L228.9 282.8L229.1 285.4L229.5 288L229.8 290.7L230.3 293.3L230.8 295.9L231.2 298.4L232.1 300.9L233.3 303.1L233.8 305.6L232.8 308L231 309.8L229.3 311.7L228.7 314.3L229.3 316.8L230.4 319.2L232.1 321.1L234.6 321.5L237 320.6L239.1 319.1L240.1 316.7L240.4 314.2L240.2 311.7L239 309.5L236.7 308.6L234.3 309.5L233.1 311.8L232.3 314.3L232.1 316.8L232.3 319.5L232.8 322L233.6 324.5L234.4 327.1L235.5 329.5L236.4 332L237.4 334.5L238.6 336.8L239.9 338.9L241.4 341.2L243.1 343.2L245 345.1L247 346.9L249.2 348.4L251.5 349.8L253.8 350.7L256.4 351.6L258.9 352.4L261.6 353.1L264.1 353.5L266.6 353.9L269.2 354.5L271.9 354.7L274.6 355.1L277.3 355.3L280.1 355.4L283 355.6L285.6 355.6L288.1 355.5L290.7 355.4L293.2 355.3L295.8 355.2L298.3 355L300.8 354.9L303.4 354.9L306.1 355L308.8 354.9L311.5 355L314.1 354.9L316.7 354.9L319.6 354.4L322.2 353.9L324.6 352.9L326.2 351L328.1 349L329.5 346.9L330.5 344.5L331.9 342.1L333.1 339.8L333.9 337.3L334.8 334.9L336.6 333.1L337.9 330.9L339.1 328.4L339.9 325.6L341.2 322.7L342 319.6L343 317.3L342.8 314.7L343.1 312.2L343.6 309.7L343.2 307L343.3 304.5L344.1 302L344.3 299.5L345.2 297.1L346.4 294.7L346.9 291.6L347.1 288.5L347.8 285.4L347.2 282.3L346.8 279.3L345.1 277.2L344.5 274.2L343.8 271.3L342.4 268.4L342.1 265.4L341.4 262.4L341.8 259.3L341.7 256.2L341.7 253.2L341 250.3L340.5 247.3L340.2 244.2L339.1 241.1L339.2 238L339.3 234.9L339 231.7L340.2 228.8L341.4 226L342.6 223.1L344.2 221.2L344.9 218.2L346.5 216.2L346.6 213.1L348.2 211L348.5 207.9L348.5 204.8L348.9 201.6L348.1 198.4L348.7 196L348.7 192.7L347.8 190.3L347.7 187.8L347.8 185.2L347.8 182.6L348 180L348.2 177.3L347.3 174.9L346.3 172.5L346.2 169.9L346.3 167.3L344.8 164.9L344.8 162.4L343.2 160L343.4 157.5L342.5 155L342.5 152.5L341.6 150L341.8 147.5L342.1 144.9L342.8 142.3L343.7 139.8L344 137.1L345.1 134.6L345.1 131.8L346 129.2L346.5 126.6L346.6 123.8L347.4 121.3L347.2 118.6L347.5 116L347.1 113.3L347.4 110.1L348.1 107L348.9 104.1L349.3 101.3L351 99.4L350.3 96.8L350.4 94.2L350.2 91.2L349.9 88.2L349.8 85.4L349.1 82.9L348.6 80L346.8 77.7L346.2 75.1L345.7 72.4L345.2 71.8"/></svg>
+              <div class="map-pt pin-blue" data-map-pt="a" style="left: 21.6%; top: 46.3%"><div class="map-pop"><img class="map-icon" src="/assets/capture-image-icon.webp" alt="" width="64" height="48"><img class="map-photo" src="/assets/demo-image-site.webp" alt="" width="1200" height="900" loading="lazy" decoding="async"></div><svg class="map-pin" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 31 C12 31 2 18.5 2 11 A10 10 0 0 1 22 11 C22 18.5 12 31 12 31 Z" fill="currentColor" stroke="#FFFFFF" stroke-width="2"/><circle cx="12" cy="11" r="4" fill="#FFFFFF"/></svg></div>
+              <div class="map-pt pin-green" data-map-pt="b" style="left: 47.5%; top: 85%"><div class="map-pop"><img class="map-icon" src="/assets/capture-voice-icon.webp" alt="" width="64" height="48"></div><svg class="map-pin" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 31 C12 31 2 18.5 2 11 A10 10 0 0 1 22 11 C22 18.5 12 31 12 31 Z" fill="currentColor" stroke="#FFFFFF" stroke-width="2"/><circle cx="12" cy="11" r="4" fill="#FFFFFF"/></svg></div>
+              <div class="map-pt pin-purple" data-map-pt="v" style="left: 83.7%; top: 83.7%; --dx: -6cqw"><div class="map-pop"><img class="map-icon" src="/assets/capture-video-icon.webp" alt="" width="64" height="48"><img class="map-photo" src="/assets/demo-image-site.webp" alt="" width="1200" height="900" loading="lazy" decoding="async"><span class="map-rec">REC</span></div><svg class="map-pin" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 31 C12 31 2 18.5 2 11 A10 10 0 0 1 22 11 C22 18.5 12 31 12 31 Z" fill="currentColor" stroke="#FFFFFF" stroke-width="2"/><circle cx="12" cy="11" r="4" fill="#FFFFFF"/></svg></div>
+              <div class="map-pt pin-orange" data-map-pt="t" style="left: 86.3%; top: 17.9%; --dx: -6cqw"><div class="map-pop"><img class="map-icon" src="/assets/capture-conversation-speakers.webp" alt="" width="64" height="48"></div><svg class="map-pin" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 31 C12 31 2 18.5 2 11 A10 10 0 0 1 22 11 C22 18.5 12 31 12 31 Z" fill="currentColor" stroke="#FFFFFF" stroke-width="2"/><circle cx="12" cy="11" r="4" fill="#FFFFFF"/></svg></div>
+              <p class="demo-chip"><img src="/assets/capture-mapping-icon.webp" alt="" width="48" height="36"><span>Site Mapping</span></p>
+            </div>
+          </div>
+          <div class="demo-face demo-back demo-voice is-in is-captioned is-heard" data-demo-voice>
+            <p class="demo-chip"><img src="/assets/capture-voice-icon.webp" alt="" width="48" height="36"><span>Voice</span></p>
+            <figure class="demo-thumb">
+              <img src="/assets/demo-image-site.webp" alt="" width="1200" height="900" loading="lazy" decoding="async">
+              <figcaption class="demo-caption">Second storey shuttering inspection before concrete pour.</figcaption>
+            </figure>
+            <div class="demo-wave" aria-hidden="true"><span style="--h: 0.35"></span><span style="--h: 0.6"></span><span style="--h: 0.45"></span><span style="--h: 0.85"></span><span style="--h: 0.55"></span><span style="--h: 1"></span><span style="--h: 0.7"></span><span style="--h: 0.4"></span><span style="--h: 0.9"></span><span style="--h: 0.5"></span><span style="--h: 0.75"></span><span style="--h: 0.95"></span><span style="--h: 0.45"></span><span style="--h: 0.65"></span><span style="--h: 0.3"></span></div>
+            <p class="demo-transcript"><span class="demo-typed" data-demo-typed>Second storey shuttering inspection before concrete pour.</span></p>
+            <div class="demo-layer demo-conv" data-demo-conv>
+              <p class="demo-chip"><img src="/assets/capture-conversation-speakers.webp" alt="" width="48" height="36"><span>Conversation</span></p>
+              <div class="conv-wave" aria-hidden="true"><span class="spk-1" style="--h: 0.43"></span><span class="spk-1 dk" style="--h: 0.5"></span><span class="spk-2" style="--h: 0.56"></span><span class="spk-2 dk" style="--h: 0.65"></span><span class="spk-1" style="--h: 0.61"></span><span class="spk-3 dk" style="--h: 0.72"></span><span class="spk-3" style="--h: 0.39"></span><span class="spk-3 dk" style="--h: 0.6"></span><span class="spk-1" style="--h: 0.85"></span><span class="spk-1 dk" style="--h: 0.75"></span><span class="spk-3" style="--h: 0.91"></span><span class="spk-1 dk" style="--h: 0.54"></span><span class="spk-2" style="--h: 0.76"></span><span class="spk-2 dk" style="--h: 0.66"></span><span class="spk-1" style="--h: 0.86"></span><span class="spk-2 dk" style="--h: 0.88"></span><span class="spk-2" style="--h: 0.53"></span><span class="spk-1 dk" style="--h: 0.62"></span><span class="spk-1" style="--h: 0.63"></span><span class="spk-2 dk" style="--h: 0.92"></span><span class="spk-1" style="--h: 0.81"></span><span class="spk-2 dk" style="--h: 0.49"></span><span class="spk-2" style="--h: 0.75"></span><span class="spk-3 dk" style="--h: 0.44"></span><span class="spk-3" style="--h: 0.6"></span><span class="spk-1 dk" style="--h: 0.39"></span><span class="spk-3" style="--h: 0.32"></span><span class="spk-3 dk" style="--h: 0.58"></span><span class="spk-3" style="--h: 0.34"></span><span class="spk-2 dk" style="--h: 0.32"></span></div>
+              <div class="conv-bubbles" aria-hidden="true"><div class="conv-bubble spk-1" style="--n: 0"><div class="conv-bars"><i style="--h: 0.95"></i><i style="--h: 0.97"></i><i style="--h: 0.93"></i><i style="--h: 0.4"></i><i style="--h: 0.73"></i><i style="--h: 0.63"></i><i style="--h: 0.69"></i><i style="--h: 0.43"></i><i style="--h: 0.47"></i><i style="--h: 0.64"></i><i style="--h: 0.49"></i><i style="--h: 0.65"></i><i style="--h: 0.37"></i><i style="--h: 0.41"></i></div><span class="conv-label">Speaker 1</span></div><div class="conv-bubble spk-2" style="--n: 1"><div class="conv-bars"><i style="--h: 0.81"></i><i style="--h: 0.62"></i><i style="--h: 0.68"></i><i style="--h: 0.83"></i><i style="--h: 0.58"></i><i style="--h: 0.39"></i><i style="--h: 0.86"></i><i style="--h: 0.73"></i><i style="--h: 0.78"></i><i style="--h: 0.75"></i><i style="--h: 0.98"></i><i style="--h: 0.59"></i><i style="--h: 0.84"></i><i style="--h: 0.59"></i></div><span class="conv-label">Speaker 2</span></div><div class="conv-bubble spk-3" style="--n: 2"><div class="conv-bars"><i style="--h: 0.72"></i><i style="--h: 0.78"></i><i style="--h: 0.55"></i><i style="--h: 0.41"></i><i style="--h: 0.66"></i><i style="--h: 0.82"></i><i style="--h: 0.73"></i><i style="--h: 0.64"></i><i style="--h: 0.77"></i><i style="--h: 0.47"></i><i style="--h: 0.47"></i><i style="--h: 0.56"></i><i style="--h: 0.88"></i><i style="--h: 0.48"></i></div><span class="conv-label">Speaker 3</span></div></div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </section>
 
     <section class="container home-tile-wrap" aria-labelledby="review-title">
       <div class="home-tile">
-        <h2 id="review-title" class="home-tile-title">Review</h2>
-        <div class="home-tile-copy home-tile-copy-narrow">
-          <p class="home-tile-lead">Professional review and <span class="keep-together">sign-off</span></p>
-          <p class="home-tile-lead">Human-in-the-loop accountability</p>
-          <p class="home-tile-lead">Auditable decision making</p>
-        </div>
+        <h3 id="review-title" class="home-tile-title"><span class="title-num" aria-hidden="true">2</span>Review</h3>
+        <p class="home-tile-lead home-tile-intro">Professional review and <span class="keep-together">sign-off</span>. Move, edit, restructure…</p>
         <div class="review-graph-slot" data-review-graph>
           <p class="review-graph-fallback">Observation → Hypothesis → Conclusion → Action</p>
         </div>
-      </div>
-    </section>
-
-    <section id="workflow" aria-label="Oxx Report workflow comparison">
-      <div class="band band-tint">
-        <div class="container">
-          <div class="v2-sketch-title">
-            <p class="eyebrow">Workflow Comparison</p>
-            <h2>Why use OXX for Professional Reports?</h2>
-            <p>Each stage shows what changes in the reporting workflow: what Oxx Report handles, what the traditional process leaves to the engineer, and where the return comes from.</p>
+        <div class="capture-panel review-panel">
+          <ul class="capture-list">
+            <li><svg class="capture-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="M3 40 H50" stroke="#7A7F57" stroke-width="1.6"/><rect x="7" y="20" width="14" height="20" fill="#FFFFFF" stroke="#7A7F57" stroke-width="1.6"/><rect x="23" y="13" width="16" height="27" fill="#FFFFFF" stroke="#7A7F57" stroke-width="1.6"/><rect x="10" y="24" width="3" height="3" fill="#7A7F57"/><rect x="15" y="24" width="3" height="3" fill="#7A7F57"/><rect x="27" y="18" width="3" height="3" fill="#7A7F57"/><rect x="32" y="18" width="3" height="3" fill="#7A7F57"/><rect x="27" y="25" width="3" height="3" fill="#7A7F57"/><rect x="32" y="25" width="3" height="3" fill="#7A7F57"/><circle cx="44" cy="25" r="9" fill="#FFFFFF" fill-opacity="0.6" stroke="#34511F" stroke-width="2.6"/><path d="M50.6 31.6 L58 39" stroke="#34511F" stroke-width="3.4" stroke-linecap="round"/></svg><span>Review site details</span></li>
+            <li><svg class="capture-icon" viewBox="0 0 64 48" aria-hidden="true"><rect x="13" y="3" width="30" height="41" rx="3" fill="#FFFFFF" stroke="#217A69" stroke-width="1.6"/><rect x="17" y="9" width="7" height="7" rx="1.5" fill="#FFFFFF" stroke="#217A69" stroke-width="1.4"/><path d="M18.5 12.6 L20.2 14.3 L23 10.8" stroke="#2F6B22" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 12.5 H39" stroke="#7A7F57" stroke-width="1.6"/><rect x="17" y="19" width="7" height="7" rx="1.5" fill="#FFFFFF" stroke="#217A69" stroke-width="1.4"/><path d="M18.5 22.6 L20.2 24.3 L23 20.8" stroke="#2F6B22" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 22.5 H39" stroke="#7A7F57" stroke-width="1.6"/><rect x="17" y="29" width="7" height="7" rx="1.5" fill="#FFFFFF" stroke="#217A69" stroke-width="1.4"/><path d="M18.5 32.6 L20.2 34.3 L23 30.8" stroke="#2F6B22" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 32.5 H39" stroke="#7A7F57" stroke-width="1.6"/><circle cx="47" cy="36" r="8" fill="#2F6B22"/><path d="M43.4 36.2 L46 38.8 L50.8 33.6" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Compliance checks</span></li>
+            <li><svg class="capture-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="M32 12 L16 20 M32 12 L48 20 M16 28 L32 36 M48 28 L32 36" stroke="#9AA6BB" stroke-width="1.5" fill="none"/><path d="M26 24 H38" stroke="#8A63D2" stroke-width="1.4" stroke-dasharray="2 2"/><rect x="23" y="4" width="18" height="8" rx="2" fill="#7A7F57"/><rect x="5" y="20" width="21" height="8" rx="2" fill="#EFE6F9" stroke="#A989D2" stroke-width="1.4"/><rect x="38" y="20" width="21" height="8" rx="2" fill="#EFE6F9" stroke="#A989D2" stroke-width="1.4"/><rect x="21" y="36" width="22" height="9" rx="2" fill="#E3F3D6" stroke="#2F6B22" stroke-width="1.4"/><path d="M28.5 40.6 L30.8 42.8 L35.5 38.4" stroke="#2F6B22" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reasoning analysis</span></li>
+          </ul>
+          <div class="capture-outcomes">
+            <p class="tile-callout tile-callout-green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><circle cx="12" cy="9.4" r="3" fill="#FFFFFF"/><path d="M6.9 17.4 C7.9 14.7 9.8 13.7 12 13.7 C14.2 13.7 16.1 14.7 17.1 17.4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg>
+              <span>Human-in-the-loop accountability</span>
+            </p>
+            <p class="tile-callout tile-callout-blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M7.6 9.2 L8.9 10.5 L11.2 8.2 M7.6 14.2 L8.9 15.5 L11.2 13.2 M13.2 9.4 H16.6 M13.2 14.4 H16.6" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Auditable decision making</span>
+            </p>
+            <p class="tile-callout tile-callout-amber">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M7.2 9.2 H16.8 M7.2 14.8 H16.8" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="9.2" r="2" fill="currentColor" stroke="#FFFFFF" stroke-width="1.6"/><circle cx="14.2" cy="14.8" r="2" fill="currentColor" stroke="#FFFFFF" stroke-width="1.6"/></svg>
+              <span>Professional control</span>
+            </p>
           </div>
-          <article class="v2-sketch-step">
-            <h3>Step 1 - Inspect and Capture</h3>
-            <div class="v2-sketch-row">
-              <div class="v2-sketch-left">
-                <div class="v2-sketch-panel">
-                  <h4>While on site</h4>
-                  <div class="v2-sketch-table compact-compare">
-                    <strong></strong>
-                    <strong>Traditional</strong>
-                    <strong>Oxx</strong>
-                    <span>Photo capture</span>
-                    <span class="no">Stored separately</span>
-                    <span class="yes">Into the report case</span>
-                    <span>Voice notes</span>
-                    <span class="no">Re-typed later</span>
-                    <span class="yes">Linked to observations</span>
-                    <span>Site context</span>
-                    <span class="no">Rebuilt from memory</span>
-                    <span class="yes">Captured with evidence</span>
-                    <span>Missing details</span>
-                    <span class="no">Found during drafting</span>
-                    <span class="yes">Reduced at capture</span>
-                  </div>
-                  <div class="stage-roi" aria-label="Step 1 return on investment">
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🕒</span>
-                      <strong>Time</strong>
-                      <p>Save 15 min.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">📝</span>
-                      <strong>Quality</strong>
-                      <p>Encourages easy capture of notes, photos, and observations. Covers more areas while still on site.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🛡️</span>
-                      <strong>Risk</strong>
-                      <p>Never risk losing important site details before drafting starts.</p>
-                    </div>
-                  </div>
-                </div>
-                <span class="v2-sketch-arrow" aria-hidden="true"></span>
-              </div>
-              <div class="v2-sketch-video">
-                <span class="v2-audio-note">Audio on - hover to play</span>
-                <video data-hover-video playsinline controls preload="metadata" poster="/assets/workflow-inspect-capture.webp">
-                  <source src="/assets/inspect-hover-video.webm" type="video/webm">
-                  <source src="/assets/inspect-hover-video.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="band">
-        <div class="container">
-          <article class="v2-sketch-step">
-            <h3>Step 2 - Organise</h3>
-            <div class="v2-sketch-row">
-              <div class="v2-sketch-left">
-                <div class="v2-sketch-panel">
-                  <h4>Organising data</h4>
-                  <div class="v2-sketch-table compact-compare">
-                    <strong></strong>
-                    <strong>Traditional</strong>
-                    <strong>Oxx</strong>
-                    <span>Evidence grouping</span>
-                    <span class="no">Folder sorting</span>
-                    <span class="yes">Grouped by report context</span>
-                    <span>Photo transfer</span>
-                    <span class="no">Manual transfer</span>
-                    <span class="yes">Already attached</span>
-                    <span>Observation links</span>
-                    <span class="no">Matched by hand</span>
-                    <span class="yes">Kept connected</span>
-                    <span>Information loss</span>
-                    <span class="no">Higher risk</span>
-                    <span class="yes">Lower risk</span>
-                  </div>
-                  <div class="stage-roi" aria-label="Step 2 return on investment">
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🕒</span>
-                      <strong>Time</strong>
-                      <p>Save 15 min.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">📝</span>
-                      <strong>Quality</strong>
-                      <p>Keeps photos, notes, and evidence grouped around the report context.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🛡️</span>
-                      <strong>Risk</strong>
-                      <p>Reduces the risk of misplaced photos, scattered notes, or duplicated admin.</p>
-                    </div>
-                  </div>
-                </div>
-                <span class="v2-sketch-arrow" aria-hidden="true"></span>
-              </div>
-              <div class="v2-sketch-video">
-                <span class="v2-audio-note">Audio on - hover to play</span>
-                <video data-hover-video playsinline controls preload="metadata" poster="/assets/workflow-organise.webp">
-                  <source src="/assets/organise-hover-video.webm" type="video/webm">
-                  <source src="/assets/organise-hover-video.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="band band-tint">
-        <div class="container">
-          <article class="v2-sketch-step">
-            <h3>Step 3 - Ground the Reasoning</h3>
-            <div class="v2-sketch-row">
-              <div class="v2-sketch-left">
-                <div class="v2-sketch-panel">
-                  <h4>Technical grounding</h4>
-                  <div class="v2-sketch-table compact-compare">
-                    <strong></strong>
-                    <strong>Traditional</strong>
-                    <strong>Oxx</strong>
-                    <span>Defect links</span>
-                    <span class="no">Linked manually</span>
-                    <span class="yes">Connected to evidence</span>
-                    <span>Standards</span>
-                    <span class="no">Looked up separately</span>
-                    <span class="yes">Surfaced earlier</span>
-                    <span>Reasoning trail</span>
-                    <span class="no">Buried in notes</span>
-                    <span class="yes">Visible before drafting</span>
-                    <span>Review confidence</span>
-                    <span class="no">Harder to audit</span>
-                    <span class="yes">Easier to check</span>
-                  </div>
-                  <div class="stage-roi" aria-label="Step 3 return on investment">
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🕒</span>
-                      <strong>Time</strong>
-                      <p>Save 30 min.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">📝</span>
-                      <strong>Quality</strong>
-                      <p>Links observations to evidence, defects, standards, and reasoning.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🛡️</span>
-                      <strong>Risk</strong>
-                      <p>Reduces unsupported conclusions and makes review easier to audit.</p>
-                    </div>
-                  </div>
-                </div>
-                <span class="v2-sketch-arrow" aria-hidden="true"></span>
-              </div>
-              <div class="v2-sketch-video">
-                <span class="v2-audio-note">Audio on - hover to play</span>
-                <video data-hover-video playsinline controls preload="metadata" poster="/assets/workflow-ground-reasoning.webp">
-                  <source src="/assets/ground-reasoning-hover-video.webm" type="video/webm">
-                  <source src="/assets/ground-reasoning-hover-video.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="band">
-        <div class="container">
-          <article class="v2-sketch-step">
-            <h3>Step 4 - Generate Report</h3>
-            <div class="v2-sketch-row">
-              <div class="v2-sketch-left">
-                <div class="v2-sketch-panel">
-                  <h4>Drafting the report</h4>
-                  <div class="v2-sketch-table compact-compare">
-                    <strong></strong>
-                    <strong>Traditional</strong>
-                    <strong>Oxx</strong>
-                    <span>First draft</span>
-                    <span class="no">Blank-page drafting</span>
-                    <span class="yes">Generated from evidence</span>
-                    <span>Photo captions</span>
-                    <span class="no">Written manually</span>
-                    <span class="yes">Prepared with context</span>
-                    <span>Report structure</span>
-                    <span class="no">Manual formatting</span>
-                    <span class="yes">Sections prepared</span>
-                    <span>Repetitive writing</span>
-                    <span class="no">Engineer does it all</span>
-                    <span class="yes">Handled before review</span>
-                  </div>
-                  <div class="stage-roi" aria-label="Step 4 return on investment">
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🕒</span>
-                      <strong>Time</strong>
-                      <p>Save 90 min.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">📝</span>
-                      <strong>Quality</strong>
-                      <p>Produces a structured first draft with sections, captions, and findings.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🛡️</span>
-                      <strong>Risk</strong>
-                      <p>Reduces blank-page drafting errors and inconsistent formatting.</p>
-                    </div>
-                  </div>
-                </div>
-                <span class="v2-sketch-arrow" aria-hidden="true"></span>
-              </div>
-              <div class="v2-sketch-video">
-                <span class="v2-audio-note">Audio on - hover to play</span>
-                <video data-hover-video playsinline controls preload="metadata" poster="/assets/workflow-generate-report.webp">
-                  <source src="/assets/generate-report-hover-video.webm" type="video/webm">
-                  <source src="/assets/generate-report-hover-video.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="band band-tint">
-        <div class="container">
-          <article class="v2-sketch-step">
-            <h3>Step 5 - Review and Refine</h3>
-            <div class="v2-sketch-row">
-              <div class="v2-sketch-left">
-                <div class="v2-sketch-panel">
-                  <h4>Professional review</h4>
-                  <div class="v2-sketch-table compact-compare">
-                    <strong></strong>
-                    <strong>Traditional</strong>
-                    <strong>Oxx</strong>
-                    <span>Engineer control</span>
-                    <span class="yes">Final judgement stays human</span>
-                    <span class="yes">Final judgement stays human</span>
-                    <span>Editability</span>
-                    <span class="no">Manual draft first</span>
-                    <span class="yes">Prepared editable draft</span>
-                    <span>Review focus</span>
-                    <span class="no">Draft and check</span>
-                    <span class="yes">Check, refine, approve</span>
-                    <span>Client output</span>
-                    <span class="no">Depends on admin time</span>
-                    <span class="yes">Cleaner starting point</span>
-                  </div>
-                  <div class="stage-roi" aria-label="Step 5 return on investment">
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🕒</span>
-                      <strong>Time</strong>
-                      <p>Save 30 min.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">📝</span>
-                      <strong>Quality</strong>
-                      <p>Lets the engineer focus on judgement, edits, and approval instead of repetitive formatting and routine content generation.</p>
-                    </div>
-                    <div class="roi-metric">
-                      <span class="roi-symbol" aria-hidden="true">🛡️</span>
-                      <strong>Risk</strong>
-                      <p>Keeps final responsibility with the professional reviewer while improving the draft starting point.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="v2-sketch-video">
-                <span class="v2-audio-note">Audio on - hover to play</span>
-                <video data-hover-video playsinline controls preload="metadata" poster="/assets/workflow-review-refine.webp">
-                  <source src="/assets/review-refine-hover-video.webm" type="video/webm">
-                  <source src="/assets/review-refine-hover-video.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
+
+    <section class="container home-tile-wrap home-tile-wrap-end" aria-labelledby="report-title">
+      <div class="home-tile">
+        <h3 id="report-title" class="home-tile-title"><span class="title-num" aria-hidden="true">3</span>Report</h3>
+        <p class="home-tile-lead home-tile-intro">A professional first draft, <span class="keep-together">not a blank page</span></p>
+        <div class="report-build-slot" data-report-graph>
+          <p class="review-graph-fallback">Reviewed graph → draft report</p>
+        </div>
+      </div>
+    </section>
+
+    </div>
 
     <div class="band">
-      <section class="section container reveal">
+      <section id="pricing" class="section container reveal" data-install-trigger>
         <div class="section-title section-title-wide">
-          <p class="eyebrow">Return on Investment</p>
-          <h2>Its a nobrainer</h2>
+          <p class="eyebrow">Pricing</p>
         </div>
 
-        <div class="roi-grid">
-          <div class="roi-table" aria-label="Workflow comparison">
-            <div class="roi-row roi-head">
-              <span>Workflow item</span>
-              <span>Standard workflow</span>
-              <span>Oxx Report</span>
+        <!-- Each plan is one link to the login page. -->
+        <div class="pricing-grid">
+          <a class="pricing-card pricing-card-featured" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">
+            <p class="pricing-tag">Free plan</p>
+            <h3>Free</h3>
+            <p class="pricing-subtitle">Test the workflow on your own site visits.</p>
+            <div class="pricing-list">
+              <p>No card required.</p>
+              <p>No lock-in.</p>
             </div>
-            <div class="roi-row">
-              <span>Capture site notes</span>
-              <span class="bad">Manual written notes</span>
-              <span class="good">Voice notes and structured capture</span>
-            </div>
-            <div class="roi-row">
-              <span>Sort photos and context</span>
-              <span class="bad">Manual folder sorting</span>
-              <span class="good">Evidence stays linked to the case</span>
-            </div>
-            <div class="roi-row">
-              <span>Ground findings</span>
-              <span class="bad">Manual linking and research</span>
-              <span class="good">Evidence, defects, and references connected</span>
-            </div>
-            <div class="roi-row">
-              <span>Draft report</span>
-              <span class="bad">Manual drafting and formatting</span>
-              <span class="good">Draft sections, captions, and structure generated</span>
-            </div>
-            <div class="roi-row">
-              <span>Professional review</span>
-              <span class="neutral">Required</span>
-              <span class="neutral">Required</span>
-            </div>
-          </div>
+            <span class="btn btn-primary">Login</span>
+          </a>
 
-          <aside class="roi-summary">
-            <p class="eyebrow">Example Result</p>
-            <div class="roi-stat">
-              <strong>70%</strong>
-              <span>less time than the standard workflow</span>
+          <a class="pricing-card" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">
+            <p class="pricing-tag">3 reports a month</p>
+            <h3>$20/month</h3>
+            <p class="pricing-subtitle">3 reports every month.</p>
+            <div class="pricing-list">
+              <p>Token costs included.</p>
+              <p>Cancel at any time.</p>
             </div>
-            <div class="roi-banner-stack" aria-label="ROI proof points">
-              <div class="roi-banner-card">
-                <strong>Save about 3 hours per report</strong>
-              </div>
-              <div class="roi-banner-card">
-                <strong>Save about R4,500 in professional fees</strong>
-              </div>
-              <div class="roi-banner-card roi-banner-card-large">
-                <strong>Oxx Report easily pays for itself</strong>
-              </div>
+            <span class="btn btn-primary">Login</span>
+          </a>
+
+          <a class="pricing-card" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">
+            <p class="pricing-tag">10 reports a month</p>
+            <h3>$40/month</h3>
+            <p class="pricing-subtitle">10 reports every month.</p>
+            <div class="pricing-list">
+              <p>Token costs included.</p>
+              <p>Cancel at any time.</p>
             </div>
-            <p class="review-note">Example at R1,500/hour: a standard report takes about 4.25 hours, and about 1.25 hours with Oxx Report. The 3 hours saved are worth about R4,500, against R1,000 for a pay-as-you-use report. Professional review stays in place.</p>
-          </aside>
+            <span class="btn btn-primary">Login</span>
+          </a>
+
+          <a class="pricing-card" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">
+            <p class="pricing-tag">Unlimited</p>
+            <h3>Unlimited</h3>
+            <p class="pricing-subtitle">No limit on reports.</p>
+            <span class="btn btn-primary">Login</span>
+          </a>
         </div>
       </section>
     </div>
 
     <div class="band band-tint">
-      <section id="pricing" class="section container reveal" data-install-trigger>
+      <section id="downloads" class="section container reveal">
         <div class="section-title section-title-wide">
-          <p class="eyebrow">Pricing</p>
-          <h2>Choose the commercial model that fits the way you get paid.</h2>
-          <p>Try the workflow for free first, then choose between a straightforward monthly plan or pay only for delivered reports.</p>
+          <p class="eyebrow">Downloads</p>
+          <h2>Get the app.</h2>
+          <p>Download Oxx Report for Android phones and tablets below. The web app runs in any browser, on phone or desktop. An iOS app is coming soon.</p>
         </div>
 
-        <div class="pricing-grid">
-          <article class="pricing-card pricing-card-featured">
-            <p class="pricing-tag">Monthly subscription</p>
-            <h3>R500/month</h3>
-            <p class="pricing-subtitle">Unlimited reports plus pay for token usage.</p>
-            <p class="pricing-note">Token usage is billed separately, typically about R100 per report.</p>
-            <div class="pricing-list">
-              <p>Simple base subscription for regular users.</p>
-              <p>Best fit for teams running reports every month.</p>
-            </div>
+        <div class="card-grid three">
+          <article class="card access-card">
+            <h3>Android</h3>
+            <p>Install Oxx Report on an Android phone or tablet. Needs Android 7.0 or later.</p>
+            <a class="btn btn-primary" href="/downloads/oxx-report-android.apk">Download for Android</a>
+            <p class="access-meta"><a class="inline-link" href="/downloads/">Install steps and file checksum</a></p>
           </article>
-
-          <article class="pricing-card">
-            <p class="pricing-tag">Pay as you use</p>
-            <h3>R1,000/report</h3>
-            <p class="pricing-subtitle">Only pay for delivered reports and outputs.</p>
-            <div class="pricing-list">
-              <p>Built for small businesses that do not want subscriptions.</p>
-              <p>No platform risk sitting on the books while no work is moving.</p>
-              <p>The service cost can be built directly into the client fee proposal.</p>
-              <p>You know what the report will earn, and the service cost lands in the same commercial flow.</p>
-            </div>
+          <article class="card access-card">
+            <h3>Web App</h3>
+            <p>Login and test the reporting workflow in the browser.</p>
+            <a class="btn btn-primary" href="https://report.oxx-ai.com/" target="_blank" rel="noopener">Login</a>
           </article>
-        </div>
-
-        <div class="pricing-trial">
-          <p class="pricing-trial-title">Try it now for free</p>
-          <p>Three free reports to test the workflow. No card required. No lock-in. Data stays available.</p>
+          <article class="card access-card">
+            <h3>iOS</h3>
+            <p>A native iOS app is coming soon. On iPhone and iPad, use the web app for now.</p>
+            <span class="status-pill">Coming soon</span>
+          </article>
         </div>
       </section>
     </div>
@@ -584,9 +458,10 @@
       </div>
       <div>
         <h4>Navigation</h4>
-        <a href="/examples/">How it works</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#downloads">Downloads</a>
         <a href="/faq/">FAQ</a>
-        <a href="/downloads/">Downloads</a>
         <a href="/contact/">Contact</a>
       </div>
       <div>
@@ -598,8 +473,7 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <a href="mailto:andrew@oxx.co.za">andrew@oxx.co.za</a>
-        <a href="https://wa.me/27620361649" target="_blank" rel="noopener">WhatsApp: +27 62 036 1649</a>
+        <a href="mailto:support@oxx-ai.com">support@oxx-ai.com</a>
         <p>Cape Town, South Africa</p>
       </div>
     </div>
@@ -611,7 +485,7 @@
       <img src="/assets/oxx-apple-touch-icon.png" alt="" width="48" height="48">
       <h2 id="install-prompt-title">Install Oxx Report</h2>
     </div>
-    <p id="install-prompt-text">Keep the app on your phone or desktop and start reports from site in one tap. Three free reports, no card required.</p>
+    <p id="install-prompt-text">Keep the app on your phone or desktop and start reports from site in one tap. Free to start, no card required.</p>
     <p class="install-prompt-hint" data-install-hint>Opens the web app. Then choose Install app from your browser menu.</p>
     <div class="install-prompt-actions">
       <a class="btn btn-primary" href="https://report.oxx-ai.com/?install=1" target="_blank" rel="noopener" data-install-accept>Get the app</a>

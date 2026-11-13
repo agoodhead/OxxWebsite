@@ -112,8 +112,18 @@ test("prices in the structured data appear on the page, in llms.txt and in the p
     .find((node) => node["@type"] === "SoftwareApplication");
   assert.ok(software, "index.html needs a SoftwareApplication JSON-LD node");
 
-  // Each pricing card pairs with the offer of the same name.
-  const cards = [...home.matchAll(/<p class="pricing-tag">([^<]+)<\/p>\s*<h3>R([\d,]+)\//g)]
+  // Prices are shown with the currency's symbol: "$20/month".
+  const symbols = { USD: "$", ZAR: "R" };
+  const currencies = [...new Set(software.offers.map((offer) => offer.priceCurrency))];
+  assert.equal(currencies.length, 1, "all JSON-LD offers should be in one currency");
+  const symbol = symbols[currencies[0]];
+  assert.ok(symbol, `no price symbol known for ${currencies[0]}`);
+  const escaped = symbol.replace(/[$]/g, "\\$");
+
+  // Each priced card pairs with the paid offer of the same name. Cards with
+  // no price (Free, Unlimited) don't count.
+  const cardPattern = new RegExp(`<p class="pricing-tag">([^<]+)<\\/p>\\s*<h3>${escaped}([\\d,]+)\\/`, "g");
+  const cards = [...home.matchAll(cardPattern)]
     .map((m) => ({ name: m[1], price: Number(m[2].replace(/,/g, "")) }));
   const paidOffers = software.offers
     .filter((offer) => Number(offer.price) > 0)
@@ -129,7 +139,7 @@ test("prices in the structured data appear on the page, in llms.txt and in the p
   for (const offer of software.offers) {
     const price = Number(offer.price);
     if (price === 0) continue;
-    const label = `R${price.toLocaleString("en-US")}`;
+    const label = `${symbol}${price.toLocaleString("en-US")}`;
     for (const [rel, text] of Object.entries(sources)) {
       assert.ok(text.includes(label), `${rel} should mention the ${offer.name} price ${label}`);
     }
@@ -137,15 +147,20 @@ test("prices in the structured data appear on the page, in llms.txt and in the p
 });
 
 test("time-saving figures agree everywhere", async () => {
-  const home = await read("index.html");
-  const stepMinutes = [...home.matchAll(/<strong>Time<\/strong>\s*<p>Save (\d+) min\.<\/p>/g)].map((m) => Number(m[1]));
-  assert.equal(stepMinutes.length, 5, "each of the five workflow steps needs a \"Save N min.\" time saving");
+  // The five per-stage savings, from the "Saving per workflow stage" line.
+  const overview = await read("product_docs/product_overview.md");
+  const stages = overview.match(/^Saving per workflow stage: (.*)$/m)?.[1];
+  assert.ok(stages, "product_docs/product_overview.md needs its \"Saving per workflow stage:\" line");
+  const stepMinutes = [...stages.matchAll(/(\d+) min\b/g)].map((m) => Number(m[1]));
+  assert.equal(stepMinutes.length, 5, "each of the five workflow stages needs an \"N min\" time saving");
 
   const hours = stepMinutes.reduce((sum, minutes) => sum + minutes, 0) / 60;
   const rand = `R${(hours * hourlyRate).toLocaleString("en-US")}`;
   for (const rel of ["index.html", "faq/index.html", "llms.txt", "product_docs/product_overview.md", "product_docs/faq.md"]) {
     const text = await read(rel);
     assert.ok(text.includes(`about ${hours} hours`), `${rel} should say "about ${hours} hours" saved (the step savings add up to that)`);
+    // The homepage gives the time saved but not the rand figure.
+    if (rel === "index.html") continue;
     assert.ok(text.includes(rand), `${rel} should say ${rand} saved (${hours} hours at R${hourlyRate.toLocaleString("en-US")}/hour)`);
   }
 });

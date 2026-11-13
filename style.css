@@ -33,6 +33,8 @@
   --radius: 14px;
   --shadow: 0 1px 2px rgba(14, 14, 14, 0.06), 0 8px 24px rgba(14, 14, 14, 0.10);
   --shadow-elevated: 0 1px 2px rgba(14, 14, 14, 0.04), 0 4px 8px rgba(14, 14, 14, 0.06), 0 24px 48px rgba(14, 14, 14, 0.18);
+  /* Stronger than --shadow-elevated so it shows on the green homepage tiles. */
+  --shadow-card: 0 2px 4px rgba(14, 14, 14, 0.12), 0 12px 24px rgba(14, 14, 14, 0.2), 0 28px 56px rgba(14, 14, 14, 0.22);
 }
 
 *,
@@ -343,16 +345,18 @@ textarea {
   background: var(--panel-soft);
 }
 
-main > .band:last-child {
+/* The last band, the closing call to action: on white it sits close to the
+   footer; on green it runs into the footer without a white strip between. */
+main > .band:not(.band-tint):last-child {
   padding-bottom: 0.5rem;
+}
+
+main:has(> .band-tint:last-child) + .site-footer {
+  margin-top: 0;
 }
 
 .band > .section {
   padding-top: 0;
-}
-
-.band-tint .pricing-trial {
-  background: #FFFFFF;
 }
 
 .section-title h1,
@@ -478,12 +482,11 @@ main > .band:last-child {
   line-height: 1.45;
 }
 
+/* The closing call to action fills its green band, with no box of its own. */
 .cta-band {
   margin: 0 auto;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--panel-soft), #FFFFFF);
-  padding: 1.3rem;
+  padding: 0;
+  text-align: center;
 }
 
 .cta-band h2 {
@@ -772,17 +775,380 @@ main > .band:last-child {
 
 /* Homepage hero and the Inspect and Review tiles under it. */
 .hero-home {
-  padding: 2.2rem 0 1.8rem;
+  padding: 2.2rem 0 1.4rem;
 }
 
+/* A step above the Inspect, Review and Report tile titles. */
 .hero-home h1 {
-  font-size: clamp(1.875rem, 3.2vw, 2.7rem);
+  font-size: clamp(2.75rem, 1.5rem + 4vw, 6.25rem);
 }
 
+/* Larger on desktop, and larger again on wide screens; phones keep 22px. */
 .hero-home .lead {
-  max-width: 740px;
+  max-width: min(1400px, 100%);
   margin-top: 0.8rem;
-  font-size: 1.125rem;
+  font-size: clamp(1.375rem, 0.5rem + 1.5vw, 2.25rem);
+  line-height: 1.4;
+}
+
+/* The page is one long scroll; the menu jumps to its sections. The header
+   is sticky, so a section lands below it. */
+html {
+  scroll-behavior: smooth;
+}
+
+main [id] {
+  scroll-margin-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Overview, first on the page: the whole workflow as three cards, Inspect,
+   Review and Report. script.js draws dotted lines from each capture type
+   into the phone and from the site graph into the report, and sends the
+   graph's items along them as bubbles, each landing as its section appears
+   in the report video. */
+/* The first section, the hero and the overview, sits on one pale green band,
+   edge to edge, and may use more of a wide screen than the sections below.
+   Its text and icons grow with the screen. */
+.top-band {
+  padding-block: 0 clamp(2.5rem, 5vw, 4.5rem);
+}
+
+/* The top section, the no-brainer and How it works share this width. */
+.ov-wrap,
+#roi,
+.how-band > .container {
+  width: min(2240px, calc(100% - 3rem));
+}
+
+.home-tile.overview {
+  position: relative;
+  align-items: stretch;
+  gap: clamp(2rem, 3vw, 4.5rem);
+}
+
+.top-band .home-tile.overview {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.ov-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: clamp(1rem, 1.6vw, 2.25rem);
+  border: 1px solid #1B1C18;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-card);
+}
+
+.ov-step {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 9px;
+  margin: 0;
+  padding: 4px 16px 4px 4px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: clamp(1.125rem, 0.6rem + 0.75vw, 1.75rem);
+  font-weight: 700;
+}
+
+.ov-step span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55em;
+  height: 1.55em;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 0.85em;
+}
+
+/* The capture types spread down the whole card. (Doubled class: the
+   shared capture-list rules come later.) */
+.capture-list.ov-list {
+  flex: 1;
+  justify-content: space-evenly;
+  gap: clamp(6px, 0.7vw, 14px);
+  max-width: none;
+  margin: 0.5rem 0 0;
+}
+
+/* The icons line up on the left; each name is centred in the space beside
+   its icon. */
+.capture-list.ov-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  text-align: center;
+  gap: clamp(12px, 1vw, 20px);
+  padding-block: clamp(3px, 0.4vw - 2px, 10px);
+  font-size: clamp(1rem, 0.45rem + 0.8vw, 1.625rem);
+}
+
+.capture-list.ov-list img {
+  width: clamp(44px, 3.8vw, 88px);
+}
+
+.ov-phone {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-block: auto;
+}
+
+/* Under each card's label, one line on what that step gives you. */
+.ov-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 0.6rem + 0.5vw, 1.5rem);
+  font-weight: 600;
+}
+
+/* The video sits just under the card's note line. It has the graph
+   picture's shape, so the Report card fills as the Review card does. */
+.ov-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #FFFFFF;
+  pointer-events: none;
+}
+
+/* The dotted lines: round dots that run along each line, meeting before the
+   phone. */
+.ov-lines,
+.ov-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ov-fx {
+  z-index: 3;
+}
+
+/* Out of the grid, so both cover the whole tile at every width. */
+.home-tile.overview > .ov-lines,
+.home-tile.overview > .ov-fx {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.ov-line {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 11;
+  animation: ov-run 0.9s linear infinite;
+}
+
+.ov-line-image { stroke: #1E6FD9; }
+.ov-line-video { stroke: #7E57C2; }
+.ov-line-voice { stroke: #2F8A3E; }
+.ov-line-conversation { stroke: #E07B00; }
+.ov-line-documents { stroke: #56657F; }
+.ov-line-mapping { stroke: #C8402F; }
+.ov-line-join { stroke: #34511F; }
+
+/* Where the four capture lines meet, just before the phone. */
+.ov-join {
+  fill: #34511F;
+  stroke: #FFFFFF;
+  stroke-width: 2.5;
+}
+
+/* The route a bubble takes: drawn for measuring only. */
+.ov-route {
+  fill: none;
+  stroke: none;
+}
+
+@keyframes ov-run {
+  to { stroke-dashoffset: -11.1; }
+}
+
+/* An item taken off the graph leaves an empty, dashed slot. */
+.ov-slot {
+  position: absolute;
+  border: 1.5px dashed #9AA6BB;
+  border-radius: 5px;
+  background: #E8EDF4;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.ov-slot.is-on {
+  opacity: 1;
+}
+
+/* A bubble: the item as it travels, styled like its card on the graph. */
+.ov-bubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  gap: 1px;
+  padding: 5px 11px 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(27, 28, 24, 0.22);
+  font-size: clamp(13px, 0.4rem + 0.45vw, 19px);
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.ov-bubble b {
+  font-size: 0.7em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ov-bubble span {
+  color: #1B1C18;
+  font-weight: 700;
+}
+
+.ov-bubble.kind-audio { color: #9A6A0C; background: #FFFBF2; }
+.ov-bubble.kind-image { color: #3B64A6; background: #F6F9FE; }
+.ov-bubble.kind-video { color: #6C47A3; background: #FAF6FE; }
+.ov-bubble.kind-high { color: #C2473A; background: #FFF8F6; }
+.ov-bubble.kind-medium { color: #A87711; background: #FFFCF3; }
+.ov-bubble.kind-area { color: #8A6A0C; background: #FDF6DA; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ov-line {
+    animation: none;
+  }
+
+  .ov-fx {
+    display: none;
+  }
+}
+
+/* Tablets: Inspect and Review side by side, Report under them. */
+@media (max-width: 980px) {
+  .home-tile.overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .home-tile.overview > .ov-card {
+    grid-column: auto;
+  }
+
+  .home-tile.overview > .ov-report {
+    grid-column: 1 / -1;
+  }
+
+  .ov-report .ov-video {
+    width: min(100%, 560px);
+    align-self: center;
+  }
+}
+
+/* Phones: one card under the other. */
+@media (max-width: 640px) {
+  .home-tile.overview {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* How it works: the heading over the detailed Inspect, Review and Report. */
+.how-head {
+  margin-bottom: 2rem;
+}
+
+/* How it works sits on one pale green band, edge to edge. Its three tiles
+   drop their own panels and are split by a thin line instead. */
+.how-band .how-head {
+  margin-bottom: 0.5rem;
+}
+
+.how-band .home-tile-wrap {
+  margin-bottom: 0;
+}
+
+.how-band .home-tile-wrap + .home-tile-wrap {
+  border-top: 1px solid rgba(52, 81, 31, 0.2);
+}
+
+.how-band .home-tile {
+  padding-inline: 0;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Bigger text in the tiles. */
+.how-band .home-tile-lead {
+  font-size: clamp(1.25rem, 0.75rem + 1vw, 2.125rem);
+  line-height: 1.4;
+}
+
+.how-band .capture-panel .capture-list li {
+  padding-block: 3px;
+  font-size: clamp(1.125rem, 0.5rem + 1vw, 1.875rem);
+}
+
+/* Icons grow with the text on wide screens. */
+.how-band .capture-panel .capture-list img,
+.how-band .capture-panel .capture-list .capture-icon {
+  width: clamp(64px, 4.4vw, 100px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+.how-band .tile-callout {
+  font-size: clamp(1.0625rem, 0.6rem + 0.7vw, 1.625rem);
+}
+
+.how-band .tile-callout svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/* The tile titles carry their step number, as the overview's cards do. */
+.home-tile-title {
+  display: flex;
+  align-items: center;
+  gap: 0.22em;
+}
+
+.title-num {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.32em;
+  height: 1.32em;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 0.62em;
+  line-height: 1;
 }
 
 .home-tile-wrap {
@@ -790,15 +1156,17 @@ main > .band:last-child {
 }
 
 /* The last tile leaves more room before the workflow band. */
-.home-tile-wrap + .home-tile-wrap {
+.home-tile-wrap-end {
   margin-bottom: 3.5rem;
 }
 
+/* Three equal columns. Inspect: list, square tile and video, a third each.
+   Review: graph two thirds, list one third. Report: graph and draft report
+   across the full width. */
 .home-tile {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 2rem 3rem;
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border-radius: 28px;
@@ -806,7 +1174,7 @@ main > .band:last-child {
 }
 
 .home-tile-title {
-  flex: 1 1 100%;
+  grid-column: 1 / -1;
   margin: -0.75rem 0;
   padding-left: clamp(0px, 0.6vw, 8px);
   color: var(--accent-strong);
@@ -814,19 +1182,6 @@ main > .band:last-child {
   line-height: 1;
 }
 
-.home-tile-copy {
-  flex: 1 1 280px;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-left: clamp(0px, 0.6vw, 8px);
-}
-
-.home-tile-copy-narrow {
-  flex: 0 1 300px;
-  align-self: auto;
-}
 
 .home-tile-lead {
   margin: 0;
@@ -864,51 +1219,155 @@ main > .band:last-child {
 .capture-list img {
   display: block;
   flex: none;
-  width: 48px;
+  width: 64px;
   height: auto;
 }
 
+.capture-list .capture-icon {
+  display: block;
+  flex: none;
+  width: 64px;
+  height: 48px;
+}
+
 .tile-callout {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  max-width: 420px;
+  gap: 10px;
   margin: 0;
-  padding: 8px 16px 8px 12px;
+  padding: 4px 12px 4px 10px;
   border: 2px solid currentColor;
   border-radius: 12px;
-  font-size: 1.19rem;
+  font-size: 1.0625rem;
   font-weight: 700;
   line-height: 1.35;
 }
 
 .tile-callout svg {
   flex: none;
+  width: 26px;
+  height: 26px;
 }
 
-/* Pushed to the bottom of the column, level with the bottom of the video. */
 .tile-callout-green {
-  margin-top: auto;
   color: #2F6B22;
   background: #E3F3D6;
 }
 
 .tile-callout-blue {
-  margin-top: -6px;
   color: #1A5FA6;
   background: #E3EEFA;
 }
 
-/* Centred when it wraps under the text. */
+.tile-callout-amber {
+  color: #7A5A00;
+  background: #FBF1CC;
+}
+
+.tile-callout-purple {
+  color: #6C47A3;
+  background: #EFE6F9;
+}
+
+.tile-callout-teal {
+  color: #1F6F60;
+  background: #E1F3EE;
+}
+
+/* Inspect: the intro line runs under the heading. Below it, in thirds: the
+   capture list (on the tile itself, no box), a square tile, and the video. */
+.home-tile-intro {
+  grid-column: 1 / -1;
+  padding-left: clamp(0px, 0.6vw, 8px);
+}
+
+.capture-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.capture-panel .capture-list {
+  gap: 8px;
+  max-width: none;
+  margin: 0;
+}
+
+.capture-panel .capture-list li {
+  padding: 1px 14px 1px 6px;
+  font-size: 1.0625rem;
+}
+
+/* What the capture leads to, under the list. The arrow runs down the left
+   side from the list and branches right into each item. Spare height in the
+   row goes above the items, so the line grows with it and the items sit
+   level with the bottom of the tile (Inspect's tiles, Review's graph). The
+   top padding is the least stretch of arrow between list and items. */
+.capture-outcomes {
+  --arrow: #2F6B22;
+  --arrow-x: 12px; /* centre of the line, from the left */
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: -4px;
+  padding: 30px 0 0 40px;
+}
+
+/* The line down the side, ending level with the middle of the last item
+   (--line-bottom is set by script.js; 19px fits a one-line item). */
+.capture-outcomes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: var(--line-bottom, 19px);
+  left: calc(var(--arrow-x) - 1.5px);
+  width: 3px;
+  border-radius: 2px;
+  background: var(--arrow);
+}
+
+/* Branch from the line to each item (the item's padding box starts 42px in). */
+.capture-outcomes .tile-callout::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--arrow-x) - 42px);
+  width: calc(31px - var(--arrow-x));
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--arrow);
+}
+
+/* Arrowhead touching the item's left edge. */
+.capture-outcomes .tile-callout::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -11px;
+  margin-top: -6px;
+  border-left: 9px solid var(--arrow);
+  border-block: 6px solid transparent;
+}
+
+/* Square tiles beside the list: the middle tile and the video. */
+.home-tile-box,
 .home-tile-video {
-  flex: 0 1 500px;
-  min-width: 0;
-  margin-inline: auto;
+  align-self: start;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  border: 1px solid #1B1C18;
   border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-card);
+}
+
+.home-tile-video {
   background: var(--accent-strong);
-  box-shadow: var(--shadow-elevated);
 }
 
 .home-tile-video video {
@@ -916,15 +1375,789 @@ main > .band:last-child {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* A moving picture, not a player: clicks and taps go to the tile. */
+  pointer-events: none;
 }
 
+/* With reduced motion it doesn't play by itself, so it gets normal controls. */
+.home-tile-video video[controls] {
+  pointer-events: auto;
+}
+
+/* Right-hand Inspect tile: walks through a capture type. Image: the icon
+   pops and opens into a site photo, dots show it being analysed, and two
+   areas are boxed and labelled. It rests on the finished picture (all step
+   classes set in the HTML); on mouse-over script.js clears them and adds
+   them back in turn, and freezes everything when the mouse leaves. Then
+   the tile flips to Voice, Site Mapping and Conversation (below).
+   The tile is always square and the 4:3 photo is cropped evenly at the
+   sides, so box positions are percentages of the tile. */
+.capture-demo {
+  position: relative;
+  container-type: inline-size;
+}
+
+.demo-scene {
+  position: absolute;
+  inset: 0;
+}
+
+/* Starts clipped to the chip's icon, then opens to the whole tile. */
+.demo-stage {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(17px calc(100% - 65px) calc(100% - 53px) 17px round 6px);
+  transition: clip-path 0.8s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.demo-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.demo-scene.is-open .demo-stage {
+  clip-path: inset(0 0 0 0 round 0);
+}
+
+.demo-scene.is-open .demo-photo {
+  opacity: 1;
+}
+
+.demo-chip {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 12px 4px 4px;
+  border: 1px solid #1B1C18;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #1B1C18;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(14, 14, 14, 0.15);
+}
+
+.demo-chip img {
+  display: block;
+  width: 48px;
+  height: auto;
+}
+
+.demo-scene.is-pop .demo-chip img {
+  animation: demo-pop 0.45s ease;
+}
+
+/* "Thinking" dots while the photo is analysed. */
+.demo-thinking {
+  position: absolute;
+  top: 20px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 5px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #1B1C18;
+  border-radius: 999px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(14, 14, 14, 0.15);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.demo-thinking span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1B1C18;
+  animation: demo-dot 1.2s ease-in-out infinite;
+}
+
+.demo-thinking span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.demo-thinking span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.demo-scene.is-thinking .demo-thinking {
+  opacity: 1;
+  transform: none;
+}
+
+.demo-scene.is-done .demo-thinking {
+  opacity: 0;
+}
+
+/* Focus boxes, as drawn in the Oxx Report app: a thin blue frame with a
+   numbered blue dot in the top-left corner. Each label carries its number. */
+.demo-focus {
+  position: absolute;
+  border: 2px solid #1976D2;
+  opacity: 0;
+  transform: scale(1.2);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.3, 0.7, 0.2, 1.3);
+}
+
+.demo-num {
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #1976D2;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.demo-focus .demo-num {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.demo-label .demo-num {
+  margin-right: 6px;
+  vertical-align: -3px;
+}
+
+.demo-focus-1 {
+  left: 16.9%;
+  top: 20.7%;
+  width: 10.6%;
+  height: 18.4%;
+}
+
+.demo-focus-2 {
+  left: 64.8%;
+  top: 41%;
+  width: 33.1%;
+  height: 18%;
+}
+
+.demo-label {
+  position: absolute;
+  margin: 0;
+  padding: 4px 8px;
+  border: 1px solid #1B1C18;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #1B1C18;
+  font-size: clamp(10px, 3.2cqw, 13px);
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 2px 6px rgba(14, 14, 14, 0.2);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease 0.25s, transform 0.35s ease 0.25s;
+}
+
+/* Starts left of its box so it has room for two lines before box 2. */
+.demo-label-1 {
+  left: 4%;
+  top: 41%;
+  max-width: 58%;
+}
+
+.demo-label-2 {
+  right: 2.1%;
+  top: 61%;
+  max-width: 62%;
+  text-align: right;
+}
+
+.demo-scene.is-f1 .demo-focus-1,
+.demo-scene.is-f2 .demo-focus-2,
+.demo-scene.is-f1 .demo-label-1,
+.demo-scene.is-f2 .demo-label-2 {
+  opacity: 1;
+  transform: none;
+}
+
+/* Used for an instant reset before each run. */
+.capture-demo.no-anim,
+.capture-demo.no-anim * {
+  transition: none !important;
+}
+
+@keyframes demo-pop {
+  40% { transform: scale(1.35); }
+  100% { transform: none; }
+}
+
+@keyframes demo-dot {
+  0%, 80%, 100% { opacity: 0.25; transform: none; }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* The tile flips like a card between capture types: the faces carry the
+   border and shadow, so the whole tile turns over. */
+.home-tile-box.capture-demo {
+  overflow: visible;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  perspective: 1400px;
+}
+
+.demo-card {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.2, 1);
+}
+
+.capture-demo.is-flipped .demo-card {
+  transform: rotateY(180deg);
+}
+
+.demo-face {
+  overflow: hidden;
+  border: 1px solid #1B1C18;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-card);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.demo-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* Voice: the site photo sits small in the top-right corner, a big waveform
+   moves while the transcript types out, then the transcript is added to the
+   photo as its caption. */
+.demo-voice.is-pop .demo-chip img {
+  animation: demo-pop 0.45s ease;
+}
+
+.demo-thumb {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 44%;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #1B1C18;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(14, 14, 14, 0.2);
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: top right;
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.3, 0.7, 0.2, 1.2);
+}
+
+.demo-voice.is-in .demo-thumb {
+  opacity: 1;
+  transform: none;
+}
+
+.demo-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.demo-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 5px 7px;
+  background: rgba(16, 32, 0, 0.8);
+  color: #FFFFFF;
+  font-size: clamp(9px, 2.6cqw, 11px);
+  font-weight: 700;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.demo-voice.is-captioned .demo-caption {
+  opacity: 1;
+  transform: none;
+}
+
+.demo-wave {
+  position: absolute;
+  top: 39%;
+  left: 10%;
+  right: 10%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  gap: 2.5%;
+}
+
+.demo-wave span {
+  flex: 1;
+  height: calc(var(--h) * 100%);
+  border-radius: 999px;
+  background: #D39A3A;
+}
+
+.demo-wave span:nth-child(even) {
+  background: #8A5A1E;
+}
+
+.demo-voice.is-rec .demo-wave span {
+  animation: demo-wave 0.75s ease-in-out infinite alternate;
+  animation-delay: calc(var(--h) * -1.5s);
+}
+
+.demo-voice.is-heard .demo-wave span {
+  animation: none;
+}
+
+.demo-transcript {
+  position: absolute;
+  top: 73%;
+  left: 8%;
+  right: 8%;
+  margin: 0;
+  color: #1B1C18;
+  font-size: clamp(12px, 4.2cqw, 17px);
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.demo-voice.is-typing .demo-typed::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: currentColor;
+  animation: demo-caret 0.9s steps(1) infinite;
+}
+
+@keyframes demo-wave {
+  from { transform: scaleY(0.35); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes demo-caret {
+  50% { opacity: 0; }
+}
+
+/* Later steps sit on top of the faces: Site Mapping on the front (shown
+   while the back is up), Conversation on the back. */
+.capture-demo.is-flipped.is-flip-2 .demo-card {
+  transform: rotateY(360deg);
+}
+
+.capture-demo.is-flipped.is-flip-2.is-flip-3 .demo-card {
+  transform: rotateY(540deg);
+}
+
+.demo-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: #FFFFFF;
+  visibility: hidden;
+}
+
+.capture-demo.show-map .demo-map,
+.capture-demo.show-conv .demo-conv {
+  visibility: visible;
+}
+
+.demo-map.is-pop .demo-chip img,
+.demo-conv.is-pop .demo-chip img {
+  animation: demo-pop 0.45s ease;
+}
+
+/* Site Mapping: an aerial photo of the site; a red route draws along the
+   walk and at each stop a capture pops up, then drops to a pin (blue photo,
+   green audio). Sizes follow the tile (cqw). */
+.map-aerial {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The route sits on its own layer; a pale halo keeps it clear of the dirt. */
+.map-svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.95));
+}
+
+.map-route {
+  fill: none;
+  stroke: #E03131;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition-property: stroke-dashoffset;
+  transition-timing-function: linear;
+}
+
+/* Above the chip, so a pop-up near the top-left is never hidden. */
+.map-pt {
+  position: absolute;
+  z-index: 3;
+  width: 0;
+  height: 0;
+}
+
+.pin-blue {
+  color: #1976D2;
+}
+
+.pin-green {
+  color: #2F8A3E;
+}
+
+.pin-purple {
+  color: #7E57C2;
+}
+
+.pin-orange {
+  color: #E07B00;
+}
+
+/* A video being taken: a red REC badge blinks on the opened pop-up. */
+.map-rec {
+  position: absolute;
+  top: 7%;
+  left: 7%;
+  display: flex;
+  align-items: center;
+  gap: 0.6cqw;
+  padding: 0.3cqw 1cqw;
+  border-radius: 999px;
+  background: rgba(16, 16, 16, 0.65);
+  color: #FFFFFF;
+  font-size: 1.7cqw;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.map-rec::before {
+  content: "";
+  width: 1.4cqw;
+  height: 1.4cqw;
+  border-radius: 50%;
+  background: #E03131;
+  animation: demo-caret 0.9s steps(1) infinite;
+}
+
+.map-pt.is-open .map-rec {
+  opacity: 1;
+}
+
+.map-pin {
+  position: absolute;
+  left: -2cqw;
+  top: -5.33cqw;
+  width: 4cqw;
+  height: 5.33cqw;
+  filter: drop-shadow(0 2px 2px rgba(14, 14, 14, 0.35));
+  opacity: 0;
+  transform: translateY(-10px) scale(0.6);
+  transform-origin: 50% 100%;
+  transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.3, 0.7, 0.2, 1.5);
+}
+
+.map-pt.is-pinned .map-pin {
+  opacity: 1;
+  transform: none;
+}
+
+/* The pop-up sits just above its stop and grows and shrinks towards it.
+   --dx nudges it sideways for a stop near the tile's edge. */
+.map-pop {
+  position: absolute;
+  left: calc(-9cqw + var(--dx, 0cqw));
+  top: calc(-13.5cqw - 2.5cqw);
+  width: 18cqw;
+  height: 13.5cqw;
+  overflow: hidden;
+  border: 1px solid #1B1C18;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(14, 14, 14, 0.25);
+  opacity: 0;
+  transform: scale(0.3);
+  transform-origin: calc(50% - var(--dx, 0cqw)) calc(100% + 2.5cqw);
+  transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.3, 0.7, 0.2, 1.2);
+}
+
+.map-pop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-icon {
+  object-fit: contain;
+  padding: 8%;
+}
+
+.map-photo {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.map-pt.is-pop .map-pop {
+  opacity: 1;
+  transform: none;
+}
+
+.map-pt.is-open .map-pop {
+  transform: scale(1.55);
+}
+
+.map-pt.is-open .map-photo {
+  opacity: 1;
+}
+
+.map-pt.is-pinned .map-pop {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: opacity 0.35s ease 0.05s, transform 0.4s ease-in;
+}
+
+/* Conversation: one waveform of the whole recording (red, green and blue
+   bars, a colour per speaker) moves, then splits into a speech bubble per
+   speaker, left, right, left, overlapping a little, as in the icon. */
+.spk-1 {
+  --spk: #EF7B7B;
+  --spk-dark: #C62828;
+  --spk-soft: #FDE2E2;
+  --spk-ink: #A11F1F;
+}
+
+.spk-2 {
+  --spk: #8BC060;
+  --spk-dark: #3E7A1E;
+  --spk-soft: #DDEFCF;
+  --spk-ink: #2F6B22;
+}
+
+.spk-3 {
+  --spk: #6AB4F5;
+  --spk-dark: #1565C0;
+  --spk-soft: #DCEBFB;
+  --spk-ink: #0D47A1;
+}
+
+.conv-wave {
+  position: absolute;
+  top: 40%;
+  left: 6%;
+  right: 6%;
+  height: 28%;
+  display: flex;
+  align-items: center;
+  gap: 1%;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+.conv-wave span {
+  flex: 1;
+  height: calc(var(--h) * 100%);
+  border-radius: 999px;
+  background: var(--spk);
+}
+
+.conv-wave span.dk {
+  background: var(--spk-dark);
+}
+
+.demo-conv.is-split .conv-wave {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+/* Each bubble starts in the middle, where the waveform was, and moves out. */
+.conv-bubble {
+  position: absolute;
+  width: 60%;
+  height: 21%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.2cqw 3cqw 0;
+  border: 0.8cqw solid var(--spk-dark);
+  border-radius: 4cqw;
+  background: #FFFFFF;
+  box-shadow: 0 1cqw 2.4cqw rgba(14, 14, 14, 0.18);
+  opacity: 0;
+  transform: translate(var(--fx), var(--fy)) scale(0.5);
+  transition: opacity 0.35s ease, transform 0.6s cubic-bezier(0.3, 0.7, 0.2, 1.15);
+  transition-delay: calc(var(--n) * 250ms);
+}
+
+.conv-bubble.spk-1 {
+  top: 22%;
+  left: 5%;
+  --fx: 15%;
+  --fy: 90%;
+}
+
+.conv-bubble.spk-2 {
+  top: 39%;
+  left: 35%;
+  --fx: -15%;
+  --fy: 10%;
+}
+
+.conv-bubble.spk-3 {
+  top: 56%;
+  left: 9%;
+  --fx: 12%;
+  --fy: -70%;
+}
+
+.demo-conv.is-split .conv-bubble {
+  opacity: 1;
+  transform: none;
+}
+
+.conv-bars {
+  display: flex;
+  align-items: center;
+  gap: 3%;
+  height: 54%;
+}
+
+.conv-bars i {
+  flex: 1;
+  height: calc(var(--h) * 100%);
+  border-radius: 999px;
+  background: var(--spk);
+}
+
+.conv-bars i:nth-child(even) {
+  background: var(--spk-dark);
+}
+
+.demo-conv.is-rec .conv-wave span,
+.demo-conv.is-rec .conv-bars i {
+  animation: demo-wave 0.75s ease-in-out infinite alternate;
+  animation-delay: calc(var(--h) * -1.5s);
+}
+
+.demo-conv.is-heard .conv-wave span,
+.demo-conv.is-heard .conv-bars i {
+  animation: none;
+}
+
+.conv-label {
+  align-self: flex-start;
+  margin-bottom: 1.6cqw;
+  padding: 0.5cqw 2.4cqw;
+  border-radius: 999px;
+  background: var(--spk-soft);
+  color: var(--spk-ink);
+  font-size: clamp(10px, 3.3cqw, 14px);
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* The middle speaker's label sits at the right, clear of the bubble below. */
+.conv-bubble.spk-2 .conv-label {
+  align-self: flex-end;
+}
+
+.demo-conv.is-l1 .spk-1 .conv-label,
+.demo-conv.is-l2 .spk-2 .conv-label,
+.demo-conv.is-l3 .spk-3 .conv-label {
+  opacity: 1;
+  transform: none;
+}
+
+/* Review: the graph on the left two thirds; on the right the same list,
+   arrow and callouts as Inspect's, only as tall as its content. */
 /* React Flow review map, mounted by script.js when it nears the screen. */
 .review-graph-slot {
-  flex: 1 1 640px;
-  min-width: 0;
+  grid-column: span 2;
   height: 640px;
   border-radius: 18px;
   background: #E6ECF5;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease;
+}
+
+/* The mouse on the graph outlines it in blue, like a card under the mouse,
+   to show it can be worked on. */
+@media (hover: hover) {
+  .review-graph-slot:hover {
+    box-shadow: 0 0 0 3px rgba(26, 95, 166, 0.45), 0 4px 10px rgba(14, 14, 14, 0.14), 0 30px 64px rgba(14, 14, 14, 0.28);
+  }
+}
+
+/* Report: the reviewed graph and the draft report it builds, across the
+   tile. script.js mounts it near the screen; review-graph.js draws it. */
+/* About 1.6 wide to 1 high (the container's width is about 100vw - 3rem),
+   but no taller than the screen under the header, so it plays in full view. */
+.report-build-slot {
+  grid-column: 1 / -1;
+  height: max(460px, min(820px, calc(100vh - 110px), calc((100vw - 3rem) / 1.6)));
+}
+
+/* Graph above the page: the graph about square, the page 500px. */
+@media (max-width: 900px) {
+  .report-build-slot {
+    height: calc(100vw + 550px);
+  }
+}
+
+/* Tablets and phones: one column, the square tiles kept to a sensible size. */
+@media (max-width: 980px) {
+  .home-tile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-tile > * {
+    grid-column: 1 / -1;
+  }
+
+  .home-tile-box,
+  .home-tile-video {
+    justify-self: center;
+    width: min(100%, 500px);
+  }
 }
 
 .review-graph-fallback {
@@ -952,9 +2185,24 @@ main > .band:last-child {
   margin: 0.8rem 0 0;
 }
 
-.section-title-wide .eyebrow {
-  font-size: 1rem;
+/* The homepage section labels: Return on Investment, How it works,
+   Workflow Comparison, Pricing, Downloads. */
+.section-title-wide .eyebrow,
+.v2-sketch-title .eyebrow {
+  font-size: 1.25rem;
   margin-bottom: 0.95rem;
+}
+
+/* A short black rule above each label opens the section. */
+.section-title-wide .eyebrow::before,
+.v2-sketch-title .eyebrow::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 0 auto 1.1rem;
+  border-radius: 2px;
+  background: #000000;
 }
 
 .section-title-wide h2 {
@@ -1073,151 +2321,396 @@ main > .band:last-child {
   object-fit: cover;
 }
 
-.roi-grid {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(300px, 0.7fr);
-  gap: 1rem;
-  align-items: stretch;
+/* Return on investment, in the overview's look: white cards on the pale
+   green tile, soft green pills with dark green text. The comparison takes
+   two thirds, the example result one third. */
+.roi-wrap {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
 }
 
+.roi-wrap > .section-title {
+  margin-bottom: 2rem;
+}
+
+/* The section is white: its cards stand on the page, not on a panel. */
+.home-tile.roi-tile {
+  align-items: stretch;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.roi-compare {
+  grid-column: span 2;
+}
+
+.roi-chip {
+  align-self: flex-start;
+  margin: 0;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: clamp(1.125rem, 0.6rem + 0.75vw, 1.75rem);
+  font-weight: 700;
+}
+
+/* The table's rows share the card's height. The Oxx Report column is
+   shaded, so it reads as one band down the table. */
 .roi-table {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #FBFDF8;
-  box-shadow: var(--shadow);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .roi-row {
+  flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1.1fr 1.15fr;
-  gap: 0.85rem;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid rgba(199, 202, 188, 0.72);
-  align-items: center;
+  grid-template-columns: 0.9fr 1.05fr 1.15fr;
+  border-bottom: 1px solid var(--line);
 }
 
 .roi-row:last-child {
   border-bottom: 0;
 }
 
-.roi-head {
-  background: var(--accent);
-  color: #FFFFFF;
-  font-weight: 800;
-}
-
-.roi-row span {
+.roi-row > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   min-width: 0;
+  padding: clamp(0.85rem, 0.9vw, 1.25rem) clamp(0.9rem, 1vw, 1.4rem);
+  color: var(--text);
+  font-size: clamp(1.0625rem, 0.55rem + 0.55vw, 1.5rem);
+  line-height: 1.35;
 }
 
-.roi-row .good,
-.roi-row .bad,
-.roi-row .neutral {
-  position: relative;
-  padding-left: 1.55rem;
+.roi-row > span:first-child {
+  padding-left: 0.25rem;
+  font-weight: 700;
 }
 
+.roi-row > span:nth-child(2) {
+  color: var(--muted);
+}
+
+.roi-row > span:nth-child(3) {
+  background: rgba(214, 234, 187, 0.45);
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.roi-head {
+  flex: none;
+  border-bottom: 1.5px solid var(--text);
+}
+
+.roi-head > span,
+.roi-head > span:first-child,
+.roi-head > span:nth-child(2) {
+  justify-content: center;
+  padding-block: 0.6rem;
+  color: var(--accent-strong);
+  font-size: clamp(0.8125rem, 0.5rem + 0.3vw, 1.0625rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.roi-head > span:nth-child(3) {
+  border-radius: 10px 10px 0 0;
+  background: var(--accent-soft);
+}
+
+/* The first column's heading is for screen readers only. */
+.roi-head-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The Oxx Report column is headed by the logo, not the word. */
+.roi-head > span.roi-head-brand {
+  padding-block: 0.4rem;
+}
+
+.roi-head-brand img {
+  display: block;
+  width: auto;
+  height: clamp(30px, 2.2vw, 46px);
+}
+
+.roi-row:last-child > span:nth-child(3) {
+  border-radius: 0 0 10px 10px;
+}
+
+/* A tick or cross in a small circle before each entry. */
 .roi-row .good::before,
 .roi-row .bad::before,
 .roi-row .neutral::before {
-  position: absolute;
-  left: 0;
-  top: 0;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: clamp(22px, 1.6vw, 30px);
+  height: clamp(22px, 1.6vw, 30px);
+  border-radius: 50%;
+  font-size: clamp(13px, 0.95vw, 18px);
   font-weight: 900;
+  line-height: 1;
 }
 
 .roi-row .good::before {
   content: "✓";
-  color: var(--accent);
+  background: var(--accent);
+  color: #FFFFFF;
 }
 
 .roi-row .bad::before {
   content: "×";
-  color: var(--danger);
+  background: #FBE3DF;
+  color: #C2473A;
+  font-size: clamp(16px, 1.15vw, 22px);
 }
 
 .roi-row .neutral::before {
   content: "✓";
-  color: var(--info);
-}
-
-.roi-summary {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(180deg, #FFFFFF, #F4F9ED);
-  box-shadow: var(--shadow);
-  padding: 1rem;
-}
-
-.roi-stat {
-  display: grid;
-  gap: 0.15rem;
-  padding: 1rem;
-  border-radius: 16px;
-  background: var(--accent-strong);
-  color: #FFFFFF;
-}
-
-.roi-stat strong {
-  font-size: 4rem;
-  line-height: 0.9;
-}
-
-.roi-stat span {
-  font-weight: 700;
-}
-
-.roi-banner-stack {
-  display: grid;
-  gap: 0.78rem;
-  margin-top: 0.95rem;
-}
-
-.roi-banner-card {
-  border: 2px solid var(--accent-strong);
-  border-radius: 16px;
-  background: var(--accent);
-  color: #FFFFFF;
-  padding: 1.05rem;
-  text-align: center;
-  box-shadow: 0 10px 22px rgba(31, 84, 25, 0.14);
-}
-
-.roi-banner-card strong {
-  display: block;
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
-  line-height: 1.2;
-  font-weight: 800;
-}
-
-.roi-banner-card-large {
-  padding: 1.35rem 1rem;
-}
-
-.roi-banner-card-large strong {
-  font-size: clamp(1.55rem, 2.7vw, 2.25rem);
-}
-
-.review-note {
-  margin: 0.9rem 0 0;
+  background: #E4E7DD;
   color: var(--muted);
 }
 
+.roi-summary {
+  justify-content: space-between;
+}
+
+/* "70%" with a clock beside it, "less time" underneath. */
+/* "70%" over "less time" on the left, the clock at the right beside both. */
+.roi-stat {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 0.9rem;
+  row-gap: 0.2rem;
+  margin: 0.25rem 0 0;
+}
+
+.roi-stat strong {
+  color: var(--accent-strong);
+  font-size: clamp(3.5rem, 5.5vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.roi-stat-label {
+  grid-column: 1;
+  color: var(--text);
+  font-size: clamp(1.25rem, 0.8rem + 0.6vw, 1.875rem);
+  font-weight: 700;
+}
+
+/* The clock ticks backwards: the long hand jumps back an hour mark each
+   second, the short hand creeps back with it. */
+.roi-clock {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: block;
+  /* Set in a little from the card's right edge. */
+  margin-right: clamp(0.75rem, 2.4vw, 2.5rem);
+  width: clamp(4.75rem, 7.6vw, 9.5rem);
+  aspect-ratio: 1;
+  color: var(--accent);
+}
+
+.roi-clock svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.roi-clock-hand {
+  stroke: currentColor;
+  transform-box: view-box;
+  transform-origin: 32px 32px;
+}
+
+.roi-clock-hour {
+  stroke: var(--accent-strong);
+  animation: roi-rewind 144s linear infinite;
+}
+
+.roi-clock-minute {
+  animation: roi-rewind 12s steps(12) infinite;
+}
+
+.roi-clock-pin {
+  fill: var(--accent-strong);
+}
+
+@keyframes roi-rewind {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roi-clock-hand {
+    animation: none;
+  }
+}
+
+/* The three take-aways, as pills like the capture list. */
+.roi-points {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roi-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: clamp(1.125rem, 0.6rem + 0.65vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.roi-points li.is-strong {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.roi-ico {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.65em;
+  height: 1.65em;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.roi-ico svg {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+.roi-points li.is-strong .roi-ico {
+  background: #FFFFFF;
+  color: var(--accent);
+}
+
+@media (max-width: 980px) {
+  .home-tile.roi-tile > .roi-compare {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Phones: each row stacks, its item name above the two entries. */
+@media (max-width: 520px) {
+  .roi-head {
+    display: none;
+  }
+
+  .roi-row {
+    grid-template-columns: 1fr;
+    padding-block: 0.5rem;
+  }
+
+  .roi-row > span {
+    padding: 0.3rem 0.6rem;
+  }
+
+  .roi-row > span:first-child {
+    padding-left: 0;
+  }
+
+  .roi-row > span:nth-child(3),
+  .roi-row:last-child > span:nth-child(3) {
+    border-radius: 8px;
+  }
+}
+
+/* Four plans side by side: Free, $20, $40 and Unlimited. Two by two on
+   tablets, one column on phones (below). */
 .pricing-grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
+@media (max-width: 1100px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* A card's button sits at its foot, level across the row. */
 .pricing-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 20px;
   background: linear-gradient(180deg, #FFFFFF, #F6FAF1);
   box-shadow: var(--shadow);
   padding: 1.25rem;
+}
+
+.pricing-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Each card is a link to the login page: the whole card is the button. It
+   lifts and its Login button darkens under the mouse or keyboard focus. */
+a.pricing-card {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+a.pricing-card:hover,
+a.pricing-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 10px rgba(52, 81, 31, 0.1), 0 22px 40px rgba(52, 81, 31, 0.16);
+}
+
+a.pricing-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+a.pricing-card:hover .btn,
+a.pricing-card:focus-visible .btn {
+  background: var(--accent-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.pricing-card {
+    transition: none;
+  }
+
+  a.pricing-card:hover,
+  a.pricing-card:focus-visible {
+    transform: none;
+  }
+}
+
+.pricing-card .pricing-list {
+  margin-bottom: 1.25rem;
 }
 
 .pricing-card-featured {
@@ -1272,26 +2765,6 @@ main > .band:last-child {
   top: 0;
   color: var(--accent);
   font-weight: 800;
-}
-
-.pricing-trial {
-  margin-top: 1rem;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #F3F9EA;
-  padding: 1rem 1.2rem;
-  text-align: center;
-}
-
-.pricing-trial-title {
-  margin: 0;
-  font-size: 1.7rem;
-  font-weight: 700;
-}
-
-.pricing-trial p:last-child {
-  margin: 0.45rem 0 0;
-  color: var(--muted);
 }
 
 .v2-page .hero-report {
@@ -1747,7 +3220,6 @@ main > .band:last-child {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .roi-grid,
   .pricing-grid,
   .v2-sketch-row,
   .infographic-step {
@@ -1920,23 +3392,6 @@ main > .band:last-child {
     grid-column: 1 / -1;
     padding-bottom: 0.1rem;
     border-bottom: 0;
-  }
-
-  .roi-row {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
-  }
-
-  .roi-head {
-    display: none;
-  }
-
-  .roi-row span:first-child {
-    font-weight: 800;
-  }
-
-  .roi-stat strong {
-    font-size: 3rem;
   }
 
   .install-prompt {

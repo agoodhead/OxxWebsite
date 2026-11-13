@@ -22,11 +22,11 @@ The example uses a professional rate of R1,500/hour. A standard workflow takes a
 
 ## How much does Oxx Report cost?
 
-Prices are in South African rand. Pay as you use costs R1,000 per delivered report, with no subscription. The monthly subscription costs R500/month for unlimited reports, plus token usage of typically about R100 per report.
+Prices are in US dollars, with token costs included. Oxx Report is free to start, with no card required. Paid plans cost $20/month for 3 reports a month or $40/month for 10 reports a month. For unlimited reports, contact us.
 
 ## Is there a free trial?
 
-Yes. Three free reports to test the workflow. No card required, no lock-in, and data stays available.
+Yes. The free plan lets you test the workflow. No card required and no lock-in.
 
 ## Where is Oxx Report based?
 
@@ -54,4 +54,4 @@ Use the website login link to test the app, or use the contact page to request a
 
 ## How can Oxx Report be contacted?
 
-Use the contact page, email andrew@oxx.co.za, or WhatsApp +27 62 036 1649.
+Use the contact page or email support@oxx-ai.com.

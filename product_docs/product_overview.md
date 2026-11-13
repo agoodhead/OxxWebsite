@@ -8,7 +8,7 @@ Oxx Report is built in Cape Town, South Africa, and priced in South African rand
 
 Inspect. Review. Report.
 
-Oxx Report handles the repetitive reporting work between site inspection and professional review.
+Oxx Report AI handles the mundane work between site inspection and professional review. You stay in control…
 
 ## Primary Outcome
 
@@ -38,11 +38,12 @@ Saving per workflow stage: Inspect / Capture 15 min, Organise 15 min, Ground the
 
 ## Pricing
 
-Prices are in South African rand.
+Prices are in US dollars, with token costs included.
 
-- Pay as you use: R1,000 per delivered report. No subscription.
-- Monthly subscription: R500/month for unlimited reports, plus token usage of typically about R100 per report.
-- Free trial: three free reports. No card required, no lock-in, and data stays available.
+- Free plan: free to start. No card required and no lock-in.
+- 3 reports a month: $20/month.
+- 10 reports a month: $40/month.
+- Unlimited reports: no listed price. Contact us.
 
 ## Platform
 

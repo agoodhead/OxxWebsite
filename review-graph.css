@@ -1,5 +1,6 @@
 /* Review graph. Colours follow the Inspect video's information map. */
 .oxx-review {
+  position: relative;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -7,7 +8,7 @@
   height: 100%;
   min-height: 300px;
   overflow: hidden;
-  border: 1px solid #D3DBE8;
+  border: 1px solid #1B1C18;
   border-radius: 18px;
   background: #E6ECF5;
   color: #1B1C18;
@@ -53,10 +54,6 @@
   font-weight: 700;
 }
 
-.oxx-status.is-paused {
-  color: #1A5FA6;
-}
-
 .oxx-review-flow {
   position: relative;
   flex: 1;
@@ -93,12 +90,14 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: 1.5px solid #9AA6BB;
+  border: 1px solid #1B1C18;
   border-radius: 8px;
   background: #FFFFFF;
   font-size: 11px;
   line-height: 1.25;
-  animation: oxx-pop 0.45s ease both;
+  /* backwards, not both: once in, the card's transform is free for the hover. */
+  animation: oxx-pop 0.45s ease backwards;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .oxx-kicker {
@@ -113,7 +112,6 @@
   justify-content: center;
   width: 120px;
   height: 36px;
-  border: 0;
   border-radius: 8px;
   background: #7A7F57;
   color: #FFFFFF;
@@ -138,10 +136,10 @@
   color: #1B1C18;
 }
 
-.oxx-area.tone-green { border-color: #7FB08A; background: #E2F1E4; color: #3E7A4D; }
-.oxx-area.tone-blue { border-color: #7A9BD0; background: #E2EBFA; color: #3B64A6; }
-.oxx-area.tone-yellow { border-color: #D7B443; background: #FBF1CC; color: #8A6A0C; }
-.oxx-area.tone-purple { border-color: #A989D2; background: #EFE6F9; color: #6C47A3; }
+.oxx-area.tone-green { background: #E2F1E4; color: #3E7A4D; }
+.oxx-area.tone-blue { background: #E2EBFA; color: #3B64A6; }
+.oxx-area.tone-yellow { background: #FBF1CC; color: #8A6A0C; }
+.oxx-area.tone-purple { background: #EFE6F9; color: #6C47A3; }
 
 .oxx-imp {
   align-items: center;
@@ -153,25 +151,24 @@
 
 .oxx-imp-level { font-weight: 700; }
 .oxx-imp-defect { font-weight: 700; color: #1B1C18; }
-.oxx-imp-rel { font-size: 9px; font-weight: 700; color: #5B6577; }
 
-.oxx-imp.level-high { border-color: #DE8578; background: #FDF1EF; }
+.oxx-imp.level-high { background: #FDF1EF; }
 .oxx-imp.level-high .oxx-imp-level { color: #C2473A; }
-.oxx-imp.level-low { border-color: #9DB59F; background: #EDF3EC; }
+.oxx-imp.level-low { background: #EDF3EC; }
 .oxx-imp.level-low .oxx-imp-level { color: #4E7A55; }
-.oxx-imp.level-medium { border-color: #E2B653; background: #FDF6E3; }
+.oxx-imp.level-medium { background: #FDF6E3; }
 .oxx-imp.level-medium .oxx-imp-level { color: #A87711; }
 
 .oxx-ev {
   align-items: center;
-  width: 70px;
-  padding: 3px 4px 4px;
-  gap: 2px;
+  width: 84px;
+  padding: 4px 6px 6px;
+  gap: 3px;
 }
 
 .oxx-ev-kind {
   align-self: flex-start;
-  font-size: 7px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -180,11 +177,16 @@
 .oxx-ev-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+}
+
+.oxx-ev-row svg {
+  width: 17px;
+  height: 17px;
 }
 
 .oxx-ev-caption {
-  font-size: 8px;
+  font-size: 9.5px;
   font-weight: 700;
   text-align: center;
 }
@@ -193,7 +195,7 @@
   padding: 0 5px;
   border: 1px solid currentColor;
   border-radius: 999px;
-  font-size: 7px;
+  font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -202,10 +204,76 @@
 .prio-low { color: #4E7A55; }
 .prio-med { color: #A87711; }
 
-.oxx-ev.kind-video { border-color: #A98AD8; background: #F5EFFC; color: #6C47A3; }
-.oxx-ev.kind-report { border-color: #3FA391; background: #E9F6F3; color: #217A69; }
-.oxx-ev.kind-image { border-color: #6F95D2; background: #EDF3FC; color: #3B64A6; }
-.oxx-ev.kind-audio { border-color: #D9A441; background: #FCF4E3; color: #9A6A0C; }
+.oxx-ev.kind-video { background: #F5EFFC; color: #6C47A3; }
+.oxx-ev.kind-report { background: #E9F6F3; color: #217A69; }
+.oxx-ev.kind-image { background: #EDF3FC; color: #3B64A6; }
+.oxx-ev.kind-audio { background: #FCF4E3; color: #9A6A0C; }
+
+/* A card with a picture: a thumbnail with an expand mark, and a zoom
+   pointer, to say a click opens it. */
+.oxx-thumb {
+  position: relative;
+  display: block;
+  flex: none;
+  overflow: hidden;
+  border: 1px solid rgba(27, 28, 24, 0.5);
+  border-radius: 5px;
+  background: #FFFFFF;
+}
+
+.oxx-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.oxx-thumb-zoom {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1B1C18;
+}
+
+.oxx-review .has-view {
+  cursor: zoom-in;
+}
+
+.oxx-root.has-view {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 9px;
+  width: 156px;
+  height: 42px;
+  padding: 4px 12px 4px 4px;
+}
+
+.oxx-root .oxx-thumb {
+  width: 50px;
+  height: 32px;
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.oxx-ev-top {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.oxx-ev .oxx-thumb {
+  align-self: stretch;
+  height: 48px;
+}
 
 .oxx-hyp,
 .oxx-act {
@@ -218,7 +286,6 @@
   width: 330px;
   padding: 8px 12px;
   gap: 3px;
-  border: 0;
   background: #7A7F57;
   color: #FFFFFF;
   text-align: center;
@@ -252,14 +319,11 @@
   font-weight: 700;
 }
 
-.oxx-hyp { border-color: #A98AD8; }
 .oxx-hyp .oxx-kicker { color: #6C47A3; }
-.oxx-act { border-color: #7A7F57; }
 .oxx-act .oxx-kicker { color: #5E6B3E; }
 
 .oxx-hyp.status-accepted,
 .oxx-act.status-selected {
-  border-color: #2F6B22;
   background: #E3F3D6;
 }
 
@@ -270,7 +334,6 @@
 
 .oxx-hyp.status-rejected,
 .oxx-act.status-dropped {
-  border-color: #C9CDD6;
   background: #F3F4F7;
   color: #6B7280;
 }
@@ -330,7 +393,20 @@
   box-shadow: 0 0 0 3px rgba(26, 95, 166, 0.35);
 }
 
-/* Being tidied by the Auto review pointer */
+/* Pointing at a card lifts it out and outlines it, to show it can be moved
+   and decided on. Only where there is a mouse to point with. */
+@media (hover: hover) {
+  .oxx-review .react-flow__node:hover {
+    z-index: 1000 !important;
+  }
+
+  .oxx-review .react-flow__node:hover .oxx-n {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 3px rgba(26, 95, 166, 0.45), 0 10px 22px rgba(14, 14, 14, 0.22);
+  }
+}
+
+/* Being worked on by the Professional review pointer. */
 .oxx-n.is-editing {
   box-shadow: 0 0 0 3px rgba(26, 95, 166, 0.35), 0 8px 18px rgba(14, 14, 14, 0.18);
 }
@@ -364,6 +440,90 @@
   white-space: nowrap;
 }
 
+/* A card's picture, popped up over the graph. review-graph.js grows it out
+   of the card's thumbnail and shrinks it back on closing. */
+.oxx-viewer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.oxx-viewer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 28, 24, 0.3);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  animation: oxx-fade 0.3s ease both;
+}
+
+.oxx-viewer-fig {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.oxx-viewer-fig img {
+  display: block;
+  width: min(100cqw - 40px, 100cqh - 72px);
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid #1B1C18;
+  border-radius: 14px;
+  background: #FFFFFF;
+  box-shadow: 0 18px 40px rgba(14, 14, 14, 0.35);
+}
+
+.oxx-viewer-fig figcaption {
+  padding: 3px 12px;
+  border: 1px solid #1B1C18;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: #1B1C18;
+  font-size: 13px;
+  font-weight: 700;
+  animation: oxx-fade 0.3s ease 0.2s both;
+}
+
+.oxx-viewer-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #1B1C18;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #1B1C18;
+  cursor: pointer;
+  animation: oxx-fade 0.3s ease 0.2s both;
+}
+
+.oxx-viewer-close:focus-visible {
+  outline: 2px solid #1A5FA6;
+  outline-offset: 2px;
+}
+
+.oxx-viewer.is-closing::before,
+.oxx-viewer.is-closing figcaption,
+.oxx-viewer.is-closing .oxx-viewer-close {
+  animation: oxx-fade-out 0.25s ease both;
+}
+
 /* Edges */
 .oxx-review .react-flow__edge-path {
   animation: oxx-fade 0.5s ease both;
@@ -389,9 +549,739 @@
   to { opacity: 1; }
 }
 
+@keyframes oxx-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .oxx-n,
-  .oxx-review .react-flow__edge-path {
+  .oxx-review .react-flow__edge-path,
+  .oxx-viewer::before,
+  .oxx-viewer-fig figcaption,
+  .oxx-viewer-close {
     animation: none;
+  }
+}
+
+/* ---- Report: the reviewed graph and the draft report it builds ----
+   review-graph.js flies each card from the graph onto its line of the page. */
+.oxx-report-build {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+  gap: 20px;
+  height: 100%;
+  color: #1B1C18;
+}
+
+.oxx-report-wait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid #1B1C18;
+  border-radius: 18px;
+  background: #E6ECF5;
+  color: #5B6577;
+  font-size: 14px;
+}
+
+.oxx-report-graph,
+.oxx-doc {
+  box-shadow: var(--shadow-card, 0 12px 30px rgba(14, 14, 14, 0.14));
+}
+
+/* Read-only: no pointer on the cards, no buttons, no picture to open. */
+.oxx-report-graph .react-flow__node {
+  pointer-events: none !important;
+  cursor: default;
+}
+
+.oxx-report-build .oxx-buttons,
+.oxx-report-build .oxx-thumb-zoom {
+  display: none;
+}
+
+.oxx-report-graph .oxx-n {
+  transition: background-color 0.45s ease, border-color 0.45s ease;
+}
+
+.oxx-report-graph .oxx-n > * {
+  transition: opacity 0.45s ease;
+}
+
+/* A card taken into the report leaves an empty dashed slot. */
+.oxx-report-graph .react-flow__node.oxx-taken .oxx-n {
+  border: 1.5px dashed #9AA6BB;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
+}
+
+.oxx-report-graph .react-flow__node.oxx-taken .oxx-n > * {
+  opacity: 0;
+}
+
+.oxx-report-graph .react-flow__edge {
+  transition: opacity 0.5s ease;
+}
+
+.oxx-report-graph .react-flow__edge.oxx-gone {
+  opacity: 0.12;
+}
+
+/* The copy of a card on its way to the page. */
+.oxx-flying {
+  position: absolute;
+  z-index: 40;
+  margin: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  animation: none !important;
+  will-change: transform, opacity;
+}
+
+/* The Word window: title bar, menu, ribbon, the page on its grey canvas
+   with a DRAFT watermark, and the status bar. After the overview video. */
+.oxx-doc {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #1B1C18;
+  border-radius: 18px;
+  background: #D5D9DF;
+  font-family: "DejaVu Sans", "Segoe UI", system-ui, sans-serif;
+  container: oxx-doc / inline-size;
+}
+
+.oxx-doc-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #2B579A;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.oxx-doc-app {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #FFFFFF;
+  color: #2B579A;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.oxx-doc-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.oxx-doc-appname {
+  opacity: 0.85;
+}
+
+.oxx-doc-win {
+  display: inline-flex;
+  flex: none;
+  gap: 14px;
+  opacity: 0.9;
+}
+
+.oxx-doc-win svg {
+  display: block;
+}
+
+.oxx-doc-menu {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+  padding: 6px 14px 0;
+  background: #F7F7F8;
+  color: #3D4048;
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.oxx-doc-menu span {
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.oxx-doc-menu .is-on {
+  border-bottom-color: #2B579A;
+  color: #2B579A;
+  font-weight: 700;
+}
+
+.oxx-doc-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  padding: 6px 12px 7px;
+  border-top: 1px solid #E4E5E9;
+  border-bottom: 1px solid #C9CDD4;
+  background: #F7F7F8;
+  color: #2E3138;
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+
+.oxx-doc-field,
+.oxx-doc-style {
+  flex: none;
+  padding: 3px 7px;
+  border: 1px solid #C9CCD3;
+  border-radius: 3px;
+  background: #FFFFFF;
+}
+
+.oxx-doc-field.is-font { min-width: 82px; }
+.oxx-doc-field.is-size { min-width: 14px; text-align: center; }
+
+.oxx-doc-tools {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 9px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+}
+
+.oxx-doc-tools svg {
+  display: block;
+}
+
+.oxx-doc-style {
+  min-width: 52px;
+  text-align: center;
+}
+
+.oxx-doc-style.is-h1 {
+  color: #7A7F57;
+  font-weight: 700;
+}
+
+.oxx-doc-draft {
+  flex: none;
+  margin-left: auto;
+  padding: 3px 12px;
+  border: 1.5px solid #E2B33C;
+  border-radius: 7px;
+  background: #FDEDB5;
+  color: #8A5A00;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* The grey canvas. The watermark stays put while the page scrolls under it,
+   so it always sits across the page, as on a Word page. */
+.oxx-doc-view {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  container-type: inline-size;
+}
+
+.oxx-doc-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding: 16px 20px 0;
+}
+
+.oxx-doc-watermark {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  z-index: 2;
+  color: #ECEEF1;
+  font-size: 96px;
+  font-size: clamp(56px, 23cqi, 150px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-50deg);
+  user-select: none;
+}
+
+.oxx-doc-page {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 16px 26px 30px;
+  background: #FFFFFF;
+  box-shadow: 0 1px 4px rgba(14, 14, 14, 0.18);
+  color: #1F2024;
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.oxx-doc-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  padding: 5px 14px;
+  border-top: 1px solid #C9CDD4;
+  background: #F1F2F4;
+  color: #3D4048;
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+
+.oxx-doc-zoom {
+  margin-left: auto;
+}
+
+@media (min-width: 1200px) {
+  .oxx-doc-scroll { padding: 18px 28px 0; }
+
+  .oxx-doc-page {
+    padding: 20px 34px 34px;
+    font-size: 13.5px;
+  }
+
+  .oxx-doc-page .oxx-doc-title { font-size: 22px; }
+  .oxx-doc-page .oxx-doc-h { font-size: 15px; }
+  .oxx-doc-page .oxx-doc-meta { font-size: 11.5px; }
+  .oxx-doc-page .oxx-doc-caption { font-size: 12.5px; }
+  .oxx-doc-page .oxx-doc-th { font-size: 11px; }
+}
+
+/* Everything on the page but the running header clears for the next round. */
+.oxx-doc-page > * {
+  transition: opacity 0.6s ease;
+}
+
+.oxx-report-build.is-fading .oxx-doc-page > :not(.oxx-doc-runhead) {
+  opacity: 0;
+}
+
+.oxx-doc-runhead {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid #7A7F57;
+  color: #6B6F78;
+  font-family: "DejaVu Sans", system-ui, sans-serif;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.oxx-doc-runhead span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oxx-doc-runhead i {
+  margin: 0 6px;
+  font-style: normal;
+}
+
+.oxx-doc-sec {
+  margin-top: 14px;
+}
+
+.oxx-doc-row.oxx-doc-titleblock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 0 0 2px;
+}
+
+.oxx-doc-title {
+  color: #4F5336;
+  font-family: "DejaVu Sans", system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.oxx-doc-sub {
+  color: #6B6F78;
+  font-style: italic;
+}
+
+.oxx-doc-h {
+  margin: 0 0 6px;
+  color: #7A7F57;
+  font-family: "DejaVu Sans", system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.oxx-doc-h.is-pending,
+.oxx-doc-th.is-pending {
+  opacity: 0;
+}
+
+.oxx-doc-h.is-in,
+.oxx-doc-th.is-in {
+  animation: oxx-fade 0.4s ease both;
+}
+
+/* A line takes its room unseen, then shows with a highlight that settles. */
+.oxx-doc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 3px 0;
+  border-radius: 3px;
+}
+
+.oxx-doc-row.is-pending {
+  opacity: 0;
+}
+
+.oxx-doc-row.is-in {
+  animation: oxx-doc-in 1.8s ease both;
+}
+
+@keyframes oxx-doc-in {
+  0% { opacity: 0; background-color: #FFEFA8; }
+  14% { opacity: 1; background-color: #FFEFA8; }
+  100% { opacity: 1; background-color: rgba(255, 239, 168, 0); }
+}
+
+.oxx-doc-row b {
+  font-weight: 700;
+}
+
+.oxx-doc-meta {
+  color: #6B6F78;
+  font-size: 10.5px;
+  font-style: italic;
+}
+
+/* Tables: an olive header row over ruled cells. */
+.oxx-doc-th,
+.oxx-doc-row.is-table {
+  display: grid;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+  border-radius: 0;
+}
+
+.sec-areas .oxx-doc-th,
+.sec-areas .oxx-doc-row.is-table { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr); }
+
+.oxx-doc-th {
+  border: 1px solid #7A7F57;
+  background: #7A7F57;
+  color: #FFFFFF;
+  font-family: "DejaVu Sans", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.oxx-doc-th > span,
+.oxx-doc-row.is-table > span {
+  min-width: 0;
+  padding: 4px 7px;
+}
+
+.oxx-doc-row.is-table {
+  border: 1px solid #D3D6C6;
+  border-top: 0;
+}
+
+.oxx-doc-row.is-table > span + span {
+  border-left: 1px solid #D3D6C6;
+}
+
+.oxx-doc-defect {
+  color: #9A3412;
+  font-weight: 700;
+}
+
+/* Figures: the picture, a numbered caption, then the area and priority.
+   The site map leads the report; the evidence sits two figures to a row. */
+.oxx-doc-row.oxx-doc-figure {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 0 0 2px;
+}
+
+.oxx-doc-figure.is-map {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-self: center;
+  width: min(60%, 340px);
+  margin-top: 10px;
+}
+
+.oxx-doc-figs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+  align-items: start;
+}
+
+.oxx-doc-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #C9CCC0;
+  background: #EEF0EA;
+}
+
+.is-map .oxx-doc-frame {
+  aspect-ratio: 1;
+}
+
+.oxx-doc-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.oxx-doc-caption {
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.oxx-doc-caption b {
+  color: #4F5336;
+}
+
+.oxx-doc-figure .oxx-doc-meta {
+  margin-top: -2px;
+}
+
+/* A video still carries a play mark. */
+.oxx-doc-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.55);
+  transform: translate(-50%, -50%);
+}
+
+.oxx-doc-play::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  border-style: solid;
+  border-width: 7px 0 7px 11px;
+  border-color: transparent transparent transparent #FFFFFF;
+}
+
+/* A document: a page with its title and ruled lines. */
+.oxx-doc-frame.is-doc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E6E9EC;
+}
+
+.oxx-doc-sheet {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 7%;
+  width: 54%;
+  height: 86%;
+  padding: 9% 8%;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(14, 14, 14, 0.25);
+}
+
+.oxx-doc-sheet-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4%;
+  color: #217A69;
+  font-family: "DejaVu Sans", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.oxx-doc-sheet-title svg {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+
+.oxx-doc-sheet i {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: #D9DCE1;
+}
+
+.oxx-doc-sheet i:nth-of-type(3n) {
+  width: 68%;
+}
+
+/* Verdicts as outlined stamps, as in the overview video. */
+.oxx-doc-row.is-table > span:last-child {
+  display: flex;
+  align-items: center;
+}
+
+/* Paragraphs: the introduction, the discussion, the conclusion and the
+   recommendations. A section's opening paragraph shows with its heading. */
+.oxx-doc-para {
+  display: block;
+}
+
+/* The discussion and the recommendations are one paragraph each: the
+   opening sentence shows with the heading, then a sentence per cause or
+   action, each with the line highlight. */
+.oxx-doc-para.oxx-doc-prose {
+  margin: 0 0 5px;
+  padding: 2px 0;
+}
+
+.oxx-doc-prose .oxx-doc-lead {
+  margin: 0;
+}
+
+.oxx-doc-row.oxx-doc-sentence {
+  display: inline;
+  padding: 1px 0;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.oxx-doc-verdict {
+  font-weight: 700;
+}
+
+.oxx-doc-verdict.is-yes { color: #2F7A3A; }
+.oxx-doc-verdict.is-no { color: #B42318; }
+.oxx-doc-verdict.is-skip { color: #6B6F78; font-weight: 400; }
+
+.oxx-doc-row.oxx-doc-para {
+  margin-bottom: 5px;
+  padding: 2px 0;
+}
+
+.oxx-doc-titleblock .oxx-doc-para {
+  margin-top: 8px;
+}
+
+.oxx-doc-lead {
+  margin: 0 0 8px;
+}
+
+.oxx-doc-lead.is-pending {
+  opacity: 0;
+}
+
+.oxx-doc-lead.is-in {
+  animation: oxx-fade 0.4s ease both;
+}
+
+/* The sign-off lines under the finished draft. */
+.oxx-doc-sign {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 22px;
+  color: #3D4048;
+  font-family: "DejaVu Sans", system-ui, sans-serif;
+  font-size: 10.5px;
+  animation: oxx-fade 0.6s ease both;
+}
+
+.oxx-doc-sign span {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.oxx-doc-sign i {
+  display: inline-block;
+  width: 84px;
+  border-bottom: 1px solid #3D4048;
+}
+
+/* Phones and narrow tablets: the graph above the page. */
+@media (max-width: 900px) {
+  .oxx-report-build {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) 500px;
+    gap: 14px;
+  }
+
+  .oxx-doc-scroll {
+    padding: 12px 12px 0;
+  }
+
+  .oxx-doc-page {
+    padding: 14px 16px 22px;
+  }
+}
+
+/* A narrow window drops ribbon items so DRAFT stays in view: first the
+   style boxes, then (phones) the alignment buttons and the language. */
+@container oxx-doc (max-width: 540px) {
+  .oxx-doc-ribbon .oxx-doc-style {
+    display: none;
+  }
+}
+
+@container oxx-doc (max-width: 400px) {
+  .oxx-doc-ribbon .oxx-doc-align,
+  .oxx-doc-lang {
+    display: none;
+  }
+
+  .oxx-doc-menu {
+    gap: 12px;
+  }
+
+  .oxx-doc-win {
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oxx-doc-row.is-in,
+  .oxx-doc-h.is-in,
+  .oxx-doc-lead.is-in,
+  .oxx-doc-th.is-in,
+  .oxx-doc-sign {
+    animation: none;
+  }
+
+  .oxx-report-graph .oxx-n,
+  .oxx-report-graph .oxx-n > *,
+  .oxx-report-graph .react-flow__edge,
+  .oxx-doc-page > * {
+    transition: none;
   }
 }
